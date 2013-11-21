@@ -1,0 +1,32 @@
+﻿/* ADD YOUR CUSTOM STYLES HERE 
+----------------------------------------------------------*/
+
+.pageTitle
+{
+	font-size:36px;
+	margin:10px 10px 10px 10px;
+	color:#555;
+}
+
+.contentLarge
+{
+	font-size:54px;
+	font-weight:bold;
+	margin-top:200px;
+}
+
+.contentMed
+{
+	font-size:42px;
+	margin:15px 0px 0px 10px;
+}
+
+.contentSmall
+{
+	font-size:36px;
+	margin:15px 5px 5px 5px;
+}
+
+/*
+	END OF CUSTOM STYLES
+*/

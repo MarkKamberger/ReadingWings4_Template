@@ -1,0 +1,71 @@
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+		document.getTOC = function() {
+			return document.getElementById('toc').innerHTML;
+		}
+		document.getTOCScript = function() {
+			return document.getElementById('tocScript').innerHTML;
+		}
+	</script>
+</head>
+<body>
+	<div id="toc">
+		<table cellspacing="0" cellpadding="0" border="0" style="height:350px;">
+			<tr>
+				<td valign="middle">
+					<table cellspacing="0" cellpadding="0" border="0">
+						<tr>
+							<td>
+								
+							</td>
+						</tr>
+						<tr>
+							<td>&nbsp;
+								
+							</td>
+						</tr>
+						<tr>
+							<td>
+								
+							</td>
+						</tr>
+						<tr>
+							<td>&nbsp;
+								
+							</td>
+						</tr>
+						<tr>
+							<td>
+								
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="tocScript">
+		function processTOCCmd(c) {
+			switch (parseInt(c)) {
+				case 101:
+					switchPage(1);
+					doMove();
+					break;
+				case 102:
+					switchPage(6);
+					doMove();
+					break;
+				case 103:
+					switchPage(8);
+					doMove();
+					break;
+			}
+		}
+		function switchPage(p) {
+			parent.jumpToPage('Page' + p.toString() + '.html',parseInt(p));
+		}
+	</div>
+</body>
+</html>

@@ -1,0 +1,645 @@
+<html>
+<head>
+<link href="../Shared/Styles/Site.css" rel="stylesheet" type="text/css" />
+<link href="../Shared/Styles/Presentation.css" rel="stylesheet" type="text/css" />
+<link href="../Shared/Fonts/stylesheet.css"  rel="stylesheet" type="text/css" charset="utf-8">
+<script src="../Shared/Scripts/ajax.js" type="text/javascript"></script>
+<script src="../Shared/Scripts/jquery-1.9.1.js"></script>
+<script src="../Shared/Scripts/jquery-ui.js"></script>
+<script src="../Shared/Scripts/jQueryRotate.js"></script>
+
+<!--Scripts added by Mark S-->
+<script type="text/javascript" src="../Shared/Tools/js/jquery-ui-1.10.3.custom.js"></script>
+<script type="text/javascript" src="../Shared/Tools/js/jquiTouch.js"></script>
+<script type="text/javascript" src="../Shared/Tools/js/utility.js"></script>
+<script type="text/javascript" src="../Shared/Tools/js/calculator.js"></script>
+<script type="text/javascript" src="../Shared/Tools/js/protractor.js"></script>
+<script type="text/javascript" src="../Shared/Tools/js/ruler.js"></script>
+<script type="text/javascript" src="../Shared/Tools/js/compass.js"></script>
+<link href="../Shared/Tools/css/mathTools.css" rel="stylesheet" type="text/css">
+
+<!--End of Mark S addition-->
+
+<title>Power Teaching Math 3rd Edition - Drawing Pad</title>
+</head>
+
+<body style="background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,rgba(238,238,238,1)), color-stop(100%,rgba(204,204,204,1)));">
+			    <span style="top:12px;right:25px;position:fixed;z-index:5000;" class="dialogCloseMath" onClick="window.close();">X</span>
+            	<div id="leftOuterStripe" style="left:0px;position:fixed;height:100%;width:18px;background-color:#a7bacb;" onClick="hideAndShowMenuSeparater('divMenuBarSeparater');"></div>
+                <div id="leftInnerStripe" style="position:fixed;left:18px;height:100%;width:18px;
+					background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(42,56,73,1)), color-stop(36%,rgba(0,123,164,1)), color-stop(100%,rgba(32,124,202,1)), color-stop(100%,rgba(125,185,232,1)));                
+                "></div>    
+    
+    <!--<canvas id="canvas1" name="drawableCanvas" height="700" width="970" style="position:fixed;border:1px solid #481e4e;z-index:3;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;top:10px;left:30px;background-color:#ffffff;margin-left:11px;box-shadow:3px 3px 1px 1px #33333;">
+	</canvas>-->
+    
+       <canvas id="canvas1" name="drawableCanvas" height="680" width="960" style="position:fixed;border:1px solid #481e4e;z-index:3;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;top:10px;left:30px;background-color:#ffffff;margin-left:11px;box-shadow:3px 3px 1px 1px #33333;">
+	</canvas>
+	
+    
+
+<!---TOOLS: Ruler------------------------------------------------------------------------------------------->
+
+<div id="divRuler" style="position:absolute;left:75; top:300; z-index:6000;display:none;"> <img id="imgRotateRuler" src="../Shared/Images/Math/Tools/SpinButton.png" style="z-index:6001;left:433;top:60;position: absolute;">
+  <div id="divCloseRuler" style="right:4;top:110;position: absolute;width:20px;height:20px;border-radius:20px; background-color: #d90013;border:1px solid #000000;text-align:center;" class="divPencilColorDot"  onClick="closeRuler();"><strong>x</strong></div>
+  <img id="imgRuler" src="../Shared/Images/Math/Tools/Ruler02.png" > </div>
+<script>
+$(function() {
+$( "#divRuler" ).draggable();
+});
+
+var value = 0
+$("#imgRotateRuler").rotate({ 
+   bind: 
+     { 
+        click: function(){
+            value +=45;
+            $("#divRuler").rotate({ animateTo:value})
+        }
+     } 
+   
+});
+</script>
+
+
+
+<!---TOOLS: Protractor------------------------------------------------------------------------------------------->
+
+<div id="divProtractor" style="position:absolute;left:150; top:300; z-index:6002;display:none;"> <img id="imgRotateProtractor" src="../Shared/Images/Math/Tools/SpinButton.png" style="z-index:6003;left:211;top:111;position: absolute;">
+  <div id="divCloseProtractor" style="left:215;top:216;position: absolute;width:20px;height:20px;border-radius:20px; background-color: #d90013;border:1px solid #000000;text-align:center;" class="divPencilColorDot"  onClick="closeProtractor();">x</div>
+  <img id="imgProtractor" src="../Shared/Images/Math/Tools/Protractor01.gif" > </div>
+<script>
+$(function() {
+$( "#divProtractor" ).draggable();
+});
+
+var value = 0
+$("#imgRotateProtractor").rotate({ 
+   bind: 
+     { 
+        click: function(){
+            value +=45;
+            $("#divProtractor").rotate({ animateTo:value})
+        }
+     } 
+   
+});
+</script>    
+    
+<div id="bottomMenu" style="position:fixed; z-index:1000; bottom:0px; left:0px; height:39px; min-height:39px; width:100%;
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(160,180,201,1)), color-stop(100%,rgba(176,196,207,1)));border-top:1px solid #6c849e;">    
+                <table border="0" style="float:left;position:relative;float:left;z-index:1001;left:0;" id="universalMenuRight" cellpadding="0" cellspacing="0">
+					<tr>
+						<td align="left" valign="bottom">
+							<!-- reset button -->
+							<img alt="Reset Screen" title="Reset Screen" src='../Shared/Images/Math/MenuBar/Nav_1_refresh.png' onMouseOver="this.src='../Shared/Images/Math/MenuBar/Nav_1_refresh.png';" onMouseOut="this.src='../Shared/Images/Math/MenuBar/Nav_1_refresh.png';" onClick="resetScreen(this);" id='btnReset' style="border: 0px none #ffffff;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px; cursor:pointer;" draggable="false"/>
+						</td>
+					</tr>
+                 </table>
+<script language="javascript">
+	function blankPagePencilColorPicker(c,s,o){
+			setPencilLine(c,s,o);
+	document.getElementById("divPencilIconBG").style.backgroundColor = c;
+	document.getElementById("divHighlighterIconBG").style.backgroundColor = c;	
+	if(o < 1.0)//HIGHLIGHTER IS SELECTED:
+	{
+		document.getElementById("divPencilIconBG").style.backgroundColor = '#ffffff';
+	}
+	else //PENCIL IS SELECTED
+	{
+		document.getElementById("divHighlighterIconBG").style.backgroundColor = '#ffffff';
+	}
+	
+	document.getElementById("divPencilColorSizePicker").style.display = "none";
+	document.getElementById("divHighlighterColorSizePicker").style.display = "none";
+	}
+
+	function openToolsMenu() {
+		var foo = $id('bottomToolsMenu');
+		var l = parseInt(foo.style.left.replace("px",""));
+
+		if(bottomSliderOpen == false)
+		{
+			l += 5;
+			foo.style.left = l.toString()+'px';
+			
+			if (l <= 200)
+				setTimeout(openToolsMenu,5);
+			else {
+				foo.style.left = "200px"
+				bottomSliderOpen = true;
+				document.getElementById("imgToolsOpenClose").src = "../Shared/Images/Math/MenuBar/Row1_4Reverse.png";		
+			}		
+		}
+		else
+		{
+		l -= 5;
+		foo.style.left = l.toString()+'px';
+		
+		if (l >= -350)
+			setTimeout(closeToolsMenu,5);
+		else {
+			foo.style.left = "-350px"
+			bottomSliderOpen = false;
+				}	
+		}
+	}
+	function closeToolsMenu() {
+		var foo = $id('bottomToolsMenu');
+		var l = parseInt(foo.style.left.replace("px",""));
+		l -= 5;
+		foo.style.left = l.toString()+'px';
+		
+		if (l >= -350)
+			setTimeout(closeToolsMenu,5);
+		else {
+			foo.style.left = "-350px"
+			bottomSliderOpen = false;
+			document.getElementById("imgToolsOpenClose").src = "../Shared/Images/Math/MenuBar/Row1_4.png";	
+		}
+	}			
+</script>
+<div id="bottomToolsMenu" style="left:57;z-index:1000;position: absolute;">
+  <table border="0" style="" id="pullOutMenu" cellpadding="0" cellspacing="0">
+    <td align="left" valign="bottom"><!-- pencil Button --> 
+        
+        <img alt="Pencil" title="Pencil" src='../Shared/Images/Math/MenuBar/Nav_6_pen_KO.png' onMouseOver="this.src='../Shared/Images/Math/MenuBar/Nav_6_pen_KO.png';" onMouseOut="this.src='../Shared/Images/Math/MenuBar/Nav_6_pen_KO.png';" id='btnPencil' style="position:relative;z-index:2001;border: 0px none #ffffff;padding:0px 0px 0px 0px;margin:-10px 0px 0px 0px; cursor:pointer;" onClick="openPencilColorPicker();" draggable="false"/>
+        <div id="divPencilIconBG" style="background-color:#000000;width:25px;height:25px;z-index:2000;position:absolute;top:8;left:5px;border-radius:25px;display:inline;"></div></td>
+      <td align="left" valign="bottom"><!-- Highlighter Button --> 
+        
+        <img alt="Highlighter" title="Highlighter" src='../Shared/Images/Math/MenuBar/Nav_7_highlighter_KO.png' onMouseOver="this.src='../Shared/Images/Math/MenuBar/Nav_7_highlighter_KO.png';" onMouseOut="this.src='../Shared/Images/Math/MenuBar/Nav_7_highlighter_KO.png';" id='btnHighlighter' style="position:relative;z-index:2001;border: 0px none #ffffff;padding:0px 0px 0px 0px;margin:-10px 0px 0px 0px; cursor:pointer;" onClick="openHighlighterColorPicker();" draggable="false"/>
+        <div id="divHighlighterIconBG" style="background-color:#ffffff;width:25px;height:25px;z-index:2000;position:absolute;top:8;left:60px;border-radius:25px;display:inline;"></div></td>
+      <td align="left" valign="bottom"><!-- eraser button --> 
+        
+        <img alt="Eraser" title="Eraser" src='../Shared/Images/Math/MenuBar/Nav_5_eraser.png' onMouseOver="this.src='../Shared/Images/Math/MenuBar/Nav_5_eraser.png';" onMouseOut="this.src='../Shared/Images/Math/MenuBar/Nav_5_eraser.png';" id='btnEraser' style="border: 0px none #ffffff;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px; cursor:pointer;" onClick="eraser();" draggable="false"/></td>
+      <td class="tdSeparater"><div class="divMenuBarSeparater">&nbsp;</div></td>
+      <td align="left" valign="bottom"><img alt="Calculator" title="Calculator" src='../Shared/Images/Math/MenuBar/Nav_8_calculator.png' onMouseOver="this.src='../Shared/Images/Math/MenuBar/Nav_8_calculator.png';" onMouseOut="this.src='../Shared/Images/Math/MenuBar/Nav_8_calculator.png';" id='btnCalculator' style="border: 0px none #ffffff;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px; cursor:pointer;" draggable="false"/></td>
+      <td align="left" valign="bottom"><img alt="Ruler" title="Ruler" src='../Shared/Images/Math/MenuBar/Nav_9_ruler.png' onMouseOver="this.src='../Shared/Images/Math/MenuBar/Nav_9_ruler.png';" onMouseOut="this.src='../Shared/Images/Math/MenuBar/Nav_9_ruler.png';" id='btnRuler' style="border: 0px none #ffffff;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px; cursor:pointer;" draggable="false"/></td>
+      <td align="left" valign="bottom"><img alt="Protractor" title="Protractor" src='../Shared/Images/Math/MenuBar/Nav_10_protractor.png' onMouseOver="this.src='../Shared/Images/Math/MenuBar/Nav_10_protractor.png';" onMouseOut="this.src='../Shared/Images/Math/MenuBar/Nav_10_protractor.png';" id='btnProtractor' style="border: 0px none #ffffff;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px; cursor:pointer;" draggable="false"/></td>
+      <td align="left" valign="bottom"><img alt="Compass" title="Compass" src='../Shared/Images/Math/MenuBar/Nav_11_compass.png' onMouseOver="this.src='../Shared/Images/Math/MenuBar/Nav_11_compass.png';" onMouseOut="this.src='../Shared/Images/Math/MenuBar/Nav_11_compass.png';" onClick="openCompass();" id='btnCompass' style="border: 0px none #ffffff;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px; cursor:pointer;" draggable="false"/></td>
+      <td class="tdSeparater"><div class="divMenuBarSeparater">&nbsp;</div></td>
+      <td align="left" valign="bottom"><img alt="Blank Screen" title="Blank Screen" src='../Shared/Images/Math/MenuBar/Nav_12_blankpage.png' onMouseOver="this.src='../Shared/Images/Math/MenuBar/Nav_12_blankpage.png';" onMouseOut="this.src='../Shared/Images/Math/MenuBar/Nav_12_blankpage.png';" onClick="blankPageWindow = openBlank();" id='btnBlank' style="border: 0px none #ffffff;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px; cursor:pointer;" draggable="false"/></td>
+      <td align="left" valign="bottom"><img alt="Save Drawing" title="Save Drawing" src='../Shared/Images/Math/MenuBar/Nav_14_savetodisc.png' onMouseOver="this.src='../Shared/Images/Math/MenuBar/Nav_14_savetodisc.png';" onMouseOut="this.src='../Shared/Images/Math/MenuBar/Nav_14_savetodisc.png';" onClick="toggleSaveDialog();" id='bntSave' style="border: 0px none #ffffff;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px; cursor:pointer;" draggable="false"/></td>
+      <td align="left" valign="bottom"><img alt="Get Drawing" title="Open Drawing" src='../Shared/Images/Math/MenuBar/Nav_13_folder.png' onMouseOver="this.src='../Shared/Images/Math/MenuBar/Nav_13_folder.png';" onMouseOut="this.src='../Shared/Images/Math/MenuBar/Nav_13_folder.png';" onClick="toggleGetDialog();" id='btnRetrieve' style="border: 0px none #ffffff;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px; cursor:pointer;" draggable="false"/></td>
+    </tr>
+  </table>
+</div>
+
+
+<img id="mainLogo" src="../Shared/Images/Math/MenuBar/Row1_logo.png" style="position:fixed;right:0px;cursor:pointer;" alt="logo" onClick="goHome();" /> 
+
+
+
+
+
+
+
+<div id="divPencilColorSizePicker" class="divPencilColorSizePicker" style="left:60px !important;">
+	<table align="center" border="0" cellpadding="4" cellspacing="3" style="width: 100%;">
+    	<tr>
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#000000',30);" class="divColorSizePickerButtons">
+            	<div style="width:30px;height:30px;border-radius:30px; background-color: #000000;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td>
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#000000',15);" class="divColorSizePickerButtons">
+				<div style="width:15px;height:15px;border-radius:15px; background-color: #000000;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td> 
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#000000',4);" class="divColorSizePickerButtons">
+				<div style="width:8px;height:8px;border-radius:8px; background-color: #000000;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td>          
+        </tr>          
+    	<tr>
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#ffffff',30);" class="divColorSizePickerButtons">
+            	<div style="width:30px;height:30px;border-radius:30px; background-color: #ffffff;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td>
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#ffffff',15);" class="divColorSizePickerButtons">
+				<div style="width:15px;height:15px;border-radius:15px; background-color: #ffffff;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td> 
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#ffffff',4);" class="divColorSizePickerButtons">
+				<div style="width:8px;height:8px;border-radius:8px; background-color: #ffffff;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td>          
+        </tr>   
+    	<tr>
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#019bd9',30);" class="divColorSizePickerButtons">
+            	<div style="width:30px;height:30px;border-radius:30px; background-color: #019bd9;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td>
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#019bd9',15);" class="divColorSizePickerButtons">
+				<div style="width:15px;height:15px;border-radius:15px; background-color: #019bd9;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td> 
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#019bd9',4);" class="divColorSizePickerButtons">
+				<div style="width:8px;height:8px;border-radius:8px; background-color: #019bd9;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td>          
+        </tr>
+    	<tr>
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#006290',30);" class="divColorSizePickerButtons">
+            	<div style="width:30px;height:30px;border-radius:30px; background-color: #006290;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td>
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#006290',15);" class="divColorSizePickerButtons">
+				<div style="width:15px;height:15px;border-radius:15px; background-color: #006290;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td> 
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#006290',4);" class="divColorSizePickerButtons">
+				<div style="width:8px;height:8px;border-radius:8px; background-color: #006290;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td>          
+        </tr>        
+    	<tr>
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#484093',30);" class="divColorSizePickerButtons">
+            	<div style="width:30px;height:30px;border-radius:30px; background-color: #484093;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td>
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#484093',15);" class="divColorSizePickerButtons">
+				<div style="width:15px;height:15px;border-radius:15px; background-color: #484093;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td> 
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#484093',4);" class="divColorSizePickerButtons">
+				<div style="width:8px;height:8px;border-radius:8px; background-color: #484093;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td>          
+        </tr>   
+    	<tr>
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#d90013',30);" class="divColorSizePickerButtons">
+            	<div style="width:30px;height:30px;border-radius:30px; background-color: #d90013;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td>
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#d90013',15);" class="divColorSizePickerButtons">
+				<div style="width:15px;height:15px;border-radius:15px; background-color: #d90013;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td> 
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#d90013',4);" class="divColorSizePickerButtons">
+				<div style="width:8px;height:8px;border-radius:8px; background-color: #d90013;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td>          
+        </tr>
+    	<tr>
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#f48600',30);" class="divColorSizePickerButtons">
+            	<div style="width:30px;height:30px;border-radius:30px; background-color: #f48600;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td>
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#f48600',15);" class="divColorSizePickerButtons">
+				<div style="width:15px;height:15px;border-radius:15px; background-color: #f48600;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td> 
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#f48600',4);" class="divColorSizePickerButtons">
+				<div style="width:8px;height:8px;border-radius:8px; background-color: #f48600;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td>          
+        </tr>            
+    	<tr>
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#fedc00',30);" class="divColorSizePickerButtons">
+            	<div style="width:30px;height:30px;border-radius:30px; background-color: #fedc00;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td>
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#fedc00',15);" class="divColorSizePickerButtons">
+				<div style="width:15px;height:15px;border-radius:15px; background-color: #fedc00;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td> 
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#fedc00',4);" class="divColorSizePickerButtons">
+				<div style="width:8px;height:8px;border-radius:8px; background-color: #fedc00;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td>          
+        </tr>         
+    	<tr>
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#acee38',30);" class="divColorSizePickerButtons">
+            	<div style="width:30px;height:30px;border-radius:30px; background-color: #acee38;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td>
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#acee38',15);" class="divColorSizePickerButtons">
+				<div style="width:15px;height:15px;border-radius:15px; background-color: #acee38;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td> 
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#acee38',4);" class="divColorSizePickerButtons">
+				<div style="width:8px;height:8px;border-radius:8px; background-color: #acee38;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td>          
+        </tr>   
+    	<tr>
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#85c21d',30);" class="divColorSizePickerButtons">
+            	<div style="width:30px;height:30px;border-radius:30px; background-color: #85c21d;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td>
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#85c21d',15);" class="divColorSizePickerButtons">
+				<div style="width:15px;height:15px;border-radius:15px; background-color: #85c21d;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td> 
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#85c21d',4);" class="divColorSizePickerButtons">
+				<div style="width:8px;height:8px;border-radius:8px; background-color: #85c21d;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td>          
+        </tr>                                                    
+    </table>
+</div>
+
+
+
+
+<div id="divHighlighterColorSizePicker" class="divHighlighterColorSizePicker" style="left:100px !important;">
+	<table align="center" border="0" cellpadding="4" cellspacing="3" style="width: 100%;">
+    	<tr>
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#000000',30,.02);" class="divColorSizePickerButtons">
+            	<div style="width:30px;height:30px;border-radius:30px; background-color: #000000;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td>
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#000000',15,.02);" class="divColorSizePickerButtons">
+				<div style="width:15px;height:15px;border-radius:15px; background-color: #000000;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td> 
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#000000',4,.02);" class="divColorSizePickerButtons">
+				<div style="width:8px;height:8px;border-radius:8px; background-color: #000000;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td>          
+        </tr>          
+    	<tr>
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#ffffff',30,.02);" class="divColorSizePickerButtons">
+            	<div style="width:30px;height:30px;border-radius:30px; background-color: #ffffff;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td>
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#ffffff',15,.02);" class="divColorSizePickerButtons">
+				<div style="width:15px;height:15px;border-radius:15px; background-color: #ffffff;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td> 
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#ffffff',4,.02);" class="divColorSizePickerButtons">
+				<div style="width:8px;height:8px;border-radius:8px; background-color: #ffffff;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td>          
+        </tr>   
+    	<tr>
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#019bd9',30,.02);" class="divColorSizePickerButtons">
+            	<div style="width:30px;height:30px;border-radius:30px; background-color: #019bd9;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td>
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#019bd9',15,.02);" class="divColorSizePickerButtons">
+				<div style="width:15px;height:15px;border-radius:15px; background-color: #019bd9;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td> 
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#019bd9',4,.02);" class="divColorSizePickerButtons">
+				<div style="width:8px;height:8px;border-radius:8px; background-color: #019bd9;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td>          
+        </tr>
+    	<tr>
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#006290',30,.02);" class="divColorSizePickerButtons">
+            	<div style="width:30px;height:30px;border-radius:30px; background-color: #006290;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td>
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#006290',15,.02);" class="divColorSizePickerButtons">
+				<div style="width:15px;height:15px;border-radius:15px; background-color: #006290;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td> 
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#006290',4,.02);" class="divColorSizePickerButtons">
+				<div style="width:8px;height:8px;border-radius:8px; background-color: #006290;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td>          
+        </tr>        
+    	<tr>
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#484093',30,.02);" class="divColorSizePickerButtons">
+            	<div style="width:30px;height:30px;border-radius:30px; background-color: #484093;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td>
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#484093',15,.02);" class="divColorSizePickerButtons">
+				<div style="width:15px;height:15px;border-radius:15px; background-color: #484093;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td> 
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#484093',4,.02);" class="divColorSizePickerButtons">
+				<div style="width:8px;height:8px;border-radius:8px; background-color: #484093;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td>          
+        </tr>   
+    	<tr>
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#d90013',30,.02);" class="divColorSizePickerButtons">
+            	<div style="width:30px;height:30px;border-radius:30px; background-color: #d90013;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td>
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#d90013',15,.02);" class="divColorSizePickerButtons">
+				<div style="width:15px;height:15px;border-radius:15px; background-color: #d90013;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td> 
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#d90013',4,.02);" class="divColorSizePickerButtons">
+				<div style="width:8px;height:8px;border-radius:8px; background-color: #d90013;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td>          
+        </tr>
+    	<tr>
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#f48600',30,.02);" class="divColorSizePickerButtons">
+            	<div style="width:30px;height:30px;border-radius:30px; background-color: #f48600;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td>
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#f48600',15,.02);" class="divColorSizePickerButtons">
+				<div style="width:15px;height:15px;border-radius:15px; background-color: #f48600;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td> 
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#f48600',4,.02);" class="divColorSizePickerButtons">
+				<div style="width:8px;height:8px;border-radius:8px; background-color: #f48600;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td>          
+        </tr>            
+    	<tr><!--YELLOW HIGHLIGHTER-->
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#fedc00',30,.015);" class="divColorSizePickerButtons">
+            	<div style="width:30px;height:30px;border-radius:30px; background-color: #fedc00;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td>
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#fedc00',15,.015);" class="divColorSizePickerButtons">
+				<div style="width:15px;height:15px;border-radius:15px; background-color: #fedc00;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td> 
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#fedc00',4,.015);" class="divColorSizePickerButtons">
+				<div style="width:8px;height:8px;border-radius:8px; background-color: #fedc00;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td>          
+        </tr>         
+    	<tr>
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#acee38',30,.02);" class="divColorSizePickerButtons">
+            	<div style="width:30px;height:30px;border-radius:30px; background-color: #acee38;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td>
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#acee38',15,.02);" class="divColorSizePickerButtons">
+				<div style="width:15px;height:15px;border-radius:15px; background-color: #acee38;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td> 
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#acee38',4,.02);" class="divColorSizePickerButtons">
+				<div style="width:8px;height:8px;border-radius:8px; background-color: #acee38;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td>          
+        </tr>   
+    	<tr>
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#85c21d',30,.02);" class="divColorSizePickerButtons">
+            	<div style="width:30px;height:30px;border-radius:30px; background-color: #85c21d;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td>
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#85c21d',15,.02);" class="divColorSizePickerButtons">
+				<div style="width:15px;height:15px;border-radius:15px; background-color: #85c21d;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td> 
+        	<td align="center" width="33%" onClick="blankPagePencilColorPicker('#85c21d',4,.02);" class="divColorSizePickerButtons">
+				<div style="width:8px;height:8px;border-radius:8px; background-color: #85c21d;border:1px solid #000000;" class="divPencilColorDot"></div>
+            </td>          
+        </tr>                                                    
+    </table>
+</div>
+
+
+
+
+	<!-- SAVE DIALOG BOX -->
+	<div id="saveDialog" style="height:300px;width:400px;left:20px;top:150px;display:none;" class="dialog">
+		<span style="float:left;" class="dialogCloseMath" onClick="toggleElement('saveDialog','inline');">X</span>
+		<div style="font-weight:bold;margin-left:45px;margin-top:10px;">Save Drawing</div><br/><br/>
+		<span style="font-size:11;font-style:italic;">Drawing Name:</span><br/>
+		<input type="text" id="newDrawingName" style="width:200px;"/><br/><input type="button" value="Save" id="btnSaveAs" onClick="saveNewDrawing($id('newDrawingName').value);" />
+		<br/>
+		<br/>
+		<span style="font-size:11;font-style:italic;">overwrite existing drawing...</span><br/>
+		<div id="saveLocalStorageList" style="overflow:auto;max-height:130px;border:1px dashed #888;border-radius:4px;"></div>
+	</div>
+	<!-- RETRIEVE DIALOG BOX -->
+	<div id="getDialog" style="height:300px;width:400px;left:20px;top:150px;display:none;" class="dialog">
+		<span style="float:left;" class="dialogCloseMath" onClick="toggleElement('getDialog','inline');">X</span>
+		<div style="font-weight:bold;margin-left:45px;margin-top:10px;">Open Drawing</div>
+		<br/>
+		<div id="getLocalStorageList" style="overflow:auto;height:250px;max-height:250px;border:1px dashed #888;border-radius:4px;"></div>
+	</div>
+	
+    
+    
+    
+    
+    
+
+	<script src="../Shared/Scripts/main.js" type="text/javascript"></script>
+	<script src="../Shared/Scripts/canvas.js" type="text/javascript"></script>
+   	<script src="../Shared/Scripts/contentPage.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		function remoteDraw(l) {
+			drawTheLine(l);
+		}
+		function remoteClear() {
+			resetScreen(this);
+		}
+		function closeAllWindows() {
+			hideElement('getDialog');
+			hideElement('saveDialog');
+		}
+		function eraser() {
+			document.getElementById("divPencilColorSizePicker").style.display = "none";
+			document.getElementById("divHighlighterColorSizePicker").style.display = "none";
+			document.getElementById("divPencilIconBG").style.backgroundColor = '#ffffff';
+			document.getElementById("divHighlighterIconBG").style.backgroundColor = '#ffffff';
+			setEraserLine();
+		}
+		function pencil() {
+			setPencilLine();
+		}
+		function setCanvasBackground(b) {
+			var c = $id('canvas1');
+			if (c != null) {
+				c.style.backgroundRepeat="no-repeat";
+				c.style.backgroundImage = "url(" + b + ")";
+				if (b == '')
+					c.style.zIndex = 3;
+				else
+					c.style.zIndex = 20;
+			}
+		}
+		
+		
+		if (QueryString.f != null && QueryString.f != 'undefined') {
+			if (window.addEventListener) {
+				window.addEventListener('load', function () {
+					getDrawing(QueryString.f.replace(/%20/g," "));
+				}, false);
+			}			
+		}
+		
+		onBlankPage = true;
+
+	</script>
+    </div>
+    <!--NEW TOOLS FROM MARK S AT THINK BIG
+-->
+
+<!--<div id="tools">-->
+<div class="toolContainer">
+  <div id="ruler">
+    <div class="liveArea"> </div>
+    <img src="../Shared/Tools/img/ruler.png" id="rulerArt"  />
+    <div id="rRotate" class="rButton">
+      <div class="liveArea"></div>
+      <img src="../Shared/Tools/icons/rotate.png"id="rotateArt" class="buttonIcon"  />
+    </div>
+    <div id="rReset" class="rButton">
+      <div class="liveArea"></div>
+      <img src="../Shared/Tools/icons/straight.png" id="straightArt" class="buttonIcon"  />
+    </div>
+       <div id="rClose" class="rButton">
+      <div class="liveArea"></div>
+      <img src="../Shared/Tools/icons/close.png" id="closeArt" class="buttonIcon"  />
+    </div>
+    <div id="rPivot" class="rivot"></div>
+    <div id="rDeg1" class="rDeg">0&deg;</div>
+    <div id="rDeg2" class="rDeg">180&deg;</div>
+  </div>
+ </div>
+<div class="toolContainer">
+  <div id="protractor">
+    <div class="liveArea"> </div>
+    <img src="../Shared/Tools/img/protract.png" id="protractorArt"  />
+    <div id="pRotate" class="pButton">
+      <div class="liveArea"></div>
+      <img src="../Shared/Tools/icons/rotate.png" id="rotateArt" class="buttonIcon"  />
+    </div>
+    <div id="pReset" class="pButton">
+      <div class="liveArea"></div>
+      <img src="../Shared/Tools/icons/straight.png" id="straightArt" class="buttonIcon"  />
+    </div>
+    <div id="pClose" class="pButton">
+      <div class="liveArea"></div>
+      <img src="../Shared/Tools/icons/close.png" id="closeArt" class="buttonIcon"  />
+    </div>
+    <div id="pPivot" class="pivot"></div>
+    <div id="pDeg1" class="pDeg">0&deg;</div>
+    <div id="pDeg2" class="pDeg">180&deg;</div>
+  </div>
+ </div>
+ 
+ 
+ <div class="toolContainer">
+  <div id="compass">
+    <div class="liveArea"></div>
+    <!--<embed src="../Shared/Tools/img/compassCircle.svg" type="image/svg+xml" id="compassCircle" />--> 
+    
+    <img src="../Shared/Tools/img/compassLeftLeg.png" id="compassLeftArt"/> <img src="../Shared/Tools/img/compassRightLeg.png" id="compassRightArt"/>
+    <div id="compassTop"> <img src="../Shared/Tools/img/compassTop.png" id="compassTopArt"/>
+      
+    </div>
+    <canvas id="compassCircle" height="900" width="720"></canvas>
+    <div id="compassInputDiv">
+        <div id="compassInputArea">
+          <input id="compassInput" maxlength="6" placeholder="radius" />
+          <div id='compassInputLabel'>cm</div>
+        </div>
+        <div id="compassUnitSelect">
+          <div id='compassUnitLeft'>
+            <input type="radio" name="compassUnits" value="cm" id="compassSelectCM" checked>
+          <span class='compassUnitSelectLabel'>cm</span></div>
+          <div id='compassUnitRight'>
+            <input type="radio" name="compassUnits" value="in" id="compassSelectInches">
+          <span class='compassUnitSelectLabel'>in.</span></div>
+          <div id="compassInputButtons">
+            <div id="cDraw" class="cButton"> DRAW </div>
+            <div id="cClose" class="cCloseButton"> <img src="../Shared/Tools/icons/close.png" id="closeCompassArt" class="buttonIcon"  /> </div>
+          </div>
+        </div>
+      </div>
+  </div>
+<!--End Compass--></div>
+ 
+<div class="toolContainer">
+  <div id="calculator" class="dragTool">
+    <div id="warningWrapper">
+      <div id="warning">Warning message</div>
+      <div id="warningClose">OK</div>
+    </div>
+    <div id="calcHead">
+        <div id="calcTitle">CALCULATOR</div>
+        <div id="calcCloseBox" class="calcCloseButton" >
+      <img src="../Shared/Tools/icons/close.png" id="calcCloseIcon" class="calcCloseIcon"  /><div class="closeLiveArea"></div>
+        </div>
+      </div>
+    <div id="calculatorArt">
+      
+      <table id="calcTable">
+        <tr>
+          <td colspan="4"><div id="lcdDisplay">
+              <div id="plusMinusInd">+</div>
+              <div id="xToYInd">x<sup>y</sup></div>
+              <div id="displayText">0</div>
+            </div></td>
+          <td
+><div id="clear" class="clearButton">CL</div></td>
+        </tr>
+        <tr>
+          <td><div id="seven" class="numButton">7</div></td>
+          <td><div id="eight" class="numButton">8</div></td>
+          <td><div id="nine" class="numButton">9</div></td>
+          <td><div id="divide" class="opButton">&divide;</div></td>
+          <td><div id="squareRoot" class="opButton">&radic; </div></td>
+        </tr>
+        <tr>
+          <td><div id="four" class="numButton">4</div></td>
+          <td><div id="five" class="numButton">5</div></td>
+          <td><div id="six" class="numButton">6</div></td>
+          <td><div id="multiply" class="opButton">x</div></td>
+          <td><div id="square" class="opButton"><span class="littleLabel">x<sup>2</sup></span></div></td>
+        </tr>
+        <tr>
+          <td><div id="one" class="numButton">1</div></td>
+          <td><div id="two" class="numButton">2</div></td>
+          <td><div id="three" class="numButton">3</div></td>
+          <td><div id="subtract" class="opButton">-</div></td>
+          <td><div id="xToY" class="opButton"><span class="littleLabel">x<sup>y</sup></span></div></td>
+        </tr>
+        <tr>
+          <td><div id="zero" class="numButton">0</div></td>
+          <td><div id="plusMinus" class="opButton">&plusmn;</div></td>
+          <td><div id="decimal" class="numButton">.</div></td>
+          <td><div id="plus" class="opButton">+</div></td>
+          <td><div id="equal" class="equalButton">=</div></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  </div>
+<!--</div>-->
+<!--END NEW TOOLS FROM MARK S AT THINK BIG-->
+</body>
+</html>

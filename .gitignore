@@ -1,0 +1,16 @@
+# Build and Release Folders
+chrome-win32/
+backups/
+# Other files and folders
+.settings/
+*.pdf
+*.avi
+*.mp4
+*.ogg
+*.wav
+*.mpg
+*.zip
+*.png
+*.mp3
+*.ogg
+
