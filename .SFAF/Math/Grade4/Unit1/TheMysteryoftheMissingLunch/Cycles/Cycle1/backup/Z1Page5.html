@@ -78,7 +78,7 @@
 			visibility:hidden;
 		}
 		#greyModal{
-			z-index:20;
+			z-index:7;
 			position:absolute;
 			top:0px;
 			bottom:0px;
@@ -90,8 +90,8 @@
 			background:#C0C0C0;
 		}
 		#modalWindow{
-			z-index:200;
-			position:absolute;
+			z-index:20;
+			position:fixed;
 			height:527px;
 			width:750px;
 			left:100px;
@@ -170,10 +170,8 @@
 			<li>Use the overlay to show team celebration scores.</li>
 		</div>
 	</div>
-	
+	<img onclick="ln();" src="tPbutton.png" style="z-index:29;position:fixed;top:0px;left:5px;cursor:pointer;z-index: 9999999;" />
 </div>	
-
-<img onclick="ln();" src="tPbutton.png" style="z-index:29;position:fixed;top:0px;left:5px;cursor:pointer;z-index: 99999999999999;" />
 	<script>
 		function hideShow(k){
 			initCanvasForDrawing('canvas1');

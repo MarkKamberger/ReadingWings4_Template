@@ -12,29 +12,7 @@
 	<style>
 		.topTitle{z-index:27;position:fixed;top:0px;right:22px;left:4px;height:37px;background:#006600;font-weight:bold;}
 		.titleText{position:absolute;left:145px;top:9px;color:#000000;font-family:Tahoma;}
-		#looksSounds{
-			position:absolute;
-			width:94%;left:3%;
-			top:45px;
-			bottom:5px;
-			color:#ffffff;font-size:42px;font-family:Tahoma;
-		}
-		#goal{
-			position:absolute;
-			top:0px;left:0px;
-			width:100%;background:#C3D69B;
-			text-indent:8px;
-		}
-		#looksLike{background:#558ED5;}
-		#soundsLike{background:#558ED5;}
-		#looksLike,#soundsLike{text-indent:63px;}
-		#goal,#looksLike,#soundsLike{height:52px;}
-		#AnnotateLeft,#AnnotateRight{background:#DCE6F2;height:82%;min-height:400px;}
-		#looksLike,#soundsLike,#AnnotateLeft,#AnnotateRight{width:49.58%;}
-		#looksLike,#AnnotateLeft{left:0px;}
-		#soundsLike,#AnnotateRight{right:0px;}
-		#looksLike,#soundsLike,#AnnotateLeft,#AnnotateRight,#goal{position:relative;float:left;margin-bottom:5px;}
-		#soundsLike,#AnnotateRight{float:right;}
+		
 		#greyModal{
 			z-index:7;
 			position:absolute;
@@ -68,7 +46,7 @@
 			border-bottom:2px solid #000000;
 			line-height:44px;
 		}
-		.list{
+		.modalList{
 			position:relative;
 			float:left;
 			width:100%;
@@ -77,8 +55,23 @@
 			font-size:18px;
 			width:95%;
 			left:33px;
-			list-style-type:square;color:#000000;list-style-position:inside;text-indent:-1em}
-		.list li{margin-bottom:19px;}
+			list-style-type:square;color:#000000;list-style-position:inside;text-indent:-1em;
+		}
+		.modalList li{margin-bottom:19px;}
+		
+		.contentList{
+			position:absolute;
+			width:100%;
+			left:100px;
+			text-align:left;
+			top:65px;
+			color:#000000;
+			font-size:24px;
+			line-height:32px;
+		}
+		.contentList div{position:relative;}
+		.divList{margin-bottom:18px;}
+		.underline{border-bottom:2px solid #41beb2;}
 	</style>
 </head>
 <body style="background-color:transparent;">
@@ -97,18 +90,30 @@
 	<canvas id="canvas1" name="drawableCanvas" height="680" width="960" style="z-index:215;background:transparent;position:absolute;top:1px;left:1px;">
 	</canvas>	
 		
-	<div id="looksSounds">
-		<div id="goal">Goal:</div>
-		<div id="looksLike">Looks Like</div>
-		<div id="soundsLike">Sounds Like</div>
-		<div id="AnnotateLeft"></div>
-		<div id="AnnotateRight"></div>
+	<div class="contentList">
+		<div class="divList">1. What effect does his missing lunch bag have on Ramon?</div>
+		<div class="divList"><img onclick="writeOn('writeOn0');" style="z-index:2000;position:absolute;top:-18px;left:-80px;cursor:pointer;" src="../../../../../../Shared/Images/Math/PageButtons/WriteOn.png"/>2. What is Ramon's <span class="writeOn0">main problem</span> in the story?</div>
+		<div>3. What happens before Jack tells Emily and Ramon about the paint?</div>
+		<div class="divList" style="text-indent:45px;">
+			<div>a. Ramon smells salami on Jack's breath.</div>
+			<div>b. They see him wiping mustard on a napkin.</div>
+			<div>c. They see an empty lunch bag on his desk.</div>
+			<div>d. The ask Jack about a stain on his shirt.</div>
+		</div>
+		<div>4. You can conclude from the text that Ramon and Emily -</div>
+		<div class="divList" style="text-indent:45px;">
+			<div>a. think Jack is innocent.</div>
+			<div>b. believe Jack stole the sandwich.</div>
+			<div>c. are playing hooky.</div>
+			<div>d. think math class is the best of all.</div>
+		</div>
 	</div>
+	
 	<div id="greyModal" class="hid"></div>
 	<div id="modalWindow" class="hid">
 		<div id="" class="inModal" style="background:#000000;">Teacher Procedure</div>
 		<div id="" class="inModal" style="background:#41beb2; font-size:28px;">Team Cooperation Goal</div>
-		<div id="" class="list">
+		<div id="" class="modalList">
 			<li>Point out the team cooperation goal and related behavior on the team score sheet.</li>
 			<li>Describe the behavior, and use a looks like/sounds like chart to add details about the goal and behavior.</li>
 			<li>Tell students that you will award team celebration points to teams that practice the team cooperation goal and related behavior.</li>
@@ -116,9 +121,22 @@
 	</div>
 	
 </div>
+
 	<img onclick="ln();" src="tPbutton.png" style="z-index:29;position:fixed;top:0px;left:5px;cursor:pointer;" />
 	
 	<script>
+	function writeOn(writeOnClass){
+		[].forEach.call(document.querySelectorAll("."+writeOnClass),function(element,index){
+			if(element.classList.contains("underline")){
+			element.classList.remove("underline");
+			}else{
+				element.classList.add("underline");
+			}
+		});
+	}
+	
+	
+	
 		var isHidden=true;
 		function ln(){
 			if(isHidden){

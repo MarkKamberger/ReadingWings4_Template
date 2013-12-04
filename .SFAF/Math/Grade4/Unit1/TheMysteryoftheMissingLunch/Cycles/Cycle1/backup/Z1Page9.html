@@ -1,0 +1,256 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title></title>
+	<link href="../../../../../../Shared/Styles/SS1.css" rel="stylesheet" type="text/css" />
+	<link href="../../../../../../Shared/Styles/Site.css" rel="stylesheet" type="text/css" />
+	<link href="../../../../../../Shared/Styles/Presentation.css" rel="stylesheet" type="text/css" />
+	<link href="../../../../../../Shared/Fonts/stylesheet.css" rel="stylesheet" type="text/css" charset="utf-8">
+	<script src="../../../../../../Shared/Scripts/contentPage.js" type="text/javascript"></script>
+	<script src="../../../../../../Shared/Scripts/canvas.js" type='text/javascript'></script>
+	<script src="../../../../../../Shared/Scripts/randomReporter.js" type='text/javascript'></script>
+	<link href="../../../../../../Shared/Styles/randomReporter.css" rel="stylesheet" type="text/css" />
+	<style>
+		.topTitle{position:fixed;top:0px;right:22px;left:4px;height:37px;background:#006600;font-weight:bold;z-index:10;}
+		.titleText{position:absolute;left:163px;top:9px;color:#000000;font-family:Tahoma;}
+		
+		#vocabReview{position:absolute;top:40px;left:38px;width:935px;height:625px;font-family:Tahoma;color:#000000;}
+		.columnDivs{position:relative;float:left;margin-right:5px;height:100%;}
+		
+		.blueGreen{position:relative;height:50%;border-radius:5px;width:100%;}
+		.sideWaysText{position:absolute;-webkit-transform:rotate(-90deg);width:230px;font-size:22px;left:-102px;top:81px;font-weight:bold;}
+		
+		.insideTxt{font-size:18px;margin-bottom:62px;margin-left:18px;position:relative;line-height:45px;}
+		.tan{}
+		
+		.topVocab{height:49.5%;position:absolute;top:0%;border-radius:5px;width:100%;}
+		.bottomVocab{height:49.5%;position:absolute;bottom:0%;border-radius:5px;width:100%;}
+		.row1{position:absolute;left:5px;top:10px;}
+		.row2{position:absolute;left:5px;top:100px;}
+		.row3{position:absolute;left:5px;top:195px;}
+		.row4{position:absolute;left:5px;top:332px;}
+		.row5{position:absolute;left:5px;top:425px;}
+		.row6{position:absolute;left:5px;top:523px;}
+		.row1,.row2,.row3,.row4,.row5,.row6{left:15px;font-size:20px;}
+		
+		
+		#greyModal{
+			z-index:7;
+			position:fixed;
+			top:0px;
+			bottom:40px;
+			left:4px;
+			right:4px;
+			opacity:.8;
+			visibility:hidden;
+			background:#C0C0C0;
+		}
+		#randomReporterWindow{
+			z-index:9;
+			position:fixed;
+			height:474px;
+			width:525px;
+			left:225px;
+			top:80px;
+			visibility:hidden;
+			background:#fffded;
+			border:2px solid #000000;
+		}
+		#tpWindow{
+			z-index:7;
+			position:fixed;
+			height:627px;
+			width:750px;
+			left:100px;
+			top:48px;
+			visibility:hidden;
+			background:#fffded;
+			border:2px solid #000000;
+		}
+		#srWindow{
+			z-index:7;
+			position:fixed;
+			height:627px;
+			width:750px;
+			left:100px;
+			top:88px;
+			visibility:hidden;
+		}
+		.inModal{
+			position:relative;
+			float:left;
+			width:100%;
+			color:#ffffff;
+			font-size:22px; 
+			text-indent:10px;
+			border-bottom:2px solid #000000;
+			line-height:44px;
+		}
+		.list{
+			position:relative;
+			float:left;
+			width:100%;
+			color:#ffffff;
+			padding-top:14px;
+			font-size:18px;
+			width:92%;
+			left:33px;
+			list-style-type:square;color:#000000;list-style-position:inside;text-indent:-1em}
+		.list li{margin-bottom:11px;}
+	</style>
+</head>
+<body style="background-color:transparent;background:transparent;">
+	
+	<input type="hidden" id="pageType" value="1" />
+	<input type="hidden" id="pageSize" value="690" />   
+	<iframe id="toc" src="TOC.html" style="display:none;"></iframe>
+	
+	<div class="topTitle" style="background:#ADD692;">
+		<div class="titleText">Vocabulary Review</div>
+	</div>
+	
+<div style="position:fixed;top:0px;bottom:40px;overflow:auto;width:100%;overflow-y:scroll;">
+	
+	<canvas id="canvas1" name="drawableCanvas" height="680" width="960" style="z-index:8;background:transparent;position:absolute;top:1px;left:1px;">
+	</canvas>
+	
+	<div id="vocabReview">
+		
+		<div class="columnDivs" style="width:30px;">
+			<div class="topVocab" style="background:#81B0C5;">
+				<div class="sideWaysText">Partner 1</div>
+			</div>
+			<div class="bottomVocab" style="background:#7AAD41;">
+				<div class="sideWaysText">Partner 2</div>
+			</div>
+		</div>
+		
+		<div class="columnDivs" style="width:125px;">
+			<div class="topVocab" style="background:#81B0C5;"></div>
+			<div class="bottomVocab" style="background:#7AAD41;"></div>
+			<div class="row1">noticed</div>
+			<div class="row2">sniffed</div>
+			<div class="row3">mumbled</div>
+			<div class="row4">innocent</div>
+			<div class="row5">whole</div>
+			<div class="row6">consume</div>
+		</div>
+	
+		<div class="columnDivs" style="width:201px;background:#E8DFC9;">
+				<div class="row1">base word + ending</div>
+				<div class="row2">base word + ending</div>
+				<div class="row3">base word + ending</div>
+				<div class="row4">chunk</div>
+				<div class="row5">blend</div>
+				<div class="row6">chunk</div>
+		</div>
+		
+		<div class="columnDivs" style="width:160px;background:#E8DFC9;">
+				<div class="row1">saw</div>
+				<div class="row2">smelled</div>
+				<div class="row3">mumbled</div>
+				<div class="row4">not guilty</div>
+				<div class="row5">entire</div>
+				<div class="row6">eat</div>
+		</div>
+	
+		<div class="columnDivs" style="width:379px;background:#E8DFC9;border-top-right-radius:8px;border-bottom-right-radius:8px;">
+				<div class="row1">I was going to make breakfast when I <i>noticed</i> that there were no eggs left.</div>
+				<div class="row2">My best friend's new puppy <i>sniffed</i> me happily and gave me big et kisses on the face.</div>
+				<div class="row3">When Mom asked her to take out the trash, Mary Ann <i>muttered</i> something under her breath.</div>
+				<div class="row4">When Tom was arrested for the bank robbery, he said, "I'm innocent!"</div>
+				<div class="row5">Barry and Jamal thought they could eat a <i>whole</i> pizza, but they weren't hungry after two slices each.</div>
+				<div class="row6">Sperm whales <i>consume</i> giant squid, which they hunt in the dark depths of the sea.</div>
+		</div>
+	
+	</div>
+	
+	<div id="greyModal" class="hid"></div>
+	
+	<img onclick="teacherInstructions(this,'tpWindow');" src="tPbutton.png" style="z-index:29;position:fixed;top:0px;left:5px;cursor:pointer;z-index: 9999999;" />
+	<div id="tpWindow" class="hid modalWindow">
+		<div id="" class="inModal" style="background:#000000;">Teacher Procedure</div>
+		<div id="" class="inModal" style="background:#41beb2; font-size:28px;">Vocabulary Review</div>
+		<div id="" class="list">
+			<li>Ask teams to have teammates make a tent with their hands when they are ready to tell a word the entire team rated with a "+" and a word the entire team rated with a "?."</li>
+			<li>Use Random Reporter to have teams share one word they know and one word they need to study further.  Award team celebration points.</li>
+			<li>Read each word on your chart.  Ask students to repeat each word.  Explain the meaning and how to use the identification strategy(optional after day 2).</li>
+			<li>Assign partners as either speaker or coach to review the vocabulary words.  Teach or model this student routine as necessary.</li>
+			<li>Remind students that only the coach should look at the vocabulary chart.  Have students begin.</li>
+			<li>Use Random Reporter to review word pronunciation, meanings, and sentences.</li>
+			<li>Allow students to use their lesson charts on day 1 if they do not know a word or its meaning.</li>
+			<li>Review, as necessary, the directions for finding the vocabulary words in the daily reading and for adding words to the Vocabulary Vault.</li>
+			<li>Find a vocabulary word in your reading.</li>
+			<li>Write the word and the page number where you found it in your journal.</li>
+			<li>Show your teacher your journal on test day!</li>
+		</div>
+	</div>
+	
+	<img onclick="teacherInstructions(this,'srWindow');" src="tPbutton.png" style="z-index:29;position:fixed;top:0px;left:45px;cursor:pointer;z-index: 9999999;" />
+	<div id="srWindow" class="hid modalWindow">
+		<div id="" class="inModal" style="width:325px;border:1px solid #000000;border-right:0px;background:#fffded;font-size:14px;">
+			<div style="position:relative;background:#000000;font-size:18px;">Speaker</div>
+			<div style="position:relative;height:42px;border-top:1px solid #000000;">
+				<div style="font-size:18px;position:relative;float:left;left:0px;background:#41beb2;width:25%;border-right:1px solid #000000;">SAY</div>
+				<div style="position:relative;float:left;right:0px;width:74%;color:#000000;">Say the word.</div>
+			</div>
+			<div style="position:relative;height:42px;border-top:1px solid #000000;">
+				<div style="font-size:18px;position:relative;float:left;background:#41beb2;width:25%;border-right:1px solid #000000;">TELL</div>
+				<div style="position:relative;float:left;width:74%;color:#000000;">Tell what it means.</div>
+			</div>
+			<div style="position:relative;height:42px;border-top:1px solid #000000;">
+				<div style="font-size:18px;position:relative;float:left;background:#41beb2;width:25%;border-right:1px solid #000000;">USE</div>
+				<div style="position:relative;float:left;width:74%;color:#000000;">Use it in a sentence.</div>
+			</div>
+		</div>
+		
+		<div id="" class="inModal" style="width:325px;border:1px solid #000000;border-left:0px;background:#fffded;font-size:14px;">
+			<div style="position:relative;background:#000000;border-left:1px solid #ffffff;font-size:18px;">Coach</div>
+			<div style="line-height:85px;height:85px;position:relative;border-top:1px solid #000000;">
+				<div style="font-size:18px;position:relative;float:left;left:0px;background:#41beb2;width:25%;border-right:1px solid #000000;border-left:1px solid #000000;">AGREE</div>
+				<div style="position:relative;float:left;right:0px;width:74%;color:#000000;">Agree if your partner is right.</div>
+			</div>
+			<div style="position:relative;height:46px;border-top:1px solid #000000;">
+				<div style="font-size:18px;height:100%;position:relative;float:left;background:#41beb2;width:25%;border-right:1px solid #000000;border-left:1px solid #000000;">ADD</div>
+				<div style="position:relative;float:left;width:74%;color:#000000;">Add ideas to help your partner.</div>
+			</div>
+		</div>
+		
+		<div id="" class="inModal" style="background:#41beb2;font-size:28px;width:650px;margin-top:70px;border:1px solid #000000;">Finding Your Words</div>
+		<div id="" class="list" style="font-size:14px;border:0px;border-left:1px solid #000000; border-right:1px solid #000000;left:0px;height:115px;width:650px;background:#fffded;text-indent:20px;">
+			<li style="height:30px;border-bottom:1px solid #000000;">Find a vocabulary word in your reading.</li>
+			<li style="height:30px;border-bottom:1px solid #000000;">Write the word and the page number where you found it in your journal.</li>
+			<li style="height:30px;border-bottom:1px solid #000000;">Show your teacher your journal on test day!</li>
+		</div>
+		
+	</div>
+	
+	
+	<div id="randomReporterWindow" class="hid modalWindow">
+		<div class="wheelBox"></div>
+	</div>
+
+</div>
+
+<img src="RR.png" onclick="teacherInstructions(this,'randomReporterWindow');" style="position:fixed;bottom:1px;right:165px;cursor:pointer;z-index:999999999999;" />	
+<div style="background-image:url('../../../../../../Shared/Images/Math/MenuBar/Row1_FullMenueBar.png');background-size: 100% 39px; position:fixed; bottom:0px; left:0px; right:0px; height:40px;z-index:9999999992999;"></div>	
+	
+	<script>
+		function teacherInstructions(k,modalWindow){
+			[].forEach.call(document.querySelectorAll(".modalWindow"),function(element,index){
+				if(element!=document.getElementById(modalWindow) && element.style.visibility=="visible"){
+					element.style.visibility='hidden';
+				}
+			});
+			if(document.getElementById(modalWindow).style.visibility=="visible"){
+				document.getElementById('greyModal').style.visibility='hidden';
+				document.getElementById(modalWindow).style.visibility='hidden';
+			}else{
+				document.getElementById('greyModal').style.visibility="visible";
+				document.getElementById(modalWindow).style.visibility="visible";
+			}
+		}
+	</script>
+	</body>
+</html>

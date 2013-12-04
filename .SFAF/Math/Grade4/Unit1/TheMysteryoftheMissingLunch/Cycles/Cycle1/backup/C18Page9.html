@@ -1,0 +1,212 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title></title>
+	<link href="../../../../../../Shared/Styles/SS1.css" rel="stylesheet" type="text/css" />
+	<link href="../../../../../../Shared/Styles/Site.css" rel="stylesheet" type="text/css" />
+	<link href="../../../../../../Shared/Styles/Presentation.css" rel="stylesheet" type="text/css" />
+	<link href="../../../../../../Shared/Fonts/stylesheet.css" rel="stylesheet" type="text/css" charset="utf-8">
+	<script src="../../../../../../Shared/Scripts/contentPage.js" type="text/javascript"></script>
+	<script src="../../../../../../Shared/Scripts/canvas.js" type='text/javascript'></script>
+	<script src="../../../../../../Shared/Scripts/randomReporter.js" type='text/javascript'></script>
+	<link href="../../../../../../Shared/Styles/randomReporter.css" rel="stylesheet" type="text/css" />
+	<style>
+		.topTitle{position:fixed;top:0px;right:5px;left:4px;height:37px;background:#006600;font-weight:bold;z-index:10;}
+		.titleText{position:absolute;left:163px;top:9px;color:#000000;font-family:Tahoma;}
+		
+		#vocabReview{position:fixed;top:49px;left:38px;height:625px;width:935px;font-family:Tahoma;color:#000000;}
+		.columnDivs{position:relative;float:left;margin-right:5px;height:100%;}
+		
+		.blueGreen{position:relative;height:50%;border-radius:5px;width:100%;}
+		.sideWaysText{position:absolute;-webkit-transform:rotate(-90deg);width:230px;font-size:22px;left:-102px;top:81px;font-weight:bold;}
+		
+		.insideTxt{font-size:18px;margin-bottom:62px;margin-left:18px;position:relative;line-height:45px;}
+		.tan{}
+		
+		.topVocab{height:49.5%;position:absolute;top:0%;border-radius:5px;width:100%;}
+		.bottomVocab{height:49.5%;position:absolute;bottom:0%;border-radius:5px;width:100%;}
+		.row1{position:absolute;left:5px;top:10px;}
+		.row2{position:absolute;left:5px;top:100px;}
+		.row3{position:absolute;left:5px;top:195px;}
+		.row4{position:absolute;left:5px;top:332px;}
+		.row5{position:absolute;left:5px;top:425px;}
+		.row6{position:absolute;left:5px;top:523px;}
+		.row1,.row2,.row3,.row4,.row5,.row6{left:15px;font-size:20px;}
+		
+		
+		#greyModal{
+			z-index:7;
+			position:fixed;
+			top:0px;
+			bottom:40px;
+			left:4px;
+			right:4px;
+			opacity:.8;
+			visibility:hidden;
+			background:#C0C0C0;
+		}
+		#randomReporterWindow{
+			z-index:9;
+			position:fixed;
+			height:474px;
+			width:525px;
+			left:225px;
+			top:80px;
+			visibility:hidden;
+			background:#fffded;
+			border:2px solid #000000;
+		}
+		#tpWindow{
+			z-index:7;
+			position:fixed;
+			height:527px;
+			width:750px;
+			left:100px;
+			top:80px;
+			visibility:hidden;
+			background:#fffded;
+			border:2px solid #000000;
+		}
+		.inModal{
+			position:relative;
+			float:left;
+			width:100%;
+			color:#ffffff;
+			font-size:22px; 
+			text-indent:10px;
+			border-bottom:2px solid #000000;
+			line-height:44px;
+		}
+		.list{
+			position:relative;
+			float:left;
+			width:100%;
+			color:#ffffff;
+			padding-top:18px;
+			font-size:18px;
+			width:92%;
+			left:33px;
+			list-style-type:square;color:#000000;list-style-position:inside;text-indent:-1em}
+		.list li{margin-bottom:19px;}
+	</style>
+</head>
+<body style="background-color:transparent;background:transparent;">
+	
+	<input type="hidden" id="pageType" value="1" />
+	<input type="hidden" id="pageSize" value="690" />   
+	<iframe id="toc" src="TOC.html" style="display:none;"></iframe>
+	<canvas id="canvas1" name="drawableCanvas" height="680" width="960" style="z-index:8;background:transparent;position:fixed;top:1px;left:1px;">
+	</canvas>
+	<div class="topTitle" style="background:#ADD692;">
+		<div class="titleText">Vocabulary Review</div>
+	</div>
+	
+	
+	<div id="vocabReview">
+		
+		<div class="columnDivs" style="width:30px;">
+			<div class="topVocab" style="background:#81B0C5;">
+				<div class="sideWaysText">Partner 1</div>
+			</div>
+			<div class="bottomVocab" style="background:#7AAD41;">
+				<div class="sideWaysText">Partner 2</div>
+			</div>
+		</div>
+		
+		<div class="columnDivs" style="width:125px;">
+			<div class="topVocab" style="background:#81B0C5;"></div>
+			<div class="bottomVocab" style="background:#7AAD41;"></div>
+			<div class="row1">noticed</div>
+			<div class="row2">sniffed</div>
+			<div class="row3">mumbled</div>
+			<div class="row4">innocent</div>
+			<div class="row5">whole</div>
+			<div class="row6">consume</div>
+		</div>
+	
+		<div class="columnDivs" style="width:201px;background:#E8DFC9;">
+				<div class="row1">base word + ending</div>
+				<div class="row2">base word + ending</div>
+				<div class="row3">base word + ending</div>
+				<div class="row4">chunk</div>
+				<div class="row5">blend</div>
+				<div class="row6">chunk</div>
+		</div>
+		
+		<div class="columnDivs" style="width:160px;background:#E8DFC9;">
+				<div class="row1">saw</div>
+				<div class="row2">smelled</div>
+				<div class="row3">mumbled</div>
+				<div class="row4">not guilty</div>
+				<div class="row5">entire</div>
+				<div class="row6">eat</div>
+		</div>
+	
+		<div class="columnDivs" style="width:379px;background:#E8DFC9;border-top-right-radius:8px;border-bottom-right-radius:8px;">
+				<div class="row1">I was going to make breakfast when I <i>noticed</i> that there were no eggs left.</div>
+				<div class="row2">My best friend's new puppy <i>sniffed</i> me happily and gave me big et kisses on the face.</div>
+				<div class="row3">When Mom asked her to take out the trash, Mary Ann <i>muttered</i> something under her breath.</div>
+				<div class="row4">When Tom was arrested for the bank robbery, he said, "I'm innocent!"</div>
+				<div class="row5">Barry and Jamal thought they could eat a <i>whole</i> pizza, but they weren't hungry after two slices each.</div>
+				<div class="row6">Sperm whales <i>consume</i> giant squid, which they hunt in the dark depths of the sea.</div>
+		</div>
+	
+	</div>
+	
+	<div id="greyModal" class="hid"></div>
+	
+	<img onclick="teacherInstructions(this,'tpWindow');" src="tPbutton.png" style="z-index:29;position:fixed;top:0px;left:5px;cursor:pointer;z-index: 9999999;" />
+	<div id="tpWindow" class="hid modalWindow">
+		<div id="" class="inModal" style="background:#000000;">Teacher Procedure</div>
+		<div id="" class="inModal" style="background:#41beb2; font-size:28px;">Vocabulary Review</div>
+		<div id="" class="list">
+			<li>Ask teams to have teammates make a tent with their hands when they are ready to tell a word the entire team rated with a "+" and a word the entire team rated with a "?."</li>
+			<li>Use Random Reporter to have teams share one word they know and one word they need to study further.  Award team celebration points.</li>
+			<li>Remind students how to earn team celebration points.  Remind them that team celebration points help them to become super teams.</li>
+			<li>Guide teams to set new team improvement goals.</li>
+			<li>Have one student from each team write the team improvement goal on the team score sheet.  Note each team's goal on the teacher cycle record form.</li>
+			<li>Award team celebration points throughout each instructional day.</li>
+			<li>Keep track of team celebration points as you award them. Transfer points in the team score sheet tally boxes to the Team Celebration Points poster at the end of each day</li>
+			<li>Use the overlay to show team celebration scores.</li>
+		</div>
+	</div>
+	<script>
+		function teacherInstructions(k,modalWindow){
+			document.getElementsByClassName('modalWindow').item()
+			if(k.isShowing){
+				document.getElementById('greyModal').style.visibility='hidden';
+				document.getElementById(modalWindow).style.visibility='hidden';
+				k.isShowing=false;
+			}else{
+				document.getElementById('greyModal').style.visibility="visible";
+				document.getElementById(modalWindow).style.visibility="visible";
+				k.isShowing=true;
+			}
+		}
+	</script>
+	
+	
+	
+	<img src="RR.png" onclick="randomReporter();" style="position:fixed;bottom:1px;right:165px;cursor:pointer;z-index:999999999999;" />
+	<div id="randomReporterWindow" class="hid modalWindow">
+		<div class="wheelBox"></div>
+	</div>
+	<script>
+		var isHidden2=true;
+		function randomReporter(){
+			if(isHidden2){
+				document.getElementById('greyModal').style.visibility="visible";
+				document.getElementById('randomReporterWindow').style.visibility="visible";
+				isHidden2=false;
+			}else{
+				document.getElementById('greyModal').style.visibility='hidden';
+				document.getElementById('randomReporterWindow').style.visibility='hidden';
+				isHidden2=true;
+			}
+		}
+	</script>
+	
+	
+	</body>
+</html>

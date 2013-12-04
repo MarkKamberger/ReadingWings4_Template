@@ -10,13 +10,13 @@
 	<script src="../../../../../../Shared/Scripts/contentPage.js" type="text/javascript"></script>
 	<script src="../../../../../../Shared/Scripts/canvas.js" type='text/javascript'></script>
 	<style>
-		.topTitle{z-index:27;position:fixed;top:0px;right:22px;left:4px;height:37px;background:#006600;font-weight:bold;}
+		.topTitle{z-index:27;position:fixed;top:0px;right:0px;left:0px;height:37px;background:#006600;font-weight:bold;}
 		.titleText{position:absolute;left:145px;top:9px;color:#000000;font-family:Tahoma;}
 		#looksSounds{
 			position:absolute;
 			width:94%;left:3%;
 			top:45px;
-			bottom:5px;
+			height:600px;
 			color:#ffffff;font-size:42px;font-family:Tahoma;
 		}
 		#goal{
@@ -28,19 +28,18 @@
 		#looksLike{background:#558ED5;}
 		#soundsLike{background:#558ED5;}
 		#looksLike,#soundsLike{text-indent:63px;}
-		#goal,#looksLike,#soundsLike{height:52px;}
-		#AnnotateLeft,#AnnotateRight{background:#DCE6F2;height:82%;min-height:400px;}
+		#goal,#looksLike,#soundsLike{height:60px;}
+		#AnnotateLeft,#AnnotateRight{background:#DCE6F2;height:490px;}
 		#looksLike,#soundsLike,#AnnotateLeft,#AnnotateRight{width:49.58%;}
 		#looksLike,#AnnotateLeft{left:0px;}
 		#soundsLike,#AnnotateRight{right:0px;}
-		#looksLike,#soundsLike,#AnnotateLeft,#AnnotateRight,#goal{position:relative;float:left;margin-bottom:5px;}
+		#looksLike,#soundsLike,#AnnotateLeft,#AnnotateRight,#goal{position:relative;float:left;margin-bottom:5px;padding-top: 4px;}
 		#soundsLike,#AnnotateRight{float:right;}
 		#greyModal{
 			z-index:7;
-			position:absolute;
+			position:fixed;
 			top:0px;
-			bottom:0px;
-			min-height:600px;
+			bottom:40px;
 			left:4px;
 			right:4px;
 			opacity:.8;
@@ -49,7 +48,7 @@
 		}
 		#modalWindow{
 			z-index:7;
-			position:absolute;
+			position:fixed;
 			height:274px;
 			width:750px;
 			left:100px;
@@ -90,13 +89,10 @@
     <input type="hidden" id="pageSize" value="690" />   
 	
 	
+	<canvas id="canvas1" name="drawableCanvas" height="680" width="960" style="z-index:8;background:transparent;position:fixed;top:1px;left:1px;">
+	</canvas>
 	<iframe id="toc" src="TOC.html" style="display:none;"></iframe>
-
-<div style="position:fixed;top:0px;bottom:40px;overflow:auto;width:100%;overflow-x:hidden;overflow-y:scroll;">	
 	
-	<canvas id="canvas1" name="drawableCanvas" height="680" width="960" style="z-index:215;background:transparent;position:absolute;top:1px;left:1px;">
-	</canvas>	
-		
 	<div id="looksSounds">
 		<div id="goal">Goal:</div>
 		<div id="looksLike">Looks Like</div>
@@ -114,9 +110,7 @@
 			<li>Tell students that you will award team celebration points to teams that practice the team cooperation goal and related behavior.</li>
 		</div>
 	</div>
-	
-</div>
-	<img onclick="ln();" src="tPbutton.png" style="z-index:29;position:fixed;top:0px;left:5px;cursor:pointer;" />
+	<img onclick="ln();" src="tPbutton.png" style="z-index:29;position:fixed;top:1px;left:5px;cursor:pointer;" />
 	
 	<script>
 		var isHidden=true;

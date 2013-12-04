@@ -10,7 +10,7 @@
 	<script src="../../../../../../Shared/Scripts/contentPage.js" type="text/javascript"></script>
 	<script src="../../../../../../Shared/Scripts/canvas.js" type='text/javascript'></script>
 	<style>
-		.topTitle{z-index:28;position:fixed;top:0px;right:22px;left:4px;height:37px;background:#006600;font-weight:bold;}
+		.topTitle{z-index:28;position:fixed;top:0px;right:0px;left:0px;height:37px;background:#006600;font-weight:bold;}
 		.titleText{position:absolute;left:153px;top:9px;color:#000000;font-family:Tahoma;}
 		#howdidyoudo{
 			position:absolute;
@@ -26,7 +26,7 @@
 			position:absolute;
 			width:90%;
 			left:5%;
-			height:100%;
+			top:10%;
 			z-index:5;
 		}
 		.more{
@@ -70,28 +70,27 @@
 			cursor:pointer;
 		}
 		.openClose{
-			position:absolute;
-			top:40px;
+			position:fixed;
+			top:39px;
 			left:0px;
-			height:500px;
+			bottom:37px;
 			width:100%;
 			visibility:hidden;
 		}
 		#greyModal{
 			z-index:20;
-			position:absolute;
+			position:fixed;
+			height:100%;
+			width:100%;
+			left:0px;
 			top:0px;
-			bottom:0px;
-			min-height:600px;
-			left:4px;
-			right:4px;
 			opacity:.8;
 			visibility:hidden;
 			background:#C0C0C0;
 		}
 		#modalWindow{
-			z-index:200;
-			position:absolute;
+			z-index:20;
+			position:fixed;
 			height:527px;
 			width:750px;
 			left:100px;
@@ -132,15 +131,12 @@
 	<div class="topTitle" style="background:#ADD692;">
 		<div class="titleText">Success Review</div>
 	</div>
-
-<div style="position:fixed;top:0px;bottom:40px;overflow:auto;width:100%;overflow-x:hidden;overflow-y:scroll;">	
-	
-	<canvas id="canvas1" name="drawableCanvas" height="680" width="960" style="z-index:7;background:transparent;position:absolute;top:1px;left:1px;">
+	<canvas id="canvas1" name="drawableCanvas" height="680" width="960" style="z-index:7;background:transparent;position:fixed;top:1px;left:1px;">
 	</canvas>
 	
-	<div class="openClose" style="z-index:9;visibility:visible;width:0px;">
+	<div class="openClose" style="z-index:9;visibility:visible">
 		<div id='howdidyoudo'>How<br>Did You<br>Do?</div>
-		<img onclick="hideShow(1);" src="Page5_Report.png" style="z-index:9;position:absolute;left:211px;height:600px;cursor:pointer;" />
+		<img onclick="hideShow(1);" src="Page5_Report.png" style="z-index:9;position:absolute;top:0px;left:211px;height:646px;cursor:pointer;" />
 	</div>
 	<div class="openClose">
 		<img src="TSS_top.png" class="enLargedImg" />
@@ -170,10 +166,8 @@
 			<li>Use the overlay to show team celebration scores.</li>
 		</div>
 	</div>
+	<img onclick="ln();" src="tPbutton.png" style="z-index:29;position:fixed;top:0px;left:5px;cursor:pointer;z-index: 9999999;" />
 	
-</div>	
-
-<img onclick="ln();" src="tPbutton.png" style="z-index:29;position:fixed;top:0px;left:5px;cursor:pointer;z-index: 99999999999999;" />
 	<script>
 		function hideShow(k){
 			initCanvasForDrawing('canvas1');

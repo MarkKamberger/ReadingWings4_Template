@@ -22,12 +22,18 @@
 <script type="text/javascript" src="../Shared/Tools/js/compass.js"></script>
 <link href="../Shared/Tools/css/mathTools.css" rel="stylesheet" type="text/css">
 </head>
-<body id='docBody' style="background-color:#FFFFFF;">
+<body id='docBody' style="background:transparent;overflow:hidden;">
+	<div style="z-index:3000;position:fixed;top:0px;left:0px;right:0px;bottom:0px;background-color:transparent;overflow:visible;" id="contentFrame">
+		<div id="iframeDiv" style="z-index:3000;position:absolute;top:0px;left:0px;right:0px;bottom:0px;height:100%;width:100%;overflow:visible;background-color:transparent;">                    
+			<iframe id="contentFrame1" src="" class="iframeContent" scrolling="no" style="height:100%;width:100%;margin:0px;padding:0px;position:absolute;top:0px;left:0px;right:0px;bottom:0px;background:transparent;overflow:visible;"></iframe>
+			<iframe id="contentFrame2" src="" class="iframeContent" style="opacity:0.0;display:none;" scrolling="no"></iframe>
+		</div>
+	</div>
 	<table cellpadding='0' cellspacing="0" border="0" style="width:100%;overflow:hidden;">
 		<tr>
 			<td id="mainCell" style="width:100%;background-color: #ffffff;" valign="top" colspan="1">
             	<div id="leftOuterStripe" style="z-index:5;left:0px;bottom:39px;top:0px;position:fixed;width:4px;background:#8B4513;opacity:.89;"></div>
-                <div id="rightOuterStripe" style="z-index:5;right:0px;bottom:39px;top:0px;position:fixed;width:5px;background:#8B4513;z-index: 9;opacity:.89;"></div>
+                <div id="rightOuterStripe" style="z-index:5;right:17px;bottom:39px;top:0px;position:fixed;width:5px;background:#8B4513;z-index: 9;opacity:.89;"></div>
                 
 				<div id="loginDiv" style="width:50px;display:none;position:fixed;top:-123px;left:3px;z-index:10;border:2px solid #000;background-color:#ddd;border-radius:8px;padding:5px 5px 0px 5px;">
 					<table cellspacing="0" cellpadding="0">
@@ -389,12 +395,7 @@
 				</table>
 				
                 
-                <div style="z-index:3;height:100%;width:100%;position:relative;background-color:#FFFFFF;top:0px;margin-bottom:5px;padding-bottom:5;" id="contentFrame">
-                    <div id="iframeDiv" style="z-index:3;width:100%;background-color:#ffffff;position:relative;top:0px;left:0px;overflow:hidden;padding-top:0px;padding-left:0px;padding-right:0px;padding-bottom:5px;">                    
-						<iframe id="contentFrame1" src="" class="iframeContent" scrolling="no" style="min-height:691px;"></iframe>
-						<iframe id="contentFrame2" src="" class="iframeContent" style="opacity:0.0;display:none;" scrolling="no"></iframe>
-					</div>
-				</div>
+                
 			</td>
 		</tr>
 	</table>
@@ -465,59 +466,11 @@
 
 
 
-<!---TOOLS: Ruler------------------------------------------------------------------------------------------->
-<div id="divRuler" style="position:absolute;left:75; top:300; z-index:6000;display:none;">
-	<img id="imgRotateRuler" src="../Shared/Images/Math/Tools/SpinButton.png" style="z-index:6001;left:433;top:60;position: absolute;">
-	<div id="divCloseRuler" style="right:4;top:110;position: absolute;width:20px;height:20px;border-radius:20px; background-color: #d90013;border:1px solid #000000;text-align:center;" class="divPencilColorDot"  onClick="closeRuler();"><strong>x</strong></div>    
-	<img id="imgRuler" src="../Shared/Images/Math/Tools/Ruler02.png" >
-</div>
-<script>
-$(function() {
-$( "#divRuler" ).draggable();
-});
 
-var value = 0
-$("#imgRotateRuler").rotate({ 
-   bind: 
-     { 
-        click: function(){
-            value +=45;
-            $("#divRuler").rotate({ animateTo:value})
-        }
-     } 
-   
-});
-</script>
-
-
-
-<!---TOOLS: Protractor------------------------------------------------------------------------------------------->
-<div id="divProtractor" style="position:absolute;left:150; top:300; z-index:6002;display:none;">
-	<img id="imgRotateProtractor" src="../Shared/Images/Math/Tools/SpinButton.png" style="z-index:6003;left:211;top:111;position: absolute;">
-	<div id="divCloseProtractor" style="left:215;top:216;position: absolute;width:20px;height:20px;border-radius:20px; background-color: #d90013;border:1px solid #000000;text-align:center;" class="divPencilColorDot"  onClick="closeProtractor();">x</div> 
-	<img id="imgProtractor" src="../Shared/Images/Math/Tools/Protractor01.gif" >
-</div>
-<script>
-$(function() {
-$( "#divProtractor" ).draggable();
-});
-
-var value = 0
-$("#imgRotateProtractor").rotate({ 
-   bind: 
-     { 
-        click: function(){
-            value +=45;
-            $("#divProtractor").rotate({ animateTo:value})
-        }
-     } 
-   
-});
-</script>
 
 
 <!---TOOLS: Pencil Color Picker---------------------------------------------------------------------------------->
-<div id="divPencilColorSizePicker" class="divPencilColorSizePicker">
+<div id="divPencilColorSizePicker" class="divPencilColorSizePicker" style="z-index:3000; left:270px;">
 	<table align="center" border="0" cellpadding="4" cellspacing="3" style="width: 100%;">
     	<tr>
         	<td align="center" width="33%" onClick="pencilColorSizePicker('#000000',30);" class="divColorSizePickerButtons">
@@ -635,7 +588,7 @@ $("#imgRotateProtractor").rotate({
 
 
 <!---TOOLS: Highlighter Color Picker----------------------------------------------------------------------------->
-<div id="divHighlighterColorSizePicker" class="divHighlighterColorSizePicker">
+<div id="divHighlighterColorSizePicker" class="divHighlighterColorSizePicker" style="z-index:3000; left:290px;">
 	<table align="center" border="0" cellpadding="4" cellspacing="3" style="width: 100%;">
     	<tr>
         	<td align="center" width="33%" onClick="pencilColorSizePicker('#000000',30,.02);" class="divColorSizePickerButtons">
@@ -757,7 +710,9 @@ $("#imgRotateProtractor").rotate({
 
 
 <!---MAIN MENU (BOTTOM - Refresh, Navigation, & Tools)---------------------------------------------------------------------------------->
-<div id="bottomMenu" style="background-image:url('../Shared/Images/Math/MenuBar/Row1_FullMenueBar.png');background-size: 100% 39px; position:fixed; bottom:0px; left:0px; right:-200px; height:39px; min-height:39px;  z-index:1000;">    
+<div style="position:fixed; right:0px; bottom:0px; cursor:pointer; height:39px; width:130px; margin:0px;z-index:99999;" alt="logo" onClick="goHome();" /></div>
+<div style="background-image:url('../Shared/Images/Math/MenuBar/Row1_FullMenueBar.png');background-size: 100% 39px; position:fixed; bottom:0px; left:0px; right:0px; height:40px;z-index: 2999;"></div>
+<div id="bottomMenu" style="position:fixed; bottom:0px; left:0px; right:380px; height:39px; z-index:5000;">    
                 <table border="0" style="float:left;position:relative;float:left;z-index:1001;left:0;" id="universalMenuRight" cellpadding="0" cellspacing="0">
 					<tr>
 						<td align="left" valign="bottom">
@@ -778,6 +733,7 @@ $("#imgRotateProtractor").rotate({
 						</td>   
 					</tr>
                  </table>
+				 
 <script language="javascript">
 			function openToolsMenu() {
 				var foo = $id('bottomToolsMenu');
@@ -855,9 +811,9 @@ $("#imgRotateProtractor").rotate({
 		</tr>
 	</table>        
 </div>
+</div>
 
-
-<div style="background-size: 100% 39px;background-image:url('../Shared/Images/Math/MenuBar/Row1_FullMenueBar.png'); background-attachment:fixed; bottom: -2px; background-position: right bottom; position:fixed; right:-20px; cursor:pointer; height:39px; width:150px; margin:0px;background-repeat:no-repeat;" alt="logo" onClick="goHome();" /></div> 
+ 
 		        
 <div style="display:none;">
 		<table style="display:none;margin-top:-25px;margin-right:65px;empty-cells:hide;" cellspacing="5" cellpadding="0" id="pageMenu" border="0">
@@ -1006,7 +962,7 @@ $("#imgRotateProtractor").rotate({
 		</script>
 	</div>
 	<!-- SAVE DIALOG BOX -->
-	<div id="saveDialog" style="height:300px;width:400px;left:20px;top:150px;display:none;" class="dialog">
+	<div id="saveDialog" style="z-index:900000000;height:300px;width:400px;left:20px;top:150px;display:none;" class="dialog">
 		<span style="float:left;" class="dialogCloseMath" onClick="toggleElement('saveDialog','inline');">X</span>
 		<div style="font-weight:bold;margin-left:45px;margin-top:10px;">Save Drawing</div><br/><br/>
 		<span style="font-size:11;font-style:italic;">Drawing Name:</span><br/>
@@ -1017,14 +973,14 @@ $("#imgRotateProtractor").rotate({
 		<div id="saveLocalStorageList" style="overflow:auto;max-height:130px;border:1px dashed #888;border-radius:4px;"></div>
 	</div>
 	<!-- RETRIEVE DIALOG BOX -->
-	<div id="getDialog" style="height:300px;width:400px;left:20px;top:150px;display:none;" class="dialog">
+	<div id="getDialog" style="z-index:900000000;height:300px;width:400px;left:20px;top:150px;display:none;" class="dialog">
 		<span style="float:left;" class="dialogCloseMath" onClick="toggleElement('getDialog','inline');">X</span>
 		<div style="font-weight:bold;margin-left:45px;margin-top:10px;">Open Drawing</div>
 		<br/>
 		<div id="getLocalStorageList" style="overflow:auto;height:250px;max-height:250px;border:1px dashed #888;border-radius:4px;"></div>
 	</div>
 	<!-- RANDOM REPORTER DIALOG -->
-	<div id="spinner" style="display:none;position:fixed;bottom:100px;left:240px;z-index:4001; height:572px; width:507px;overflow:hidden;background-repeat:no-repeat;border:2px solid #000000;border-radius:5px;-moz-box-shadow: 0px 0px 5px 5px #888;-webkit-box-shadow: 0px 0px 5px 5px #888;box-shadow: 0px 0px 5px 5px #888;background-color:white;background-image:url('../Shared/Images/REMS/Spinner_dog.png');">
+	<div id="spinner" style="z-index:900000000;display:none;position:fixed;bottom:100px;left:240px;z-index:4001; height:572px; width:507px;overflow:hidden;background-repeat:no-repeat;border:2px solid #000000;border-radius:5px;-moz-box-shadow: 0px 0px 5px 5px #888;-webkit-box-shadow: 0px 0px 5px 5px #888;box-shadow: 0px 0px 5px 5px #888;background-color:white;background-image:url('../Shared/Images/REMS/Spinner_dog.png');">
 		<table border="0" cellspacing="0" cellpadding="0" style="width:500px;height:572px;max-width:500px;">
 			<tr>
 				<td align="left" valign="top">
@@ -1847,141 +1803,5 @@ $("#imgRotateProtractor").rotate({
 		}
 	</script>
 
-<!--NEW TOOLS FROM MARK S AT THINK BIG
--->
-
-<!--<div id="tools">-->
-<div class="toolContainer">
-  <div id="ruler">
-    <div class="liveArea"> </div>
-    <img src="../Shared/Tools/img/ruler.png" id="rulerArt"  />
-    <div id="rRotate" class="rButton">
-      <div class="liveArea"></div>
-      <img src="../Shared/Tools/icons/rotate.png"id="rotateArt" class="buttonIcon"  />
-    </div>
-    <div id="rReset" class="rButton">
-      <div class="liveArea"></div>
-      <img src="../Shared/Tools/icons/straight.png" id="straightArt" class="buttonIcon"  />
-    </div>
-       <div id="rClose" class="rButton">
-      <div class="liveArea"></div>
-      <img src="../Shared/Tools/icons/close.png" id="closeArt" class="buttonIcon"  />
-    </div>
-    <div id="rPivot" class="rivot"></div>
-    <div id="rDeg1" class="rDeg">0&deg;</div>
-    <div id="rDeg2" class="rDeg">180&deg;</div>
-  </div>
- </div>
-<div class="toolContainer">
-  <div id="protractor">
-    <div class="liveArea"> </div>
-    <img src="../Shared/Tools/img/protract.png" id="protractorArt"  />
-    <div id="pRotate" class="pButton">
-      <div class="liveArea"></div>
-      <img src="../Shared/Tools/icons/rotate.png" id="rotateArt" class="buttonIcon"  />
-    </div>
-    <div id="pReset" class="pButton">
-      <div class="liveArea"></div>
-      <img src="../Shared/Tools/icons/straight.png" id="straightArt" class="buttonIcon"  />
-    </div>
-    <div id="pClose" class="pButton">
-      <div class="liveArea"></div>
-      <img src="../Shared/Tools/icons/close.png" id="closeArt" class="buttonIcon"  />
-    </div>
-    <div id="pPivot" class="pivot"></div>
-    <div id="pDeg1" class="pDeg">0&deg;</div>
-    <div id="pDeg2" class="pDeg">180&deg;</div>
-  </div>
- </div>
- 
- <div class="toolContainer">
-  <div id="compass">
-    <div class="liveArea"></div>
-    <!--<embed src="../Shared/Tools/img/compassCircle.svg" type="image/svg+xml" id="compassCircle" />--> 
-    
-    <img src="../Shared/Tools/img/compassLeftLeg.png" id="compassLeftArt"/> <img src="../Shared/Tools/img/compassRightLeg.png" id="compassRightArt"/>
-    <div id="compassTop"> <img src="../Shared/Tools/img/compassTop.png" id="compassTopArt"/>
-      
-    </div>
-    <canvas id="compassCircle" height="900" width="720"></canvas>
-    <div id="compassInputDiv">
-        <div id="compassInputArea">
-          <input id="compassInput" maxlength="6" placeholder="radius" />
-          <div id='compassInputLabel'>cm</div>
-        </div>
-        <div id="compassUnitSelect">
-          <div id='compassUnitLeft'>
-            <input type="radio" name="compassUnits" value="cm" id="compassSelectCM" checked>
-          <span class='compassUnitSelectLabel'>cm</span></div>
-          <div id='compassUnitRight'>
-            <input type="radio" name="compassUnits" value="in" id="compassSelectInches">
-          <span class='compassUnitSelectLabel'>in.</span></div>
-          <div id="compassInputButtons">
-            <div id="cDraw" class="cButton"> DRAW </div>
-            <div id="cClose" class="cCloseButton"> <img src="../Shared/Tools/icons/close.png" id="closeCompassArt" class="buttonIcon"  /> </div>
-          </div>
-        </div>
-      </div>
-  </div>
-<!--End Compass--></div>
-<div class="toolContainer">
-  <div id="calculator" class="dragTool">
-    <div id="warningWrapper">
-      <div id="warning">Warning message</div>
-      <div id="warningClose">OK</div>
-    </div>
-    <div id="calcHead">
-        <div id="calcTitle">CALCULATOR</div>
-        <div id="calcCloseBox" class="calcCloseButton" >
-      <img src="../Shared/Tools/icons/close.png" id="calcCloseIcon" class="calcCloseIcon"  /><div class="closeLiveArea"></div>
-        </div>
-      </div>
-    <div id="calculatorArt">
-      
-      <table id="calcTable">
-        <tr>
-          <td colspan="4"><div id="lcdDisplay">
-              <div id="plusMinusInd">+</div>
-              <div id="xToYInd">x<sup>y</sup></div>
-              <div id="displayText">0</div>
-            </div></td>
-          <td
-><div id="clear" class="clearButton">CL</div></td>
-        </tr>
-        <tr>
-          <td><div id="seven" class="numButton">7</div></td>
-          <td><div id="eight" class="numButton">8</div></td>
-          <td><div id="nine" class="numButton">9</div></td>
-          <td><div id="divide" class="opButton">&divide;</div></td>
-          <td><div id="squareRoot" class="opButton">&radic; </div></td>
-        </tr>
-        <tr>
-          <td><div id="four" class="numButton">4</div></td>
-          <td><div id="five" class="numButton">5</div></td>
-          <td><div id="six" class="numButton">6</div></td>
-          <td><div id="multiply" class="opButton">x</div></td>
-          <td><div id="square" class="opButton"><span class="littleLabel">x<sup>2</sup></span></div></td>
-        </tr>
-        <tr>
-          <td><div id="one" class="numButton">1</div></td>
-          <td><div id="two" class="numButton">2</div></td>
-          <td><div id="three" class="numButton">3</div></td>
-          <td><div id="subtract" class="opButton">-</div></td>
-          <td><div id="xToY" class="opButton"><span class="littleLabel">x<sup>y</sup></span></div></td>
-        </tr>
-        <tr>
-          <td><div id="zero" class="numButton">0</div></td>
-          <td><div id="plusMinus" class="opButton">&plusmn;</div></td>
-          <td><div id="decimal" class="numButton">.</div></td>
-          <td><div id="plus" class="opButton">+</div></td>
-          <td><div id="equal" class="equalButton">=</div></td>
-        </tr>
-      </table>
-    </div>
-  </div>
-  </div>
-<!--</div>-->
-
-<!--END NEW TOOLS FROM MARK S AT THINK BIG-->
 </body>
 </html>
