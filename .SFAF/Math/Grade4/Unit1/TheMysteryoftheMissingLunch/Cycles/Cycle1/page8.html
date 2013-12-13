@@ -9,233 +9,52 @@
 	<link href="../../../../../../Shared/Fonts/stylesheet.css" rel="stylesheet" type="text/css" charset="utf-8">
 	<script src="../../../../../../Shared/Scripts/contentPage.js" type="text/javascript"></script>
 	<script src="../../../../../../Shared/Scripts/canvas.js" type='text/javascript'></script>
-	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-	<style>
-		.topTitle{position:fixed;top:0px;right:22px;left:4px;height:37px;background:#006600;font-weight:bold;z-index:955;}
-		.titleText{position:absolute;left:145px;top:9px;color:#000000;font-family:Tahoma;}
-		#rateYourWords{
-			position:absolute;top:50px;left:25px;
-			font-size:42px;font-family:Tahoma;color:#000000;
-		}
-		#Words{
-			position:absolute;top:125px;left:10px;
-			font-size:38px;font-family:Tahoma;color:#000000;
-			z-index:317;
-		}
-		.wordLine{
-			position:relative;
-			margin-bottom:20px;
-			height:50px;
-		}
-		.pictureButton{
-			position:absolute;left:0px;top:5px;
-			height:20px;width:20px;
-			cursor:pointer;
-		}
-		.word{
-			position:absolute;left:50px;width:216px;
-			padding-top:8px;padding-left:8px;padding-bottom:8px;
-			border-radius:8px;cursor:pointer;
-		}
-		#Pictures,#Definitions{
-			position:absolute;top:100px;left:279px;
-			font-size:38px;font-family:Tahoma;color:#000000;
-			text-align:center;z-index:7;
-		}
-		#Pictures{z-index:10;}
-		.wordPicture{
-			position:absolute;top:40px;left:80px;
-			height:350px;width:450px;
-			border:2px solid #ff9900;border-radius:25px;
-			z-index:5;background:#ff9900;visibility:hidden;
-		}
-		.definition{
-			position:absolute;top:0px;left:0px;
-			height:550px;width:650px;
-			background:#B5D6AE;border-radius:25px;
-			z-index:4;visibility:hidden;
-			text-align:left;color:#000000;
-		}
-		.sentence,.defn,.idStrategy{
-			position:relative;
-			width:100%;
-			height:150px;
-			font-size:34px;
-		}
-		.idStrategy{
-			margin-top:20px;
-			color:red;
-		}
-		.sentence{
-			height:200px;
-		}
-		.dfnTitle{
-			font-size:36px;font-weight:bold;margin-left:25px;
-			color:#000000;
-		}
-		.substance{
-			margin-left:30px;
-			margin-top:8px;
-			line-height:45px;
-		}
-		.dfnSpan{
-			color:red;
-		}
-		#greyModal{
-			z-index:800;
-			position:absolute;
-			top:0px;
-			bottom:0px;
-			min-height:600px;
-			left:0px;
-			right:0px;
-			opacity:.8;
-			visibility:hidden;
-			background:#C0C0C0;
-		}
-		#modalWindow{
-			z-index:801;position:absolute;height:600px;width:450px;left:200px;top:55px;visibility:hidden;background:#336699;
-		}
-		.inModal{
-			z-index:15;position:relative;float:left;width:100%;
-			height:40px;color:#ffffff;font-size:22px;
-			padding-top:7px; text-indent:10px;
-		}
-		#tray{
-			position:fixed;
-			bottom:40px;
-			left:-900px;
-			height:112px;
-			width:1024px;
-			z-index:418;
-			cursor:pointer;
-		}
-		#trayCaptain{
-			position:absolute;
-			left:0px;top:0px;
-		}
-		#trayImages{
-			position:absolute;
-			left:16px;
-			top:42px;
-			width:100%;
-		}
-		.trayImage{
-			position:absolute;
-			left:0px;
-			top:1px;
-		}
-		#popUpImages{
-			position:absolute;
-			left:200px;
-			top:142px;
-			z-index:21;
-		}
-		.popUpImage{
-			position:absolute;
-			left:0px;
-			top:1px;
-			visibility:hidden;
-			z-index:956;
-		}
-	</style>
+	<link href="../../../../../../Shared/Styles/InnerPage.css" rel="stylesheet" type="text/css" />
+	<script src="../../../../../../Shared/Styles/InnerPage.js" type='text/javascript'></script>
 </head>
-<body style="background-color:transparent;">
-    <input type="hidden" id="pageType" value="1" />
-    <input type="hidden" id="pageSize" value="690" /> 
-	<iframe id="toc" src="TOC.html" style="display:none;"></iframe>
-	
-	
-	<div class="topTitle" style="background:#ADD692;">
-		<div class="titleText">Vocabulary Review</div>
-	</div>
-    
-	<img onclick="ln();" src="LN.png" style="z-index:1002;position:fixed;top:1px;left:15px;height:37px;width:37px;cursor:pointer;" />
-	
-	
-<div style="position:fixed;top:0px;bottom:40px;overflow:auto;width:100%;overflow-x:hidden;overflow-y:scroll;">	
-	
-	<canvas id="canvas1" name="drawableCanvas" height="680" width="960" style="z-index:215;background:transparent;position:absolute;top:1px;left:1px;">
-	</canvas>
-	
-	<div id="greyModal" class="hid"></div>
-	<img src="page8_LN.png" id="modalWindow" class="hid" />
-	<script>
-		var isHidden=true;
-		function ln(){
-			if(isHidden){
-				document.getElementById('canvas1').style.zIndex=1000;
-				document.getElementById('greyModal').style.visibility="visible";
-				document.getElementById('modalWindow').style.visibility="visible";
-				isHidden=false;
-			}else{
-				document.getElementById('canvas1').style.zIndex=215;
-				document.getElementById('greyModal').style.visibility='hidden';
-				document.getElementById('modalWindow').style.visibility='hidden';
-				isHidden=true;
-			}
-		}
-	</script>
-	
+<body>
+<input type="hidden" id="pageType" value="1" />
+<input type="hidden" id="pageSize" value="690" /> 
+<iframe id="toc" src="TOC.html" style="display:none;"></iframe>
+<div class="topTitle" style="background:#ADD692;">
+	<div class="titleText">Vocabulary Review</div>
+	<img class="topButton" onclick="teacherInstructions(this,'page8LnWindow');" src="../../../../../../Shared/Images/Math/MenuBar/LN.png" />
+</div>
+<!--begin PageDiv-->
+<div id="PageDiv">
+	<canvas class="canvas" id="canvas1" name="drawableCanvas" height="680" width="960"></canvas>
 	<div id="rateYourWords">Rate Your Words</div>
-	<div id="Words">
+	<!--begin Comment__Words on left side of page and any i buttons to be clicked-->
+	<div id="Words" class="onPageClick">
 		<div class="wordLine">
 			<div class="pictureButton"></div>
-			<div onclick="wordDefinition(this,0);" class="word">noticed</div>
+			<div onclick="wordDefinition(this);" class="word">noticed</div>
 		</div>
 		<div class="wordLine">
-			<div onclick="wordPictures(1);" class="pictureButton"><img src="iButton.png" /></div>
-			<div onclick="wordDefinition(this,1);" class="word">sniffed</div>
-		</div>
-		<div class="wordLine">
-			<div class="pictureButton"></div>
-			<div onclick="wordDefinition(this,2);"class="word">muttered</div>
+			<div onclick="wordPictures(this);" class="pictureButton"><img src="../../../../../../Shared/Images/Math/PageButtons/i.png" /></div>
+			<div onclick="wordDefinition(this);" class="word">sniffed</div>
 		</div>
 		<div class="wordLine">
 			<div class="pictureButton"></div>
-			<div onclick="wordDefinition(this,3);" class="word">innocent</div>
+			<div onclick="wordDefinition(this);"class="word">muttered</div>
 		</div>
 		<div class="wordLine">
-			<div onclick="wordPictures(4);" class="pictureButton"><img src="iButton.png" /></div>
-			<div onclick="wordDefinition(this,4);" class="word">whole</div>
+			<div class="pictureButton"></div>
+			<div onclick="wordDefinition(this);" class="word">innocent</div>
 		</div>
 		<div class="wordLine">
-			<div onclick="wordPictures(5);" class="pictureButton"><img src="iButton.png" /></div>
-			<div onclick="wordDefinition(this,5);" class="word">consume</div>
+			<div onclick="wordPictures(this);" class="pictureButton"><img src="../../../../../../Shared/Images/Math/PageButtons/i.png" /></div>
+			<div onclick="wordDefinition(this);" class="word">whole</div>
+		</div>
+		<div class="wordLine">
+			<div onclick="wordPictures(this);" class="pictureButton"><img src="../../../../../../Shared/Images/Math/PageButtons/i.png" /></div>
+			<div onclick="wordDefinition(this);" class="word">consume</div>
 		</div>
 	</div>
-	<script>
-		var current;
-		var colour="#B5D6AE";
-		function wordDefinition(word,k){
-			if(current==k){
-				if(word.isGreen){	
-					classElements('word').item(k).style.backgroundColor="transparent";
-					classElements('definition').item(k).style.visibility="hidden";
-					word.isGreen=false;
-				}else{
-					classElements('word').item(k).style.backgroundColor=colour;
-					classElements('definition').item(k).style.visibility="visible";
-					word.isGreen=true;
-				}
-			}else{
-				classElements('word').item(current).style.backgroundColor="transparent";
-				classElements('definition').item(current).style.visibility="hidden";
-				word.style.backgroundColor=colour;
-				classElements('definition').item(k).style.visibility="visible";
-				word.isGreen=true;
-			}
-			current=k;
-			styleClass('wordPicture','visibility','hidden');
-		}	
-	</script>
+	<!--end Comment-->
 	
-	
-	
-	
-	
-	
+	<!--begin Comment--Each div with class 'definition' is a green box that opens when the corresponding div with class 'word' above is clicked,
+	they must be in the same order.-->
 	<div id="Definitions">
 		<div class="definition">
 			<div class="idStrategy">
@@ -322,13 +141,8 @@
 			</div>
 		</div>
 	</div>
-
-	
-	
-	
-	
-	
-	
+	<!--end Comment-->
+	<!--begin Comment--pictures to be opened when the corresponding i buttons from above are clicked-->
 	<div id="Pictures">
 		<div class="wordPicture">img1</div>
 		<div class="wordPicture">img2</div>
@@ -336,103 +150,68 @@
 		<div class="wordPicture">img4</div>
 		<div class="wordPicture">img5</div>
 	</div>
-	
-	
-	
-	<script>
-		
-		function wordPictures(j){
-			if(classElements('wordPicture').item(j-1).style.visibility==="visible"){
-				styleClass('word','backgroundColor','transparent');
-				styleClass('definition','visibility','hidden');
-				styleClass('wordPicture','visibility','hidden');
-				classElements('wordPicture').item(j-1).style.visibility="hidden";
-			}else{
-				styleClass('word','backgroundColor','transparent');
-				styleClass('definition','visibility','hidden');
-				styleClass('wordPicture','visibility','hidden');
-				classElements('wordPicture').item(j-1).style.visibility="visible";
-			}
-		}
-		function styleClass(className,style,condition){
-			if(style==="backgroundColor"){
-				for(var t=0,w=classElements(className);t<w.length;t++){
-					w.item(t).style.backgroundColor=condition;
-				}
-			}else if(style==="visibility"){
-				for(var t=0,w=classElements(className);t<w.length;t++){
-					w.item(t).style.visibility=condition;
-				}
-			}
-		}
-		function classElements(className){
-			return document.getElementsByClassName(className);
-		}
-	
-		
-	</script>
-	
-	
-	<div id="tray">
-		<img src="TrayCaptain.png" id="trayCaptain" />
-		<div style="position:absolute;right:0px;width:75px;height:100px;cursor:move;"></div>
-		<div id="trayImages">
-			<img class="trayImage" style="left:24px;top:1px;"  src="trayImages/Storm.png"		onclick="captainImages(this,0);" />
-			<img class="trayImage" style="left:71px;top:1px;"  src="trayImages/Anchor.png"		onclick="captainImages(this,1);" />
-			<img class="trayImage" style="left:118px;top:1px;" src="trayImages/Raft.png"		onclick="captainImages(this,2);" />
-			<img class="trayImage" style="left:165px;top:1px;" src="trayImages/Map.png"			onclick="captainImages(this,3);" />
-			<img class="trayImage" style="left:211px;top:1px;" src="trayImages/Binoculars.png" 	onclick="captainImages(this,4);" />
-			<img class="trayImage" style="left:258px;top:1px;" src="trayImages/Octopus.png"		onclick="captainImages(this,5);" />
-			<img class="trayImage" style="left:304px;top:1px;" src="trayImages/Compass.png"		onclick="captainImages(this,6);" />
-			<img class="trayImage" style="left:352px;top:1px;" src="trayImages/Shells.png"		onclick="captainImages(this,7);" />
-			<img class="trayImage" style="left:397px;top:1px;" src="trayImages/Fish.png"		onclick="captainImages(this,8);" />
-			<img class="trayImage" style="left:443px;top:1px;" src="trayImages/Pennant.png"		onclick="captainImages(this,9);" />
-			<img class="trayImage" style="left:489px;top:1px;" src="trayImages/Wheel.png"		onclick="captainImages(this,10);" />
-			<img class="trayImage" style="left:534px;top:1px;" src="trayImages/Shark.png"		onclick="captainImages(this,11);" />
-			<img class="trayImage" style="left:580px;top:1px;" src="trayImages/Buoy.png"		onclick="captainImages(this,12);" />
-			<img class="trayImage" style="left:627px;top:1px;" src="trayImages/GlueBrush.png"	onclick="captainImages(this,13);" />
-			<img class="trayImage" style="left:673px;top:1px;" src="trayImages/Rowboat.png"		onclick="captainImages(this,14);" />
-			<img class="trayImage" style="left:718px;top:1px;" src="trayImages/Contraction.png"	onclick="captainImages(this,15);" />
-			<img class="trayImage" style="left:765px;top:1px;" src="trayImages/Contraction2.png"	onclick="captainImages(this,16);" />
-			<img class="trayImage" style="left:811px;top:1px;" src="trayImages/Prefix.png"		onclick="captainImages(this,17);" />
-			<img class="trayImage" style="left:857px;top:1px;" src="trayImages/Prefix2.png"		onclick="captainImages(this,18);" />
-		</div>
-	</div>
-	<div id="popUpImages">
-		<img class="popUpImage" style="left:64px;top:-110px;" src="trayImages/PopUp_Storm.png" />
-		<img class="popUpImage" style="left:89px;top:-114px;" src="trayImages/PopUp_Anchor.png" />
-		<img class="popUpImage" style="left:100px;top:-106px;" src="trayImages/PopUp_Raft.png" />
-		<img class="popUpImage" style="left:90px;top:-87px;" src="trayImages/PopUp_Map.png" />
-		<img class="popUpImage" style="left:111px;top:-110px;" src="trayImages/PopUp_Binoculars.png" />
-		<img class="popUpImage" style="left:128px;top:-116px;" src="trayImages/PopUp_Octopus.png" />
-		<img class="popUpImage" style="left:91px;top:-115px;" src="trayImages/PopUp_Compass.png" />
-		<img class="popUpImage" style="left:99px;top:-84px;" src="trayImages/PopUp_Shells.png" />
-		<img class="popUpImage" style="left:100px;top:-145px;" src="trayImages/PopUp_Fish.png" />
-		<img class="popUpImage" style="left:73px;top:-153px;" src="trayImages/PopUp_Pennant.png" />
-		<img class="popUpImage" style="left:90px;top:-146px;" src="trayImages/PopUp_Wheel.png" />
-		<img class="popUpImage" style="left:-45px;top:-145px;" src="trayImages/PopUp_Shark.png" />
-		<img class="popUpImage" style="left:48px;top:-116px;" src="trayImages/PopUp_Buoy.png" />
-		<img class="popUpImage" style="left:-44px;top:-120px;" src="trayImages/PopUp_Glue.png" />
-		<img class="popUpImage" style="left:60px;top:-150px;" src="trayImages/PopUp_Chunk.png" />
-		<img class="popUpImage" style="left:60px;top:-143px;" src="trayImages/PopUp_Contraction.png" />
-		<img class="popUpImage" style="left:60px;top:-150px;" src="trayImages/PopUp_Compound.png" />
-		<img class="popUpImage" style="left:60px;top:-150px;" src="trayImages/PopUp_Prefix.png" />
-		<img class="popUpImage" style="left:60px;top:-150px;" src="trayImages/PopUp_BaseEnding.png" />
-	</div>
-	
+	<!--end Comment-->
+	<div id="greyModal" style="z-index:7;"></div>
+	<img src="../../../../../../Shared/Images/Math/PageGraphics/page8_LN.png" class="modalWindow" id="page8LnWindow" />
 </div>
-	<script>
-		$("#tray").draggable({axis: "x"});
-		function captainImages(img,k){
-			if(document.getElementsByClassName('popUpImage').item(k).style.visibility==="visible"){
-				document.getElementsByClassName('popUpImage').item(k).style.visibility="hidden";
-			}else{
-				for(var j=0; j<19; j++){
-					document.getElementsByClassName('popUpImage').item(j).style.visibility="hidden";
-				}
-				document.getElementsByClassName('popUpImage').item(k).style.visibility="visible";
-			}
-		}
-	</script>
+<!--end PageDiv-->
+
+<!--begin slide out captain menu bar--Comment--drag out captain tray, each image with the 
+class "trayImage" is a blue thumbnail in the captain's tray,
+which when clicked will open the corresponding images with the class "popUpImage" which must be in the same order as 
+the "trayImage" images. The script at the bottom of the page is needed for the captain to be able to slide.-->
+<div id="tray">
+	<img src="TrayCaptain.png" id="trayCaptain" />
+	<div style="position:absolute;right:0px;width:75px;height:100px;cursor:move;"></div>
+	<div id="trayImages">
+		<img class="trayImage" style="left:24px;top:1px;"  src="trayImages/Storm.png"		onclick="captainImages(this);" />
+		<img class="trayImage" style="left:71px;top:1px;"  src="trayImages/Anchor.png"		onclick="captainImages(this);" />
+		<img class="trayImage" style="left:118px;top:1px;" src="trayImages/Raft.png"		onclick="captainImages(this);" />
+		<img class="trayImage" style="left:165px;top:1px;" src="trayImages/Map.png"			onclick="captainImages(this);" />
+		<img class="trayImage" style="left:211px;top:1px;" src="trayImages/Binoculars.png" 	onclick="captainImages(this);" />
+		<img class="trayImage" style="left:258px;top:1px;" src="trayImages/Octopus.png"		onclick="captainImages(this);" />
+		<img class="trayImage" style="left:304px;top:1px;" src="trayImages/Compass.png"		onclick="captainImages(this);" />
+		<img class="trayImage" style="left:352px;top:1px;" src="trayImages/Shells.png"		onclick="captainImages(this);" />
+		<img class="trayImage" style="left:397px;top:1px;" src="trayImages/Fish.png"		onclick="captainImages(this);" />
+		<img class="trayImage" style="left:443px;top:1px;" src="trayImages/Pennant.png"		onclick="captainImages(this);" />
+		<img class="trayImage" style="left:489px;top:1px;" src="trayImages/Wheel.png"		onclick="captainImages(this);" />
+		<img class="trayImage" style="left:534px;top:1px;" src="trayImages/Shark.png"		onclick="captainImages(this);" />
+		<img class="trayImage" style="left:580px;top:1px;" src="trayImages/Buoy.png"		onclick="captainImages(this);" />
+		<img class="trayImage" style="left:627px;top:1px;" src="trayImages/GlueBrush.png"	onclick="captainImages(this);" />
+		<img class="trayImage" style="left:673px;top:1px;" src="trayImages/Rowboat.png"		onclick="captainImages(this);" />
+		<img class="trayImage" style="left:718px;top:1px;" src="trayImages/Contraction.png"	onclick="captainImages(this);" />
+		<img class="trayImage" style="left:765px;top:1px;" src="trayImages/Contraction2.png"	onclick="captainImages(this);" />
+		<img class="trayImage" style="left:811px;top:1px;" src="trayImages/Prefix.png"		onclick="captainImages(this);" />
+		<img class="trayImage" style="left:857px;top:1px;" src="trayImages/Prefix2.png"		onclick="captainImages(this);" />
+	</div>
+</div>
+<div id="popUpImages">
+	<img class="popUpImage" style="left:64px;top:-110px;" src="trayImages/PopUp_Storm.png" />
+	<img class="popUpImage" style="left:189px;top:-114px;" src="trayImages/PopUp_Anchor.png" />
+	<img class="popUpImage" style="left:100px;top:-106px;" src="trayImages/PopUp_Raft.png" />
+	<img class="popUpImage" style="left:90px;top:-87px;" src="trayImages/PopUp_Map.png" />
+	<img class="popUpImage" style="left:111px;top:-110px;" src="trayImages/PopUp_Binoculars.png" />
+	<img class="popUpImage" style="left:128px;top:-116px;" src="trayImages/PopUp_Octopus.png" />
+	<img class="popUpImage" style="left:91px;top:-115px;" src="trayImages/PopUp_Compass.png" />
+	<img class="popUpImage" style="left:99px;top:-84px;" src="trayImages/PopUp_Shells.png" />
+	<img class="popUpImage" style="left:200px;top:-145px;" src="trayImages/PopUp_Fish.png" />
+	<img class="popUpImage" style="left:273px;top:-153px;" src="trayImages/PopUp_Pennant.png" />
+	<img class="popUpImage" style="left:200px;top:-146px;" src="trayImages/PopUp_Wheel.png" />
+	<img class="popUpImage" style="left:240px;top:-145px;" src="trayImages/PopUp_Shark.png" />
+	<img class="popUpImage" style="left:150px;top:-116px;" src="trayImages/PopUp_Buoy.png" />
+	<img class="popUpImage" style="left:270px;top:-120px;" src="trayImages/PopUp_Glue.png" />
+	<img class="popUpImage" style="left:60px;top:-150px;" src="trayImages/PopUp_Chunk.png" />
+	<img class="popUpImage" style="left:60px;top:-143px;" src="trayImages/PopUp_Contraction.png" />
+	<img class="popUpImage" style="left:60px;top:-150px;" src="trayImages/PopUp_Compound.png" />
+	<img class="popUpImage" style="left:60px;top:-150px;" src="trayImages/PopUp_Prefix.png" />
+	<img class="popUpImage" style="left:60px;top:-150px;" src="trayImages/PopUp_BaseEnding.png" />
+</div>
+<script src="../../../../../../Shared/Scripts/jquery-1.9.1.js" type='text/javascript'></script>
+<script src="../../../../../../Shared/Scripts/jquery-ui.js" type='text/javascript'></script>
+<script>
+	$("#tray").draggable({axis: "x"});
+</script>
+<!--end slide out captain menu bar-->
+<div id="goToLessonMenu" onClick="goToLessonMenu('left',5);" alt="Lesson Menu" title="Lesson Menu"></div>
 </body>
 </html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title></title>
+	<link href="../../../../../../Shared/Styles/SS1.css" rel="stylesheet" type="text/css" />
+	<link href="../../../../../../Shared/Styles/Site.css" rel="stylesheet" type="text/css" />
+	<link href="../../../../../../Shared/Styles/Presentation.css" rel="stylesheet" type="text/css" />
+	<link href="../../../../../../Shared/Fonts/stylesheet.css" rel="stylesheet" type="text/css" charset="utf-8">
+	<script src="../../../../../../Shared/Scripts/contentPage.js" type="text/javascript"></script>
+	<script src="../../../../../../Shared/Scripts/canvas.js" type='text/javascript'></script>
+	<link href="../../../../../../Shared/Styles/InnerPage.css" rel="stylesheet" type="text/css" />
+	<script src="../../../../../../Shared/Styles/InnerPage.js" type='text/javascript'></script>
+	<style>
+	.closeX{position:absolute;top:8px;right:4px;font-size:50px;color:#333366;cursor:pointer;line-height:40%;}
+	</style>
+</head>
+<body style="background-color:transparent;">
+	
+    <input type="hidden" id="pageType" value="1" />
+    <input type="hidden" id="pageSize" value="690" />   
+	<iframe id="toc" src="TOC.html" style="display:none;"></iframe>
+
+<div id="PageDiv">
+	<canvas class="canvas" id="canvas1" name="drawableCanvas" height="680" width="960"></canvas>
+</div>
+	
+	<div class="imgDiv" style="position:fixed;top:0px;left:4px;right:22px;bottom:40px;">
+		<img src="../../../../../../Shared/Images/Math/backgrounds/greenFluencyInFive.png" style="position:absolute;height:100%;width:100%;" />
+	</div>
+<div onClick="goToLessonMenu('left',13);" style="height:38px;width:38px;position:fixed;bottom:-1px;left:132px;z-index:9999999999999;cursor:pointer;" alt="Lesson Menu" title="Lesson Menu" draggable="false"/>
+</div>
+<script>
+function goToLessonMenu(direction,numberToMove){
+	if(direction==='right'){
+		for(var k=0;k<numberToMove;k++){
+			this.parent.parent.document.getElementById('btnNext').click();
+		}
+	}
+	else if(direction==='left'){
+		for(var k=0;k<numberToMove;k++){
+			this.parent.parent.document.getElementById('btnPrevious').click();
+		}
+	}
+}
+</script>
+</body>
+</html>

@@ -23,8 +23,8 @@
 <link href="../Shared/Tools/css/mathTools.css" rel="stylesheet" type="text/css">
 </head>
 <body id='docBody' style="background:transparent;overflow:hidden;">
-	<div style="z-index:3000;position:fixed;top:0px;left:0px;right:0px;bottom:0px;background-color:transparent;overflow:visible;" id="contentFrame">
-		<div id="iframeDiv" style="z-index:3000;position:absolute;top:0px;left:0px;right:0px;bottom:0px;height:100%;width:100%;overflow:visible;background-color:transparent;">                    
+	<div style="z-index:4000;position:fixed;top:0px;left:0px;right:0px;bottom:0px;background-color:transparent;overflow:visible;" id="contentFrame">
+		<div id="iframeDiv" style="z-index:4000;position:absolute;top:0px;left:0px;right:0px;bottom:0px;height:100%;width:100%;overflow:visible;background-color:transparent;">                    
 			<iframe id="contentFrame1" src="" class="iframeContent" scrolling="no" style="height:100%;width:100%;margin:0px;padding:0px;position:absolute;top:0px;left:0px;right:0px;bottom:0px;background:transparent;overflow:visible;"></iframe>
 			<iframe id="contentFrame2" src="" class="iframeContent" style="opacity:0.0;display:none;" scrolling="no"></iframe>
 		</div>
@@ -470,7 +470,7 @@
 
 
 <!---TOOLS: Pencil Color Picker---------------------------------------------------------------------------------->
-<div id="divPencilColorSizePicker" class="divPencilColorSizePicker" style="z-index:3000; left:270px;">
+<div id="divPencilColorSizePicker" class="divPencilColorSizePicker" style="z-index:4000; left:270px;">
 	<table align="center" border="0" cellpadding="4" cellspacing="3" style="width: 100%;">
     	<tr>
         	<td align="center" width="33%" onClick="pencilColorSizePicker('#000000',30);" class="divColorSizePickerButtons">
@@ -588,7 +588,7 @@
 
 
 <!---TOOLS: Highlighter Color Picker----------------------------------------------------------------------------->
-<div id="divHighlighterColorSizePicker" class="divHighlighterColorSizePicker" style="z-index:3000; left:290px;">
+<div id="divHighlighterColorSizePicker" class="divHighlighterColorSizePicker" style="z-index:4000; left:290px;">
 	<table align="center" border="0" cellpadding="4" cellspacing="3" style="width: 100%;">
     	<tr>
         	<td align="center" width="33%" onClick="pencilColorSizePicker('#000000',30,.02);" class="divColorSizePickerButtons">
@@ -711,31 +711,23 @@
 
 <!---MAIN MENU (BOTTOM - Refresh, Navigation, & Tools)---------------------------------------------------------------------------------->
 <div style="position:fixed; right:0px; bottom:0px; cursor:pointer; height:39px; width:130px; margin:0px;z-index:99999;" alt="logo" onClick="goHome();" /></div>
-<div style="background-image:url('../Shared/Images/Math/MenuBar/Row1_FullMenueBar.png');background-size: 100% 39px; position:fixed; bottom:0px; left:0px; right:0px; height:40px;z-index: 2999;"></div>
-<div id="bottomMenu" style="position:fixed; bottom:0px; left:0px; right:380px; height:39px; z-index:5000;">    
-                <table border="0" style="float:left;position:relative;float:left;z-index:1001;left:0;" id="universalMenuRight" cellpadding="0" cellspacing="0">
-					<tr>
-						<td align="left" valign="bottom">
-							<!-- reset button -->
-							<img alt="Reset Screen" title="Reset Screen" src='../Shared/Images/Math/MenuBar/Nav_1_refresh.png' onMouseOver="this.src='../Shared/Images/Math/MenuBar/Nav_1_refresh.png';" onMouseOut="this.src='../Shared/Images/Math/MenuBar/Nav_1_refresh.png';" onClick="resetScreen(this);" id='btnReset' style="border: 0px none #ffffff;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px; cursor:pointer;" draggable="false"/>
-						</td>
-						<td align="left" valign="bottom">
-							<img alt="Previous Page" title="Previous Page" src='../Shared/Images/Math/MenuBar/Nav_2_back.png' onClick="previous_Click(this);" id='btnPrevious' style="border:0px none #ffffff;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;cursor:pointer;" draggable="false"/>
-						</td>                           
-						<td align="left" valign="bottom">
-							<img alt="Next Page" title="Next Page" src='../Shared/Images/Math/MenuBar/Nav_3_forward.png' onClick="next_Click(this);" id='btnNext' style="border: 0px none #ffffff;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px; cursor:pointer;" draggable="false"/>
-						</td>                           
-						<td align="left" valign="bottom">
-							<img alt="Next Page" title="Next Page" src='../Shared/Images/Math/MenuBar/Nav_3b_index.png' onClick="" id='btnNext' style="border: 0px none #ffffff;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px; cursor:pointer;" draggable="false"/>
-						</td>
-						<td align="left" valign="bottom">
-                            <img id="imgToolsOpenClose" alt="Tools" title="Tools" src="../Shared/Images/Math/MenuBar/Nav_4_slider.png" style="cursor:pointer;" onClick="openToolsMenu();" draggable="false" />
-						</td>   
-					</tr>
-                 </table>
-				 
+<div style="background-image:url('../Shared/Images/Math/MenuBar/Row1_FullMenueBar.png');background-size: 100% 39px; position:fixed; bottom:0px; left:0px; right:0px; height:40px;z-index: 2000;"></div>
+
+<!-- reset button -->
+<img style="position:fixed;left:0px;bottom:0px;cursor:pointer;z-index:5000;" alt="Reset Screen" title="Reset Screen" src='../Shared/Images/Math/MenuBar/Nav_1_refresh.png' onMouseOver="this.src='../Shared/Images/Math/MenuBar/Nav_1_refresh.png';" onMouseOut="this.src='../Shared/Images/Math/MenuBar/Nav_1_refresh.png';" onClick="resetScreen(this);" id='btnReset' draggable="false"/>
+
+<img style="position:fixed;left:54px;bottom:0px;cursor:pointer;z-index:5001;" alt="Previous Page" title="Previous Page" src='../Shared/Images/Math/MenuBar/Nav_2_back.png' onClick="previous_Click(this);" id='btnPrevious' draggable="false"/>
+
+<img style="position:fixed;left:92px;bottom:0px;cursor:pointer;z-index:5000;" alt="Next Page" title="Next Page" src='../Shared/Images/Math/MenuBar/Nav_3_forward.png' onClick="next_Click(this);" id='btnNext' draggable="false"/>
+
+<img id="lessonIndexImg" style="position:fixed;bottom:-1px;left:132px;z-index:3500;cursor:pointer;border:0px;" alt="Lesson Menu" title="Lesson Menu" src='../Shared/Images/Math/MenuBar/Nav_3b_index.png' draggable="false"/>
+
+<img style="position:fixed;left:172px;bottom:0px;cursor:pointer;z-index:5000;" id="imgToolsOpenClose" alt="Tools" title="Tools" src="../Shared/Images/Math/MenuBar/Nav_4_slider.png" onClick="openToolsMenu();" draggable="false" />
+
+
 <script language="javascript">
 			function openToolsMenu() {
+				$id('bottomToolsMenu').style.zIndex=2999;
 				var foo = $id('bottomToolsMenu');
 				var l = parseInt(foo.style.left.replace("px",""));
 
@@ -747,9 +739,10 @@
 					if (l <= 250)
 						setTimeout(openToolsMenu,5);
 					else {
-						foo.style.left = "250px"
+						foo.style.left = "225px"
 						bottomSliderOpen = true;
-						document.getElementById("imgToolsOpenClose").src = "../Shared/Images/Math/MenuBar/Nav_4_slider_BACK.png";		
+						document.getElementById("imgToolsOpenClose").src = "../Shared/Images/Math/MenuBar/Nav_4_slider_BACK.png";
+						$id('bottomToolsMenu').style.zIndex=4000;		
 					}		
 				}
 				else
@@ -760,12 +753,14 @@
 				if (l >= -300)
 					setTimeout(closeToolsMenu,5);
 				else {
-					foo.style.left = "-300px"
+					foo.style.left = "-265px"
 					bottomSliderOpen = false;
+					
 						}	
 				}
 			}
 			function closeToolsMenu() {
+				$id('bottomToolsMenu').style.zIndex=2999;
 				var foo = $id('bottomToolsMenu');
 				var l = parseInt(foo.style.left.replace("px",""));
 				l -= 5;
@@ -774,13 +769,15 @@
 				if (l >= -350)
 					setTimeout(closeToolsMenu,5);
 				else {
+					document.getElementById("divPencilColorSizePicker").style.display = "none";
+					document.getElementById("divHighlighterColorSizePicker").style.display = "none";
 					foo.style.left = "-350px"
 					bottomSliderOpen = false;
 					document.getElementById("imgToolsOpenClose").src = "../Shared/Images/Math/MenuBar/Nav_4_slider.png";	
 				}
 			}			
 </script>
-<div id="bottomToolsMenu" style="position:absolute;left:-350;z-index:1000">                 
+<div id="bottomToolsMenu" style="position:fixed;bottom:0px;left:-350;z-index:3001;">                 
 	  <table border="0" style="" id="pullOutMenu" cellpadding="0" cellspacing="0">                                  
 			
 			<td align="left" valign="bottom">
@@ -811,8 +808,6 @@
 		</tr>
 	</table>        
 </div>
-</div>
-
  
 		        
 <div style="display:none;">

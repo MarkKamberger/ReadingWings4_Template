@@ -9,103 +9,41 @@
 	<link href="../../../../../../Shared/Fonts/stylesheet.css" rel="stylesheet" type="text/css" charset="utf-8">
 	<script src="../../../../../../Shared/Scripts/contentPage.js" type="text/javascript"></script>
 	<script src="../../../../../../Shared/Scripts/canvas.js" type='text/javascript'></script>
-	<script src="../../../../../../Shared/Scripts/randomReporter.js" type='text/javascript'></script>
-	<link href="../../../../../../Shared/Styles/randomReporter.css" rel="stylesheet" type="text/css" />
-	<style>
-		
-		#greyModal{
-			z-index:7;
-			position:absolute;
-			top:0px;
-			bottom:0px;
-			min-height:600px;
-			left:4px;
-			right:4px;
-			opacity:.8;
-			visibility:hidden;
-			background:#C0C0C0;
-		}
-		#storymapWindow{
-			z-index:7;
-			position:absolute;
-			left:200px;
-			top:4px;
-			bottom:4px;
-			bottom:4px;
-			visibility:hidden;
-		}
-		#srWindow{
-			z-index:7;
-			position:absolute;
-			height:627px;
-			width:750px;
-			left:100px;
-			top:75px;
-			visibility:hidden;
-		}
-		.inModal{
-			position:relative;
-			float:left;
-			width:100%;
-			color:#ffffff;
-			font-size:22px; 
-			text-indent:10px;
-			border-bottom:2px solid #000000;
-			line-height:44px;
-		}
-		.list{
-			position:relative;
-			float:left;
-			width:100%;
-			color:#ffffff;
-			padding-top:14px;
-			font-size:18px;
-			width:92%;
-			left:33px;
-			list-style-type:square;color:#000000;list-style-position:inside;text-indent:-1em;
-		}
-		.list li{margin-bottom:11px;}
-		
-	</style>
+	<link href="../../../../../../Shared/Styles/InnerPage.css" rel="stylesheet" type="text/css" />
+	<script src="../../../../../../Shared/Styles/InnerPage.js" type='text/javascript'></script>
 </head>
 <body style="background-color:transparent;background:transparent;">
-	
-	<input type="hidden" id="pageType" value="1" />
-	<input type="hidden" id="pageSize" value="690" />   
-	<iframe id="toc" src="TOC.html" style="display:none;"></iframe>
-	
-<div style="position:fixed;top:0px;bottom:40px;overflow:auto;width:100%;overflow-x:hidden;overflow-y:scroll;z-index:2;">
-	<canvas id="canvas1" name="drawableCanvas" height="680" width="960" style="z-index:8;background:transparent;position:absolute;top:1px;left:1px;">
-	</canvas>
-
-	<div id="greyModal" class="hid"></div>
-	
-	<div id="storymapWindow" class="hid modalWindow">
+<input type="hidden" id="pageType" value="1" />
+<input type="hidden" id="pageSize" value="690" />   
+<iframe id="toc" src="TOC.html" style="display:none;"></iframe>
+<div class="topTitle" style="background:transparent;">
+	<img class="topButton" onclick="teacherInstructions(this,'tpWindow');" src="../../../../../../Shared/Images/Math/MenuBar/LN.png" />
+</div>
+<!--begin PageDiv-->
+<div id="PageDiv">
+	<canvas class="canvas" id="canvas1" name="drawableCanvas" height="680" width="960"></canvas>
+	<div id="greyModal"></div>
+	<div id="storymapWindow" class="modalWindow">
 		<img src="../../../../../../Shared/Images/Math/PageGraphics/StoryMap.jpg" style="position:absolute;height:100%;" />
 	</div>
-
+	<div id="tpWindow" class="modalWindow">
+		<div class="tpRow1">Lesson Note</div>
+		<div class="tpRow2">How to Save Your Annotations</div>
+		<div class="tpList">
+			<li>Use the pen tool to write on your chart.</li>
+			<li>After completing the chart, select file from the top left of the menu bar.</li>
+			<li>Tap the "Save as" option.</li>
+			<li>Rename your chart by typing in the "filename" field(optional).</li>
+			<li>Choose an appropriate storage location.</li>
+			<li>Tap "Save".</li>
+		</div>
+	</div>
 </div>
-	
-<div class="imgDiv" style="position:fixed;top:0px;left:4px;right:22px;bottom:40px;">
-	<img src="Page4_AI.jpg" style="position:absolute;height:100%;width:100%;" />
+<!--end PageDiv-->
+<div id="fullPageImgDiv">
+	<img class="fullPageImg" src="../../../../../../Shared/Images/Math/backgrounds/greenListeningComprehension.png" />
 </div>
-<img onclick="teacherInstructions('storymapWindow');" src="../../../../../../Shared/Images/Math/MenuBar/storymap_menu_button.png" style="z-index:29;position:fixed;bottom:1px;right:165px;cursor:pointer;z-index: 9999999;" />
-
-	<script>
-		function teacherInstructions(modalWindow){
-			[].forEach.call(document.querySelectorAll(".modalWindow"),function(element,index){
-				if(element!=document.getElementById(modalWindow) && element.style.visibility=="visible"){
-					element.style.visibility='hidden';
-				}
-			});
-			if(document.getElementById(modalWindow).style.visibility=="visible"){
-				document.getElementById('greyModal').style.visibility='hidden';
-				document.getElementById(modalWindow).style.visibility='hidden';
-			}else{
-				document.getElementById('greyModal').style.visibility="visible";
-				document.getElementById(modalWindow).style.visibility="visible";
-			}
-		}
-	</script>
-	</body>
+<img id="btnStoryMap" onclick="teacherInstructions(this,'storymapWindow');" src="../../../../../../Shared/Images/Math/MenuBar/storymap_menu_button.png" />
+<div id="goToLessonMenu" onClick="goToLessonMenu('left',8);" alt="Lesson Menu" title="Lesson Menu"></div>
+</body>
 </html>

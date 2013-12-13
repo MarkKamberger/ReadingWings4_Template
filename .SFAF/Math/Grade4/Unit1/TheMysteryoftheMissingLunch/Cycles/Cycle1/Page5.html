@@ -9,157 +9,43 @@
 	<link href="../../../../../../Shared/Fonts/stylesheet.css" rel="stylesheet" type="text/css" charset="utf-8">
 	<script src="../../../../../../Shared/Scripts/contentPage.js" type="text/javascript"></script>
 	<script src="../../../../../../Shared/Scripts/canvas.js" type='text/javascript'></script>
-	<style>
-		.topTitle{z-index:28;position:fixed;top:0px;right:22px;left:4px;height:37px;background:#006600;font-weight:bold;}
-		.titleText{position:absolute;left:153px;top:9px;color:#000000;font-family:Tahoma;}
-		#howdidyoudo{
-			position:absolute;
-			top:161px;
-			left:3px;
-			color:#000000;
-			font-family:Tahoma;
-			font-size:48px;
-			width:200px;
-			text-align:center;
-		}
-		.enLargedImg{
-			position:absolute;
-			width:90%;
-			left:5%;
-			height:100%;
-			z-index:5;
-		}
-		.more{
-			position:fixed;
-			padding:2px;
-			bottom:40px;
-			right:40px;
-			cursor:pointer;
-			text-align:center;
-			font-size:88px;
-			font-family:Tahoma;
-			color:rgb(229,196,147);
-			padding-top:1px;
-			padding-bottom:1px;
-			z-index:11;
-			visibility:hidden;
-		}
-		.fL{
-			position:relative;
-			float:left;
-		}
-		.rightArrow{
-			position:relative;
-			float:left;
-			border-left: 49px solid rgb(229,196,147);
-			border-top: 41px solid transparent;
-			border-bottom: 41px solid transparent;
-			left: 11px;
-			top: 10px;
-			z-index: 10;
-			height:0px;
-			width:0px;
-			height:0px;
-			margin-top:8px;
-			margin-left:3px;
-		}
-		.clickUp{
-			position:absolute;
-			left:200px;
-			width:540px;
-			cursor:pointer;
-		}
-		.openClose{
-			position:absolute;
-			top:40px;
-			left:0px;
-			height:500px;
-			width:100%;
-			visibility:hidden;
-		}
-		#greyModal{
-			z-index:20;
-			position:absolute;
-			top:0px;
-			bottom:0px;
-			min-height:600px;
-			left:4px;
-			right:4px;
-			opacity:.8;
-			visibility:hidden;
-			background:#C0C0C0;
-		}
-		#modalWindow{
-			z-index:200;
-			position:absolute;
-			height:527px;
-			width:750px;
-			left:100px;
-			top:80px;
-			visibility:hidden;
-			background:#fffded;
-			border:2px solid #000000;
-		}
-		.inModal{
-			position:relative;
-			float:left;
-			width:100%;
-			color:#ffffff;
-			font-size:22px; 
-			text-indent:10px;
-			border-bottom:2px solid #000000;
-			line-height:44px;
-		}
-		.list{
-			position:relative;
-			float:left;
-			width:100%;
-			color:#ffffff;
-			padding-top:18px;
-			font-size:18px;
-			width:92%;
-			left:33px;
-			list-style-type:square;color:#000000;list-style-position:inside;text-indent:-1em}
-		.list li{margin-bottom:19px;}
-		body{background:transparent;}
-	</style>
+	<link href="../../../../../../Shared/Styles/InnerPage.css" rel="stylesheet" type="text/css" />
+	<script src="../../../../../../Shared/Styles/InnerPage.js" type='text/javascript'></script>
 </head>
-<body style="background-color:transparent;">
-	<input type="hidden" id="pageType" value="1" />
-    <input type="hidden" id="pageSize" value="690" />
-	<iframe id="toc" src="TOC.html" style="display:none;"></iframe>
-
-	<div class="topTitle" style="background:#ADD692;">
-		<div class="titleText">Success Review</div>
-	</div>
-
-<div style="position:fixed;top:0px;bottom:40px;overflow:auto;width:100%;overflow-x:hidden;overflow-y:scroll;">	
-	
-	<canvas id="canvas1" name="drawableCanvas" height="680" width="960" style="z-index:7;background:transparent;position:absolute;top:1px;left:1px;">
-	</canvas>
-	
-	<div class="openClose" style="z-index:9;visibility:visible;width:0px;">
+<body>
+<input type="hidden" id="pageType" value="1" />
+<input type="hidden" id="pageSize" value="690" />
+<iframe id="toc" src="TOC.html" style="display:none;"></iframe>
+<div class="topTitle" style="background:#ADD692;">
+	<div class="titleText">Success Review</div>
+	<img class="topButton" onclick="teacherInstructions(this,'tpWindow');" src="../../../../../../Shared/Images/Math/MenuBar/TP.png" />
+</div>
+<!--begin scrollable PageDiv-->
+<div id="PageDiv">
+	<canvas class="canvas" id="canvas1" name="drawableCanvas" height="680" width="960"></canvas>
+	<div class="openClose" style="visibility:visible;width:0px;">
 		<div id='howdidyoudo'>How<br>Did You<br>Do?</div>
-		<img onclick="hideShow(1);" src="Page5_Report.png" style="z-index:9;position:absolute;left:211px;height:600px;cursor:pointer;" />
+		<img id="fullScoreSheet" onclick="scoreSheetPages(1);" class="onPageClick" src="Page5_Report.png" />
 	</div>
 	<div class="openClose">
 		<img src="TSS_top.png" class="enLargedImg" />
 	</div>
-	<div onclick="hideShow(2);" class="more openClose2"><div class="fL">more</div><div class="rightArrow"></div></div>
+	<div onclick="scoreSheetPages(2);" class="more openClose2"><div class="fL">more</div><div class="rightArrow"></div></div>
 	<div class="openClose">
 		<img src="TSS_middle.png" class="enLargedImg" />
 	</div>
-	<div onclick="hideShow(3);" class="more openClose2"><div class="fL">more</div><div class="rightArrow"></div></div>
+	<div onclick="scoreSheetPages(3);" class="more openClose2"><div class="fL">more</div><div class="rightArrow"></div></div>
 	<div class="openClose">
 		<img src="TSS_bottom.png" class="enLargedImg" />
 	</div>
-	<div onclick="hideShow(4);" class="more openClose2">back</div>
+	<div onclick="scoreSheetPages(4);" class="more openClose2">back</div>
 	
-	<div id="greyModal" class="hid"></div>
-	<div id="modalWindow" class="hid">
-		<div id="" class="inModal" style="background:#000000;">Teacher Procedure</div>
-		<div id="" class="inModal" style="background:#41beb2; font-size:28px;">Success Review</div>
-		<div id="" class="list">
+	<div id="greyModal"></div>
+	
+	<div id="tpWindow" class="modalWindow">
+		<div class="tpRow1">Teacher Procedure</div>
+		<div class="tpRow2">Success Review</div>
+		<div class="tpList">
 			<li>Hand out team score sheets and team certificates.</li>
 			<li>Point to the Team Celebration Points poster, and celebrate super teams from the previous lesson.</li>
 			<li>Remind students how to earn team celebration points.  Remind them that team celebration points help them to become super teams.</li>
@@ -170,38 +56,8 @@
 			<li>Use the overlay to show team celebration scores.</li>
 		</div>
 	</div>
-	
-</div>	
-
-<img onclick="ln();" src="tPbutton.png" style="z-index:29;position:fixed;top:0px;left:5px;cursor:pointer;z-index: 99999999999999;" />
-	<script>
-		function hideShow(k){
-			initCanvasForDrawing('canvas1');
-			if(!document.getElementsByClassName('openClose').item(k)){
-				document.getElementsByClassName('openClose').item(k-1).style.visibility="hidden";
-				document.getElementsByClassName('openClose').item(0).style.visibility="visible";
-				document.getElementsByClassName('openClose2').item(k-2).style.visibility="hidden";
-			}
-			document.getElementsByClassName('openClose').item(k).style.visibility="visible";
-			document.getElementsByClassName('openClose').item(k-1).style.visibility="hidden";
-			
-			document.getElementsByClassName('openClose2').item(k-1).style.visibility="visible";
-			document.getElementsByClassName('openClose2').item(k-2).style.visibility="hidden";
-		}
-	
-		var isHidden=true;
-		function ln(){
-			if(isHidden){
-				document.getElementById('greyModal').style.visibility="visible";
-				document.getElementById('modalWindow').style.visibility="visible";
-				isHidden=false;
-			}else{
-				document.getElementById('greyModal').style.visibility='hidden';
-				document.getElementById('modalWindow').style.visibility='hidden';
-				isHidden=true;
-			}
-		}
-	
-	</script>
+</div>
+<!--end scrollable PageDiv-->
+<div id="goToLessonMenu" onClick="goToLessonMenu('left',2);" alt="Lesson Menu" title="Lesson Menu"></div>
 </body>
 </html>

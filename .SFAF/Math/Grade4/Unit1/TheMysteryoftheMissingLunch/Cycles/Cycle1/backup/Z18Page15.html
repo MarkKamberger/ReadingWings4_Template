@@ -1,0 +1,543 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title></title>
+	<link href="../../../../../../Shared/Styles/SS1.css" rel="stylesheet" type="text/css" />
+	<link href="../../../../../../Shared/Styles/Site.css" rel="stylesheet" type="text/css" />
+	<link href="../../../../../../Shared/Styles/Presentation.css" rel="stylesheet" type="text/css" />
+	<link href="../../../../../../Shared/Fonts/stylesheet.css" rel="stylesheet" type="text/css" charset="utf-8">
+	<script src="../../../../../../Shared/Scripts/contentPage.js" type="text/javascript"></script>
+	<script src="../../../../../../Shared/Scripts/canvas.js" type='text/javascript'></script>
+	<script src="../../../../../../Shared/Scripts/randomReporter.js" type='text/javascript'></script>
+	<link href="../../../../../../Shared/Styles/randomReporter.css" rel="stylesheet" type="text/css" />
+	<script src="../../../../../../Shared/Scripts/jquery-1.9.1.js" type='text/javascript'></script>
+	<script src="../../../../../../Shared/Scripts/jquery-ui.js" type='text/javascript'></script>
+	<style>
+		.topTitle{position:fixed;top:0px;right:22px;left:4px;height:37px;background:#006600;font-weight:bold;z-index:10;}
+		.titleText{position:absolute;left:163px;top:9px;color:#000000;font-family:Tahoma;}
+		
+		.contentList{
+			position:absolute;
+			width:100%;
+			left:100px;
+			text-align:left;
+			top:65px;
+			color:#000000;
+			font-size:24px;
+			line-height:32px;
+		}
+		.contentList div{position:relative;}
+		.divList{margin-bottom:18px;}
+		
+		
+		#greyModal{
+			z-index:7;
+			position:absolute;
+			top:0px;
+			bottom:0px;
+			min-height:600px;
+			left:4px;
+			right:4px;
+			opacity:.8;
+			visibility:hidden;
+			background:#C0C0C0;
+		}
+		#randomReporterWindow{
+			z-index:8000;
+			position:absolute;
+			height:474px;
+			width:525px;
+			left:225px;
+			top:80px;
+			visibility:hidden;
+			background:#fffded;
+			border:2px solid #000000;
+		}
+		#tpWindow{
+			z-index:8;
+			position:absolute;
+			width:750px;
+			left:100px;
+			top:75px;
+			visibility:hidden;
+			background:#fffded;
+			border:2px solid #000000;
+		}
+		#thinkWindow,#strategyWindow,#writeWindow,#fluencyWindow,#sentenceWindow{
+			z-index:9;
+			position:absolute;
+			width:400px;
+			left:200px;
+			top:125px;
+			visibility:hidden;
+		}
+		#srWindow{
+			z-index:9;
+			position:absolute;
+			width:750px;
+			left:100px;
+			top:75px;
+			visibility:hidden;
+		}
+		.inModal{
+			position:relative;
+			float:left;
+			width:100%;
+			color:#ffffff;
+			font-size:22px; 
+			text-indent:10px;
+			border-bottom:2px solid #000000;
+		}
+		.list{
+			position:relative;
+			float:left;
+			width:100%;
+			color:#ffffff;
+			padding-top:14px;
+			font-size:18px;
+			width:92%;
+			left:33px;
+			list-style-type:square;color:#000000;list-style-position:inside;text-indent:-1em;
+		}
+		.list li{margin-bottom:11px;}
+		
+		#starMenu{
+			position:fixed;
+			bottom:40px;
+			left:-400px;
+			left:0px;
+			height:112px;
+			width:568px;
+			z-index:418;
+			cursor:pointer;
+		}
+		#trayCaptain{
+			position:absolute;
+			left:0px;top:0px;
+		}
+		#trayImages{
+			position:absolute;
+			left:31px;
+			top:13.5px;
+			width:100%;
+		}
+		.trayImage{
+			position:absolute;
+			left:0px;
+			top:1px;
+		}
+		.srLi{position:relative;margin-left:10px;}
+		.srLi2{position:relative;margin-left:25px;}
+		
+		.strategySubWindow{color:#000000;border:1px solid #000000;border-top:3px solid #000000;background:#b9e2dc;font-size:16px;overflow:hidden;
+			z-index:9;
+			position:relative;
+			float:left;
+			margin-right:30px;
+			margin-bottom:20px;
+			width:400px;
+		}
+		.strategyWindowTitle{position:relative;background:#41beb2;font-size:24px;line-height:120%;border:1px solid #000000;text-indent:25px;padding-top:2px;}
+		.strategyWindowList{position:relative;border:1px solid #000000;}
+		.strategyWindowListRow{background:#fffded;position:relative;left:12%;width:88%;top:0px;border-left:1px solid #000000;padding-top:10px;padding-bottom:10px;}
+		.strategyWindowListRowLeftColumn{font-size:18px;position:absolute;top:25%;left:-40px;font-weight:bold;}
+		.strategyWindowListRowRightColumn{position:relative;margin-left:10px;padding-right:15px;padding-left:5px;}
+		
+		.starWindowTitle{position:relative;background:#41beb2;font-size:24px;color:#ffffff;line-height:200%;border:1px solid #000000;text-indent:25px;}
+		.starWindowList{position:relative;border:1px solid #000000;}
+		
+		.starWindowListRow{background:#fffded;position:relative;left:12%;width:88%;top:0px;border-left:1px solid #000000;padding-top:10px;padding-bottom:10px;}
+		.starWindowListRowLeftColumn{font-size:18px;position:absolute;top:25%;left:-40px;font-weight:bold;}
+		.starWindowListRowRightColumn{position:relative;margin-left:10px;padding-right:15px;padding-left:5px;}
+		.starMenuWindow{color:#000000;border:1px solid #000000;border-top:3px solid #000000;background:#b9e2dc;font-size:14px;overflow:hidden}
+		
+		.notThereYet{position:relative;background:#dcddde;font-size:14px;line-height:200%;border:1px solid #000000;text-indent:20px;}
+	</style>
+</head>
+<body style="background-color:transparent;background:transparent;">
+	
+	<input type="hidden" id="pageType" value="1" />
+	<input type="hidden" id="pageSize" value="690" />   
+	<iframe id="toc" src="TOC.html" style="display:none;"></iframe>
+	
+	<div class="topTitle" style="background:#ADD692;">
+		<div class="titleText">Class Discussion</div>
+	</div>
+	
+<div style="position:fixed;top:0px;bottom:40px;overflow:auto;width:100%;overflow-y:scroll;overflow-x:hidden;">
+	
+	<canvas id="canvas1" name="drawableCanvas" height="680" width="960" style="z-index:18;background:transparent;position:absolute;top:1px;left:1px;">
+	</canvas>
+	
+	<div class="contentList">
+		<div class="divList onPageClick" style="z-index:1000;cursor:pointer;" onclick="teacherInstructions(this,'answerWindow1');">1. What effect does his missing lunch bag have on Ramon?</div>
+		<div class="divList onPageClick" style="z-index:1000;cursor:pointer;" onclick="teacherInstructions(this,'answerWindow2');">2. What is Ramon's main problem in the story?</div>
+		<div>3. What happens before Jack tells Emily and Ramon about the paint?</div>
+		<div class="divList" style="text-indent:45px;">
+			<div>a. Ramon smells salami on Jack's breath.</div>
+			<div>b. They see him wiping mustard on a napkin.</div>
+			<div>c. They see an empty lunch bag on his desk.</div>
+			<div>d. The ask Jack about a stain on his shirt.</div>
+		</div>
+		<div>4. You can conclude from the text that Ramon and Emily -</div>
+		<div class="divList" style="text-indent:45px;">
+			<div>a. think Jack is innocent.</div>
+			<div>b. believe Jack stole the sandwich.</div>
+			<div>c. are playing hooky.</div>
+			<div>d. think math class is the best of all.</div>
+		</div>
+	</div>
+	
+	
+	
+	
+	<div id="greyModal"></div>
+	
+	<div id="answerWindow1" class="modalWindow" style="z-index:8;visibility:hidden;position:absolute;top:100px;left:50px;background:#fffded;border-radius:4px;padding:15px;width:750px;font-size:24px;">
+		<div style="position:relative;margin-bottom:20px;"><span style="color:red;">100 points =</span> The missing lunch bag makes Ramon angry.  He is hungry, and he is sure someone stole his lunch.  It makes him want to find out what happened to his lunch.</div>
+		<div style="position:relative;margin-bottom:20px;"><span style="color:red;">90 points =</span> The missing lunch bag makes Ramon angry.  It makes him want to find out what happened to his lunch.</div>
+		<div style="position:relative;margin-bottom:20px;"><span style="color:red;">80 points =</span> It makes him angry.</div>
+	</div>
+	<div id="answerWindow2" class="modalWindow" style="z-index:8;visibility:hidden;position:absolute;top:150px;left:50px;background:#fffded;border-radius:4px;padding:15px;width:750px;font-size:24px;">
+		<div style="position:relative;margin-bottom:20px;">
+			<span style="color:red;">100 points =</span> 
+			Ramon's main problem in the story is finding out what happened to his lunch.  He must figure out if someone stole it, or if he lost or forgot it.  He doesn't think he lost it or forgot it, so he wants to find out who stole it.
+		</div>
+		<div style="position:relative;margin-bottom:20px;">
+			<span style="color:red;">90 points =</span> 
+			Ramon's main problem in the story is finding out what happened to his lunch.  He doen't think he lost it or forgot it, so he wants to find out who stole it.
+		</div>
+		<div style="position:relative;margin-bottom:20px;"><span style="color:red;">80 points =</span> He wants to find out what happened to his lunch.</div>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div id="sentenceWindow" class="modalWindow starMenuWindow">
+		<div class="starWindowTitle">Meaningful Sentence</div>
+		<div class="starWindowList">
+			<div class="starWindowListRow">
+				<div class="starWindowListRowLeftColumn">100</div>
+				<div class="starWindowListRowRightColumn">Write a sentence that uses the word correctly and includes details to create a mind movie.</div>
+			</div>			
+		</div>
+		<div class="starWindowList">
+			<div class="starWindowListRow">
+				<div class="starWindowListRowLeftColumn">90</div>
+				<div class="starWindowListRowRightColumn">Write a sentence that uses the word correctly and includes one detail.</div>
+			</div>			
+		</div>
+		<div class="starWindowList">
+			<div class="starWindowListRow">
+				<div class="starWindowListRowLeftColumn">80</div>
+				<div class="starWindowListRowRightColumn">Write a sentence that uses the word correctly.</div>
+			</div>			
+		</div>
+		<div class="notThereYet">
+			<span style="font-weight:bold;">Not there yet?</span> Ask your teacher for another chance.
+		</div>
+	</div>
+	
+	<div id="fluencyWindow" class="modalWindow starMenuWindow">
+		<div class="starWindowTitle">Fluency</div>
+		<div class="starWindowList">
+			<div class="starWindowListRow">
+				<div class="starWindowListRowLeftColumn">100</div>
+				<div class="starWindowListRowRightColumn">Read with feeling, smoothness, and accuracy at the targeted rate.</div>
+			</div>			
+		</div>
+		<div class="starWindowList">
+			<div class="starWindowListRow">
+				<div class="starWindowListRowLeftColumn">90</div>
+				<div class="starWindowListRowRightColumn">Read with feeling and smoothness.</div>
+			</div>			
+		</div>
+		<div class="starWindowList">
+			<div class="starWindowListRow">
+				<div class="starWindowListRowLeftColumn">80</div>
+				<div class="starWindowListRowRightColumn">Read with accuracy. Most of the words are correct (no more than four errors).</div>
+			</div>			
+		</div>
+		<div class="notThereYet">
+			<span style="font-weight:bold;">Not there yet?</span> Ask your teacher for another chance.
+		</div>
+	</div>
+	
+	<div id="writeWindow" class="modalWindow starMenuWindow">
+		<div class="starWindowTitle">Write-On</div>
+		<div class="starWindowList">
+			<div class="starWindowListRow">
+				<div class="starWindowListRowLeftColumn">100</div>
+				<div class="starWindowListRowRightColumn">Write a complete, correct answer that gives evidence or shows use of background knowledge.</div>
+			</div>			
+		</div>
+		<div class="starWindowList">
+			<div class="starWindowListRow">
+				<div class="starWindowListRowLeftColumn">90</div>
+				<div class="starWindowListRowRightColumn">Write a complete, correct answer in a full sentence with the question stem.</div>
+			</div>			
+		</div>
+		<div class="starWindowList">
+			<div class="starWindowListRow">
+				<div class="starWindowListRowLeftColumn">80</div>
+				<div class="starWindowListRowRightColumn">Write a correct answer that makes sense.</div>
+			</div>			
+		</div>
+		<div class="notThereYet">
+			<span style="font-weight:bold;">Not there yet?</span> Ask your teacher for another chance.
+		</div>
+	</div>
+	
+	
+	<div id="thinkWindow" class="modalWindow starMenuWindow">
+		<div class="starWindowTitle">Think-and-Connect</div>
+		<div class="starWindowList">
+			<div class="starWindowListRow">
+				<div class="starWindowListRowLeftColumn">100</div>
+				<div class="starWindowListRowRightColumn">Say a complete, correct answer that gives evidence or shows use of background knowledge.</div>
+			</div>			
+		</div>
+		<div class="starWindowList">
+			<div class="starWindowListRow">
+				<div class="starWindowListRowLeftColumn">90</div>
+				<div class="starWindowListRowRightColumn">Say a complete, correct answer in a full sentence with the question stem.</div>
+			</div>			
+		</div>
+		<div class="starWindowList">
+			<div class="starWindowListRow">
+				<div class="starWindowListRowLeftColumn">80</div>
+				<div class="starWindowListRowRightColumn">Say a correct answer that makes sense.</div>
+			</div>			
+		</div>
+		<div class="notThereYet">
+			<span style="font-weight:bold;">Not there yet?</span> Ask your teacher for another chance.
+		</div>
+	</div>
+	
+	
+	
+	
+	<div id="srWindow" class="modalWindow" style="color:#000000;border:1px solid #000000;border-top:3px solid #000000;background:#fffded;font-size:14px;">
+		
+		<div style="position:relative;background:#41beb2;font-size:28px;color:#ffffff;line-height:200%;border:1px solid #000000;text-indent:25px;">Class Discussion</div>
+		
+		<div style="position:relative;border:1px solid #000000;">
+			<div style="position:relative;left:45%;top:0px;border-left:1px solid #000000;list-style-type:square;color:#000000;list-style-position:inside;text-indent:-1em;padding-top:10px;padding-bottom:10px;">
+				<div style="font-size:18px;position:absolute;top:25%;left:-300px;font-weight:bold;">Strategy-Use Discussion</div>
+				<li class="srLi2">Describe your team's strategy use.</li>
+				<li class="srLi2">How did you resolve a sticky note?</li>
+			</div>			
+		</div>
+		
+		<div style="position:relative;border:1px solid #000000;;">
+			<div style="position:relative;left:45%;top:0px;border-left:1px solid #000000;list-style-type:square;color:#000000;list-style-position:inside;text-indent:-1em;padding-top:10px;padding-bottom:10px;">
+				<div style="font-size:18px;position:absolute;top:25%;left:-300px;font-weight:bold;">Think-and-Connect Discussion</div>
+				<li class="srLi2">Did you enjoy your reading? Why or why not?</li>
+				<li class="srLi2">Discuss Team Talk questions and Team Talk extenders.</li>
+				<li class="srLi2">Explain your teams discussion.</li>
+			</div>			
+		</div>
+		
+		<div style="position:relative;border:1px solid #000000;">
+			<div style="position:relative;left:45%;top:30%;border-left:1px solid #000000;list-style-type:square;color:#000000;list-style-position:inside;text-indent:-1em;padding-top:10px;padding-bottom:10px;">
+				<div style="font-size:18px;position:absolute;top:25%;left:-300px;font-weight:bold;">Write-On Discussion</div>
+				<li class="srLi2">Read your team's written answer to the class.</li>
+				<li class="srLi2">What makes the class answer a good answer?</li>
+				<li class="srLi2">How can you improve it?</li>
+			</div>			
+		</div>
+		
+			
+	</div>
+	
+	
+	
+	
+	
+	<div id="tpWindow" class="modalWindow">
+		<div style="background:#000000;position:relative;font-size:24px;color:#ffffff;line-height:200%;border:1px solid #000000;text-indent:25px;">Teacher Procedure</div>
+		<div style="position:relative;background:#41beb2;font-size:24px;color:#ffffff;line-height:200%;border:1px solid #000000;text-indent:25px;">Vocabulary Review</div>
+		<div class="list">
+			<li>Ensure participation by calling on teams to share responses to all discussions.</li>
+			<li>Explain, or have team leaders review, if necessary, the student routine for Class Discussion.</li>
+			<li>Award team celebration points.</li>
+			<li>Add individual scores to the teacher cycle record form.</li>
+		</div>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div id="strategyWindow" class="modalWindow" style="top:60px;left:30px;width:100%;">
+		
+		<div class="strategySubWindow"  style="background:#ffcb05;">
+			<div class="strategyWindowTitle" style="background:#ffe8a7;">Clarifying</div>
+			<div class="strategyWindowList">
+				<div class="strategyWindowListRow">
+					<div class="strategyWindowListRowLeftColumn">100</div>
+					<div class="strategyWindowListRowRightColumn">Write a complete, correct answer that gives evidence or shows use of background knowledge.</div>
+				</div>			
+			</div>
+			<div class="strategyWindowList">
+				<div class="strategyWindowListRow">
+					<div class="strategyWindowListRowLeftColumn">90</div>
+					<div class="strategyWindowListRowRightColumn">Write a complete, correct answer in a full sentence with the question stem.</div>
+				</div>			
+			</div>
+			<div class="strategyWindowList">
+				<div class="strategyWindowListRow">
+					<div class="strategyWindowListRowLeftColumn">80</div>
+					<div class="strategyWindowListRowRightColumn">Write a correct answer that makes sense.</div>
+				</div>			
+			</div>
+			<div class="notThereYet">
+				<span style="font-weight:bold;">Not there yet?</span> Ask your teacher for another chance.
+			</div>
+		</div>
+		
+		<div class="strategySubWindow" style="background:#f57f3c;">
+			<div class="strategyWindowTitle" style="background:#fcc8a5;">Predicting</div>
+			<div class="strategyWindowList">
+				<div class="strategyWindowListRow">
+					<div class="strategyWindowListRowLeftColumn">100</div>
+					<div class="strategyWindowListRowRightColumn">Write a complete, correct answer that gives evidence or shows use of background knowledge.</div>
+				</div>			
+			</div>
+			<div class="strategyWindowList">
+				<div class="strategyWindowListRow">
+					<div class="strategyWindowListRowLeftColumn">90</div>
+					<div class="strategyWindowListRowRightColumn">Write a complete, correct answer in a full sentence with the question stem.</div>
+				</div>			
+			</div>
+			<div class="strategyWindowList">
+				<div class="strategyWindowListRow">
+					<div class="strategyWindowListRowLeftColumn">80</div>
+					<div class="strategyWindowListRowRightColumn">Write a correct answer that makes sense.</div>
+				</div>			
+			</div>
+			<div class="notThereYet">
+				<span style="font-weight:bold;">Not there yet?</span> Ask your teacher for another chance.
+			</div>
+		</div>
+		
+		<div class="strategySubWindow" style="background:#8dc63f;">
+			<div class="strategyWindowTitle" style="background:#c8dda9;">Questioning</div>
+			<div class="strategyWindowList">
+				<div class="strategyWindowListRow">
+					<div class="strategyWindowListRowLeftColumn">100</div>
+					<div class="strategyWindowListRowRightColumn">Write a complete, correct answer that gives evidence or shows use of background knowledge.</div>
+				</div>			
+			</div>
+			<div class="strategyWindowList">
+				<div class="strategyWindowListRow">
+					<div class="strategyWindowListRowLeftColumn">90</div>
+					<div class="strategyWindowListRowRightColumn">Write a complete, correct answer in a full sentence with the question stem.</div>
+				</div>			
+			</div>
+			<div class="strategyWindowList">
+				<div class="strategyWindowListRow">
+					<div class="strategyWindowListRowLeftColumn">80</div>
+					<div class="strategyWindowListRowRightColumn">Write a correct answer that makes sense.</div>
+				</div>			
+			</div>
+			<div class="notThereYet">
+				<span style="font-weight:bold;">Not there yet?</span> Ask your teacher for another chance.
+			</div>
+		</div>
+		
+		<div class="strategySubWindow" style="background:#00afcc;">
+			<div class="strategyWindowTitle" style="background:#addbeb;">Summarizing</div>
+			<div class="strategyWindowList">
+				<div class="strategyWindowListRow">
+					<div class="strategyWindowListRowLeftColumn">100</div>
+					<div class="strategyWindowListRowRightColumn">Write a complete, correct answer that gives evidence or shows use of background knowledge.</div>
+				</div>			
+			</div>
+			<div class="strategyWindowList">
+				<div class="strategyWindowListRow">
+					<div class="strategyWindowListRowLeftColumn">90</div>
+					<div class="strategyWindowListRowRightColumn">Write a complete, correct answer in a full sentence with the question stem.</div>
+				</div>			
+			</div>
+			<div class="strategyWindowList">
+				<div class="strategyWindowListRow">
+					<div class="strategyWindowListRowLeftColumn">80</div>
+					<div class="strategyWindowListRowRightColumn">Write a correct answer that makes sense.</div>
+				</div>			
+			</div>
+			<div class="notThereYet">
+				<span style="font-weight:bold;">Not there yet?</span> Ask your teacher for another chance.
+			</div>
+		</div>
+		
+	</div>
+	
+	
+	
+	<div id="randomReporterWindow" class="modalWindow">
+		<div class="wheelBox"></div>
+	</div>
+
+</div>
+
+<div id="starMenu">
+	<img src="../../../../../../Shared/Images/Math/MenuBar/starMenu.png" id="trayCaptain" />
+	<div style="position:absolute;right:0px;width:75px;height:100px;cursor:move;"></div>
+	<div id="trayImages">
+		<img class="clickForModalWindow" onclick="teacherInstructions(this,'strategyWindow');" src="../../../../../../Shared/Images/Math/MenuBar/strategy_button.png" style="position:absolute;top:4px;left:10px;cursor:pointer;z-index:999999999999;" />
+		<img class="clickForModalWindow" onclick="teacherInstructions(this,'thinkWindow');"src="../../../../../../Shared/Images/Math/MenuBar/think_button.png" style="position:absolute;top:4px;left:100px;cursor:pointer;z-index:999999999999;" />		
+		<img class="clickForModalWindow" onclick="teacherInstructions(this,'writeWindow');"src="../../../../../../Shared/Images/Math/MenuBar/write_button.png" style="position:absolute;top:4px;left:190px;cursor:pointer;z-index:999999999999;" />		
+		<img class="clickForModalWindow" onclick="teacherInstructions(this,'fluencyWindow');"src="../../../../../../Shared/Images/Math/MenuBar/fluency_button.png" style="position:absolute;top:4px;left:280px;cursor:pointer;z-index:999999999999;" />		
+		<img class="clickForModalWindow" onclick="teacherInstructions(this,'sentenceWindow');"src="../../../../../../Shared/Images/Math/MenuBar/sentence_button.png" style="position:absolute;top:4px;left:370px;cursor:pointer;z-index:999999999999;" />
+	</div>
+</div>
+	
+	
+	
+
+<img onclick="teacherInstructions(this,'tpWindow');" src="tPbutton.png" style="z-index:29;position:fixed;top:0px;left:5px;cursor:pointer;z-index: 9999999;" />
+<img onclick="teacherInstructions(this,'srWindow');" src="../../../../../../Shared/Images/Math/MenuBar/sr_button.png" style="z-index:29;position:fixed;top:0px;left:45px;cursor:pointer;z-index: 9999999;" />
+<img src="RR.png" onclick="teacherInstructions(this,'randomReporterWindow');" style="position:fixed;bottom:1px;right:165px;cursor:pointer;z-index:999999999999;" />	
+	
+	<script>
+		function teacherInstructions(k,modalWindow){
+			if(!k.classList.contains("onPageClick")){
+				[].forEach.call(document.querySelectorAll(".onPageClick"),function(element,index){
+					element.style.zIndex=4;
+				});
+			}else{
+				k.style.zIndex=1000;
+			}
+			[].forEach.call(document.querySelectorAll(".modalWindow"),function(element,index){
+				if(element!=document.getElementById(modalWindow) && element.style.visibility=="visible"){
+					element.style.visibility='hidden';
+				}
+			});
+			if(document.getElementById(modalWindow).style.visibility=="visible"){
+				document.getElementById('greyModal').style.visibility='hidden';
+				document.getElementById(modalWindow).style.visibility='hidden';
+				[].forEach.call(document.querySelectorAll(".onPageClick"),function(element,index){
+					element.style.zIndex=1000;
+				});
+			}else{
+				document.getElementById('greyModal').style.visibility="visible";
+				document.getElementById(modalWindow).style.visibility="visible";
+			}
+		}
+		$("#starMenu").draggable({axis: "x"});
+	</script>
+	
+	</body>
+</html>

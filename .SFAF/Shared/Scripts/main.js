@@ -465,6 +465,8 @@ function hidePartOfElement(e,c) {
 
 
 function next_Click(button) {
+	document.getElementById("divPencilColorSizePicker").style.display = "none";
+	document.getElementById("divHighlighterColorSizePicker").style.display = "none";
 	currentPage++;
 	if (currentPage <= maxPages)
 		jumpToPage(nextPage,currentPage);
@@ -477,6 +479,8 @@ function next_Click(button) {
 }
 
 function previous_Click(button) {
+	document.getElementById("divPencilColorSizePicker").style.display = "none";
+	document.getElementById("divHighlighterColorSizePicker").style.display = "none";
 	currentPage--;
 	if (currentPage >= 1)
 		jumpToPage(prevPage,currentPage);
@@ -588,7 +592,6 @@ function switchMenu() {
 	// set the menu to the left side
 	if (menuPos === 2) {
 		menuPos = 1;
-		$id('universalMenuRight').style.display="none";
 		$id('universalMenuLeft').style.display="inline";
 		$id('pageMenu').style.display="none";
 		$id('pageMenuLeft').style.display="inline";
@@ -614,7 +617,6 @@ function switchMenu() {
 	// set the menu to the right side
 	else {
 		menuPos = 2;
-		$id('universalMenuRight').style.display="inline";
 		$id('universalMenuLeft').style.display="none";
 		$id('pageMenu').style.display="inline";
 		$id('pageMenuLeft').style.display="none";
@@ -1185,6 +1187,8 @@ function hasLocalStorage() {
 
 function resetScreen(b) {
 	closeAllWindows();
+	document.getElementById("divPencilColorSizePicker").style.display = "none";
+	document.getElementById("divHighlighterColorSizePicker").style.display = "none";
 	var i = frame1;
 	
 		

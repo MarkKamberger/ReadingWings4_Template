@@ -1,0 +1,281 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title></title>
+	<link href="../../../../../../Shared/Styles/SS1.css" rel="stylesheet" type="text/css" />
+	<link href="../../../../../../Shared/Styles/Site.css" rel="stylesheet" type="text/css" />
+	<link href="../../../../../../Shared/Styles/Presentation.css" rel="stylesheet" type="text/css" />
+	<link href="../../../../../../Shared/Fonts/stylesheet.css" rel="stylesheet" type="text/css" charset="utf-8">
+	<script src="../../../../../../Shared/Scripts/contentPage.js" type="text/javascript"></script>
+	<script src="../../../../../../Shared/Scripts/canvas.js" type='text/javascript'></script>
+	<style>
+		.topTitle{z-index:28;position:fixed;top:0px;right:22px;left:4px;height:37px;background:#006600;font-weight:bold;}
+		.titleText{position:absolute;left:153px;top:9px;color:#000000;font-family:Tahoma;}
+		#howdidyoudo{
+			position:absolute;
+			top:161px;
+			left:3px;
+			color:#000000;
+			font-family:Tahoma;
+			font-size:48px;
+			width:200px;
+			text-align:center;
+		}
+		.enLargedImg{
+			position:absolute;
+			width:90%;
+			left:5%;
+			height:100%;
+			z-index:5;
+		}
+		.more{
+			position:fixed;
+			padding:2px;
+			bottom:40px;
+			right:40px;
+			cursor:pointer;
+			text-align:center;
+			font-size:88px;
+			font-family:Tahoma;
+			color:rgb(229,196,147);
+			padding-top:1px;
+			padding-bottom:1px;
+			z-index:11;
+			visibility:hidden;
+		}
+		.fL{
+			position:relative;
+			float:left;
+		}
+		.rightArrow{
+			position:relative;
+			float:left;
+			border-left: 49px solid rgb(229,196,147);
+			border-top: 41px solid transparent;
+			border-bottom: 41px solid transparent;
+			left: 11px;
+			top: 10px;
+			z-index: 10;
+			height:0px;
+			width:0px;
+			height:0px;
+			margin-top:8px;
+			margin-left:3px;
+		}
+		.clickUp{
+			position:absolute;
+			left:200px;
+			width:540px;
+			cursor:pointer;
+		}
+		.openClose{
+			position:absolute;
+			top:40px;
+			left:0px;
+			height:500px;
+			width:100%;
+			visibility:hidden;
+		}
+		#greyModal{
+			z-index:6;
+			position:absolute;
+			top:0px;
+			bottom:0px;
+			min-height:600px;
+			left:4px;
+			right:4px;
+			opacity:.8;
+			visibility:hidden;
+			background:#C0C0C0;
+		}
+		#modalWindow{
+			z-index:200;
+			position:absolute;
+			height:527px;
+			width:750px;
+			left:100px;
+			top:80px;
+			visibility:hidden;
+			background:#fffded;
+			border:2px solid #000000;
+		}
+		.inModal{
+			position:relative;
+			float:left;
+			width:100%;
+			color:#ffffff;
+			font-size:22px; 
+			text-indent:10px;
+			border-bottom:2px solid #000000;
+			line-height:44px;
+		}
+		
+		#tpWindow{
+			z-index:7;
+			position:absolute;
+			width:750px;
+			left:100px;
+			top:41px;
+			visibility:hidden;
+			background:#fffded;
+			border:2px solid #000000;
+		}
+		.list{
+			position:relative;
+			float:left;
+			width:100%;
+			color:#ffffff;
+			padding-top:14px;
+			font-size:15px;
+			width:92%;
+			left:33px;
+			list-style-type:square;color:#000000;list-style-position:inside;text-indent:-1em;
+		}
+		.list li{margin-bottom:9px;line-height:120%;}
+		.closeX{top:40px;right:40px;height:30px;width:30px;border-radius:30px;line-height:30px;position:fixed;z-index:50000000;background:#41beb2;color:#ffffff;text-align:center;font-size:20px;cursor:pointer;
+			visibility:hidden;}
+		body{background:transparent;}
+	</style>
+</head>
+<body style="background-color:transparent;">
+	<input type="hidden" id="pageType" value="1" />
+    <input type="hidden" id="pageSize" value="690" />
+	<iframe id="toc" src="TOC.html" style="display:none;"></iframe>
+
+	<div class="topTitle" style="background:#ADD692;">
+		<div class="titleText">Success Review</div>
+	</div>
+
+<div style="position:fixed;top:0px;bottom:40px;overflow:auto;width:100%;overflow-x:hidden;overflow-y:scroll;">	
+	
+	<canvas id="canvas1" name="drawableCanvas" height="680" width="960" style="z-index:8;background:transparent;position:absolute;top:1px;left:1px;">
+	</canvas>
+	
+	<div class="openClose" style="visibility:visible;width:0px;">
+		<div id='howdidyoudo'>How<br>Did You<br>Do?</div>
+		<img onclick="hideShow(1);" class="onPageClick" src="Page5_Report.png" style="z-index:9;position:absolute;left:211px;height:600px;cursor:pointer;" />
+	</div>
+	<div class="openClose">
+		<img src="TSS_top.png" class="enLargedImg" />
+	</div>
+	<div onclick="hideShow(2);" class="more openClose2"><div class="fL">more</div><div class="rightArrow"></div></div>
+	<div class="openClose">
+		<img src="TSS_middle.png" class="enLargedImg" />
+	</div>
+	<div onclick="hideShow(3);" class="more openClose2"><div class="fL">more</div><div class="rightArrow"></div></div>
+	<div class="openClose">
+		<img src="TSS_bottom.png" class="enLargedImg" />
+	</div>
+	<div onclick="hideShow(4);" class="more openClose2">back</div>
+	
+	<div id="greyModal" class="hid"></div>
+	<div id="tpWindow" class="modalWindow">
+		<div style="background:#000000;position:relative;font-size:24px;color:#ffffff;line-height:200%;border:1px solid #000000;text-indent:25px;">Teacher Procedure</div>
+		<div style="position:relative;background:#41beb2;font-size:24px;color:#ffffff;line-height:200%;border:1px solid #000000;text-indent:25px;">Success Review</div>
+		<div class="list">
+			<li>Hand out team score sheets and team certificates.</li>
+			<li>Point to the Team Celebration Points poster, and celebrate super teams from the previous lesson.</li>
+			<li>Remind students how to earn team celebration points.  Remind them that team celebration points help them to become super teams.</li>
+			<li>Guide teams to set new team improvement goals.</li>
+			<li>Have one student from each team write the team improvement goal on the team score sheet.  Note each team's goal on the teacher cycle record form.</li>
+			<li>Award team celebration points throughout each instructional day.</li>
+			<li>Keep track of team celebration points as you award them. Transfer points in the team score sheet tally boxes to the Team Celebration Points poster at the end of each day</li>
+			<li>Use the overlay to show team celebration scores.</li>
+		</div>
+	</div>
+	
+</div>	
+
+<img onclick="teacherInstructions(this,'tpWindow');" src="tPbutton.png" style="z-index:29;position:fixed;top:0px;left:5px;cursor:pointer;" />
+	<script>
+		function hideShow(k){
+			initCanvasForDrawing('canvas1');
+			if(!document.getElementsByClassName('openClose').item(k)){
+				document.getElementsByClassName('openClose').item(k-1).style.visibility="hidden";
+				document.getElementsByClassName('openClose').item(0).style.visibility="visible";
+				document.getElementsByClassName('openClose2').item(k-2).style.visibility="hidden";
+			}
+			document.getElementsByClassName('openClose').item(k).style.visibility="visible";
+			document.getElementsByClassName('openClose').item(k-1).style.visibility="hidden";
+			
+			document.getElementsByClassName('openClose2').item(k-1).style.visibility="visible";
+			document.getElementsByClassName('openClose2').item(k-2).style.visibility="hidden";
+		}
+	
+		var isHidden=true;
+		function ln(){
+			if(isHidden){
+				document.getElementById('greyModal').style.visibility="visible";
+				document.getElementById('modalWindow').style.visibility="visible";
+				isHidden=false;
+			}else{
+				document.getElementById('greyModal').style.visibility='hidden';
+				document.getElementById('modalWindow').style.visibility='hidden';
+				isHidden=true;
+			}
+		}
+		
+	</script>
+	<script>
+		[].forEach.call(document.querySelectorAll(".modalWindow"),function(element,index){
+			var closeX=document.createElement("div");
+			closeX.classList.add("closeX");
+			closeX.innerHTML="X";
+			element.closeX=closeX;
+			document.body.appendChild(closeX);
+			closeX.onclick=function(){
+				teacherInstructions(this,element.id);
+				closeX.style.visibility='hidden';
+			}
+		});
+		
+		function teacherInstructions(k,modalWindow){
+			if(!k.classList.contains("onPageClick")){
+				[].forEach.call(document.querySelectorAll(".onPageClick"),function(element,index){
+					element.style.zIndex=4;
+				});
+			}else{
+				[].forEach.call(document.querySelectorAll(".onPageClick"),function(element,index){
+					element.style.zIndex=4;
+				});
+				k.style.zIndex=1000;
+			}
+			[].forEach.call(document.querySelectorAll(".modalWindow"),function(element,index){
+				if(element!=document.getElementById(modalWindow) && element.style.visibility=="visible"){
+					element.style.visibility='hidden';
+					element.closeX.style.visibility='hidden';
+				}
+			});
+			if(document.getElementById(modalWindow).style.visibility=="visible"){
+				document.getElementById('greyModal').style.visibility='hidden';
+				document.getElementById(modalWindow).style.visibility='hidden';
+				document.getElementById(modalWindow).closeX.style.visibility='hidden';
+				[].forEach.call(document.querySelectorAll(".onPageClick"),function(element,index){
+					element.style.zIndex=1000;
+				});
+			}else{
+				document.getElementById('greyModal').style.visibility="visible";
+				document.getElementById(modalWindow).style.visibility="visible";
+				document.getElementById(modalWindow).closeX.style.visibility="visible";
+			}
+		}
+	</script>	
+	<div onClick="goToLessonMenu('left',2);" style="height:38px;width:38px;position:fixed;bottom:-1px;left:132px;z-index:9999999999999;cursor:pointer;" alt="Lesson Menu" title="Lesson Menu" draggable="false"/>
+</div>
+<script>
+function goToLessonMenu(direction,numberToMove){
+	if(direction==='right'){
+		for(var k=0;k<numberToMove;k++){
+			this.parent.parent.document.getElementById('btnNext').click();
+		}
+	}
+	else if(direction==='left'){
+		for(var k=0;k<numberToMove;k++){
+			this.parent.parent.document.getElementById('btnPrevious').click();
+		}
+	}
+}
+</script>
+</body>
+</html>

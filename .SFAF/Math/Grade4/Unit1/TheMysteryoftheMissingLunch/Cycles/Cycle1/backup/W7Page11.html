@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title></title>
+	<link href="../../../../../../Shared/Styles/SS1.css" rel="stylesheet" type="text/css" />
+	<link href="../../../../../../Shared/Styles/Site.css" rel="stylesheet" type="text/css" />
+	<link href="../../../../../../Shared/Styles/Presentation.css" rel="stylesheet" type="text/css" />
+	<link href="../../../../../../Shared/Fonts/stylesheet.css" rel="stylesheet" type="text/css" charset="utf-8">
+	<script src="../../../../../../Shared/Scripts/contentPage.js" type="text/javascript"></script>
+	<script src="../../../../../../Shared/Scripts/canvas.js" type='text/javascript'></script>
+	<script src="../../../../../../Shared/Scripts/randomReporter.js" type='text/javascript'></script>
+	<link href="../../../../../../Shared/Styles/randomReporter.css" rel="stylesheet" type="text/css" />
+	<style>
+		
+		#greyModal{
+			z-index:6;
+			position:absolute;
+			top:0px;
+			bottom:0px;
+			min-height:600px;
+			left:4px;
+			right:4px;
+			opacity:.8;
+			visibility:hidden;
+			background:#C0C0C0;
+		}
+		#storymapWindow{
+			z-index:7;
+			position:absolute;
+			left:200px;
+			top:4px;
+			bottom:4px;
+			bottom:4px;
+			visibility:hidden;
+		}
+		#srWindow{
+			z-index:7;
+			position:absolute;
+			height:627px;
+			width:750px;
+			left:100px;
+			top:75px;
+			visibility:hidden;
+		}
+		.inModal{
+			position:relative;
+			float:left;
+			width:100%;
+			color:#ffffff;
+			font-size:22px; 
+			text-indent:10px;
+			border-bottom:2px solid #000000;
+			line-height:44px;
+		}
+		#LnWindow{
+			z-index:7;
+			position:absolute;
+			width:750px;
+			left:100px;
+			top:41px;
+			visibility:hidden;
+			background:#fffded;
+			border:2px solid #000000;
+		}
+		.list{
+			position:relative;
+			float:left;
+			width:100%;
+			color:#ffffff;
+			padding-top:14px;
+			font-size:18px;
+			width:92%;
+			left:33px;
+			list-style-type:square;color:#000000;list-style-position:inside;text-indent:-1em;
+		}
+		.list li{margin-bottom:11px;}
+	.closeX{top:40px;right:40px;height:30px;width:30px;border-radius:30px;line-height:30px;position:fixed;z-index:50000000;background:#41beb2;color:#ffffff;text-align:center;font-size:20px;cursor:pointer;
+			visibility:hidden;}
+		
+	</style>
+</head>
+<body style="background-color:transparent;background:transparent;">
+	
+	<input type="hidden" id="pageType" value="1" />
+	<input type="hidden" id="pageSize" value="690" />   
+	<iframe id="toc" src="TOC.html" style="display:none;"></iframe>
+	
+<div style="position:fixed;top:0px;bottom:40px;overflow:auto;width:100%;overflow-x:hidden;overflow-y:scroll;z-index:2;">
+	<canvas id="canvas1" name="drawableCanvas" height="680" width="960" style="z-index:8;background:transparent;position:absolute;top:1px;left:1px;">
+	</canvas>
+
+	<div id="greyModal"></div>
+	
+	<div id="storymapWindow" class="modalWindow">
+		<img src="../../../../../../Shared/Images/Math/PageGraphics/StoryMap.jpg" style="position:absolute;height:100%;" />
+	</div>
+	
+	<div id="LnWindow" class="modalWindow">
+		<div style="background:#000000;position:relative;font-size:22px;color:#ffffff;line-height:180%;border:1px solid #000000;text-indent:25px;">Teacher Procedure</div>
+		<div style="position:relative;background:#41beb2;font-size:22px;color:#ffffff;line-height:180%;border:1px solid #000000;text-indent:25px;">Vocabulary Review</div>
+		<div class="list">
+			<li>Ask teams to have teammates make a tent with their hands when they are ready to tell a word the entire team rated with a "+" and a word the entire team rated with a "?."</li>
+			<li>Use Random Reporter to have teams share one word they know and one word they need to study further.  Award team celebration points.</li>
+			<li>Read each word on your chart.  Ask students to repeat each word.  Explain the meaning and how to use the identification strategy(optional after day 2).</li>
+			<li>Assign partners as either speaker or coach to review the vocabulary words.  Teach or model this student routine as necessary.</li>
+			<li>Remind students that only the coach should look at the vocabulary chart.  Have students begin.</li>
+			<li>Use Random Reporter to review word pronunciation, meanings, and sentences.</li>
+			<li>Allow students to use their lesson charts on day 1 if they do not know a word or its meaning.</li>
+			<li>Review, as necessary, the directions for finding the vocabulary words in the daily reading and for adding words to the Vocabulary Vault.</li>
+			<li>Find a vocabulary word in your reading.</li>
+			<li>Write the word and the page number where you found it in your journal.</li>
+			<li>Show your teacher your journal on test day!</li>
+		</div>
+	</div>
+
+</div>
+	
+<div class="imgDiv" style="position:fixed;top:0px;left:4px;right:22px;bottom:40px;">
+	<img src="../../../../../../Shared/Images/Math/backgrounds/greenListeningComprehension.png" style="position:absolute;height:100%;width:100%;" />
+</div>
+<img onclick="teacherInstructions(this,'storymapWindow','btnLN');" src="../../../../../../Shared/Images/Math/MenuBar/storymap_menu_button.png" style="z-index:29;position:fixed;bottom:1px;right:165px;cursor:pointer;z-index: 9999999;" />
+<img onclick="teacherInstructions(this,'LnWindow');" id="btnLN" src="LN.png" style="visibility:hidden;z-index:29;position:fixed;top:0px;left:5px;cursor:pointer;z-index: 9999999;" />
+	<script>
+		[].forEach.call(document.querySelectorAll(".modalWindow"),function(element,index){
+			var closeX=document.createElement("div");
+			closeX.classList.add("closeX");
+			closeX.innerHTML="X";
+			element.closeX=closeX;
+			document.body.appendChild(closeX);
+			closeX.onclick=function(){
+				teacherInstructions(this,element.id,'btnLN');
+				closeX.style.visibility='hidden';
+			}
+		});
+		
+		function teacherInstructions(k,modalWindow,otherbtnToShow){
+			if(!k.classList.contains("onPageClick")){
+				[].forEach.call(document.querySelectorAll(".onPageClick"),function(element,index){
+					element.style.zIndex=4;
+				});
+			}else{
+				[].forEach.call(document.querySelectorAll(".onPageClick"),function(element,index){
+					element.style.zIndex=4;
+				});
+				k.style.zIndex=1000;
+			}
+			[].forEach.call(document.querySelectorAll(".modalWindow"),function(element,index){
+				if(element!=document.getElementById(modalWindow) && element.style.visibility=="visible"){
+					element.style.visibility='hidden';
+					element.closeX.style.visibility='hidden';
+					if(otherbtnToShow)document.getElementById(otherbtnToShow).style.visibility='hidden';
+				}
+			});
+			if(document.getElementById(modalWindow).style.visibility=="visible"){
+				document.getElementById('greyModal').style.visibility='hidden';
+				document.getElementById(modalWindow).style.visibility='hidden';
+				document.getElementById(modalWindow).closeX.style.visibility='hidden';
+				if(otherbtnToShow)document.getElementById(otherbtnToShow).style.visibility='hidden';
+				[].forEach.call(document.querySelectorAll(".onPageClick"),function(element,index){
+					element.style.zIndex=1000;
+				});
+			}else{
+				document.getElementById('greyModal').style.visibility="visible";
+				document.getElementById(modalWindow).style.visibility="visible";
+				document.getElementById(modalWindow).closeX.style.visibility="visible";
+				if(otherbtnToShow)document.getElementById(otherbtnToShow).style.visibility="visible";
+			}
+		}
+	</script>
+
+	
+<div onClick="goToLessonMenu('left',8);" style="height:38px;width:38px;position:fixed;bottom:-1px;left:132px;z-index:9999999999999;cursor:pointer;" alt="Lesson Menu" title="Lesson Menu" draggable="false"/>
+</div>
+<script>
+function goToLessonMenu(direction,numberToMove){
+	if(direction==='right'){
+		for(var k=0;k<numberToMove;k++){
+			this.parent.parent.document.getElementById('btnNext').click();
+		}
+	}
+	else if(direction==='left'){
+		for(var k=0;k<numberToMove;k++){
+			this.parent.parent.document.getElementById('btnPrevious').click();
+		}
+	}
+}
+</script>
+	</body>
+</html>

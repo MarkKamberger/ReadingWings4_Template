@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title></title>
+	<link href="../../../../../../Shared/Styles/SS1.css" rel="stylesheet" type="text/css" />
+	<link href="../../../../../../Shared/Styles/Site.css" rel="stylesheet" type="text/css" />
+	<link href="../../../../../../Shared/Styles/Presentation.css" rel="stylesheet" type="text/css" />
+	<link href="../../../../../../Shared/Fonts/stylesheet.css" rel="stylesheet" type="text/css" charset="utf-8">
+	<script src="../../../../../../Shared/Scripts/contentPage.js" type="text/javascript"></script>
+	<script src="../../../../../../Shared/Scripts/canvas.js" type='text/javascript'></script>
+	<script src="../../../../../../Shared/Scripts/jquery-1.9.1.js" type='text/javascript'></script>
+	<script src="../../../../../../Shared/Scripts/jquery-ui.js" type='text/javascript'></script>
+	<link href="../../../../../../Shared/Styles/InnerPage.css" rel="stylesheet" type="text/css" />
+	<script src="../../../../../../Shared/Styles/InnerPage.js" type='text/javascript'></script>
+</head>
+<body style="background-color:transparent;">
+<input type="hidden" id="pageType" value="1" />
+<input type="hidden" id="pageSize" value="690" /> 
+<iframe id="toc" src="TOC.html" style="display:none;"></iframe>
+
+<div class="topTitle" style="background:#ADD692;">
+	<div class="titleText">Vocabulary Review</div>
+	<img class="topButton" onclick="teacherInstructions(this,'page8LnWindow');" src="../../../../../../Shared/Images/Math/MenuBar/LN.png" />
+</div>
+<div id="PageDiv">
+	<canvas class="canvas" id="canvas1" name="drawableCanvas" height="680" width="960"></canvas>
+	<div id="rateYourWords">Rate Your Words</div>
+	
+	<!--begin Comment__Words on left side of page and any i buttons to be clicked, they may not have more classes added-->
+	<div id="Words" class="onPageClick">
+		<div class="wordLine">
+			<div class="pictureButton"></div>
+			<div onclick="wordDefinition(this);" class="word">noticed</div>
+		</div>
+		<div class="wordLine">
+			<div onclick="wordPictures(this);" class="pictureButton"><img src="../../../../../../Shared/Images/Math/PageButtons/i.png" /></div>
+			<div onclick="wordDefinition(this);" class="word">sniffed</div>
+		</div>
+		<div class="wordLine">
+			<div class="pictureButton"></div>
+			<div onclick="wordDefinition(this);"class="word">muttered</div>
+		</div>
+		<div class="wordLine">
+			<div class="pictureButton"></div>
+			<div onclick="wordDefinition(this);" class="word">innocent</div>
+		</div>
+		<div class="wordLine">
+			<div onclick="wordPictures(this);" class="pictureButton"><img src="../../../../../../Shared/Images/Math/PageButtons/i.png" /></div>
+			<div onclick="wordDefinition(this);" class="word">whole</div>
+		</div>
+		<div class="wordLine">
+			<div onclick="wordPictures(this);" class="pictureButton"><img src="../../../../../../Shared/Images/Math/PageButtons/i.png" /></div>
+			<div onclick="wordDefinition(this);" class="word">consume</div>
+		</div>
+	</div>
+	<!--end Comment-->
+	
+	<!--begin Comment--Each div with class 'definition' is a green box that opens when the corresponding div with class 'word' above is clicked,
+	they must be in the same order, they may not have any classes added.-->
+	<div id="Definitions">
+		<div class="definition">
+			<div class="idStrategy">
+				<div class="dfnTitle">Identification Strategy:</div>
+				<div class="substance">base word + ending</div>
+			</div>
+			<div class="defn">
+				<div class="dfnTitle">Definition:</div>
+				<div class="substance">saw</div>
+			</div>
+			<div class="sentence">
+				<div class="dfnTitle">Sentence:</div>
+				<div class="substance">I was going to make breakfast when I <br> <span class="dfnSpan">noticed</span> that there were no eggs left.</div>
+			</div>
+		</div>
+		<div class="definition">
+			<div class="idStrategy">
+				<div class="dfnTitle">Identification Strategy:</div>
+				<div class="substance">base word + ending</div>
+			</div>
+			<div class="defn">
+				<div class="dfnTitle">Definition:</div>
+				<div class="substance">smelled</div>
+			</div>
+			<div class="sentence">
+				<div class="dfnTitle">Sentence:</div>
+				<div class="substance">My best friend's new puppy <span class="dfnSpan">sniffed</span> me<br>happily and gave me big wet kisses on<br>the face.</div>
+			</div>
+		</div>
+		<div class="definition">
+			<div class="idStrategy">
+				<div class="dfnTitle">Identification Strategy:</div>
+				<div class="substance">base word + ending</div>
+			</div>
+			<div class="defn">
+				<div class="dfnTitle">Definition:</div>
+				<div class="substance">mumbled</div>
+			</div>
+			<div class="sentence">
+				<div class="dfnTitle">Sentence:</div>
+				<div class="substance">When Mom asked her to take out the <br>trash, Mary Ann <span class="dfnSpan">muttered</span> something <br>under her breath.</div>
+			</div>
+		</div>
+		<div class="definition">
+			<div class="idStrategy">
+				<div class="dfnTitle">Identification Strategy:</div>
+				<div class="substance">chunk</div>
+			</div>
+			<div class="defn">
+				<div class="dfnTitle">Definition:</div>
+				<div class="substance">not guilty</div>
+			</div>
+			<div class="sentence">
+				<div class="dfnTitle">Sentence:</div>
+				<div class="substance">When Tom was arrested for the bank <br>robbery, he said, "I'm <span class="dfnSpan">innocent</span>!"</div>
+			</div>
+		</div>
+		<div class="definition">
+			<div class="idStrategy">
+				<div class="dfnTitle">Identification Strategy:</div>
+				<div class="substance">blend</div>
+			</div>
+			<div class="defn">
+				<div class="dfnTitle">Definition:</div>
+				<div class="substance">entire</div>
+			</div>
+			<div class="sentence">
+				<div class="dfnTitle">Sentence:</div>
+				<div class="substance">Barry and Jamal thought they could eat <br>a <span class="dfnSpan">whole</span> pizza, but they weren't hungry <br>after two slices each.</div>
+			</div>
+		</div>
+		<div class="definition">
+			<div class="idStrategy">
+				<div class="dfnTitle">Identification Strategy:</div>
+				<div class="substance">chunk</div>
+			</div>
+			<div class="defn">
+				<div class="dfnTitle">Definition:</div>
+				<div class="substance">eat</div>
+			</div>
+			<div class="sentence">
+				<div class="dfnTitle">Sentence:</div>
+				<div class="substance">Sperm whales <span class="dfnSpan">consume</span> giant squid, <br>which they hunt in the dark depths of <br>the sea.</div>
+			</div>
+		</div>
+	</div>
+	<!--end Comment-->
+	
+	<!--begin Comment--pictures to be opened when the corresponding i buttons from above are clicked-->
+	<div id="Pictures">
+		<div class="wordPicture">img1</div>
+		<div class="wordPicture">img2</div>
+		<div class="wordPicture">img3</div>
+		<div class="wordPicture">img4</div>
+		<div class="wordPicture">img5</div>
+	</div>
+	<!--end Comment-->
+	
+	<!--begin Comment--drag out captain tray, each image with the class "trayImage" is a blue thumbnail in the captain's tray,
+	which when clicked will open the corresponding images with the class "popUpImage" which must be in the same order as 
+	the "trayImage" images. The script at the bottom of the page is needed for the captain to be able to slide.
+	the images with class 'trayImage can not have anymore classes added'-->
+	<div id="tray">
+		<img src="TrayCaptain.png" id="trayCaptain" />
+		<div style="position:absolute;right:0px;width:75px;height:100px;cursor:move;"></div>
+		<div id="trayImages">
+			<img class="trayImage" style="left:24px;top:1px;"  src="trayImages/Storm.png"		onclick="captainImages(this);" />
+			<img class="trayImage" style="left:71px;top:1px;"  src="trayImages/Anchor.png"		onclick="captainImages(this);" />
+			<img class="trayImage" style="left:118px;top:1px;" src="trayImages/Raft.png"		onclick="captainImages(this);" />
+			<img class="trayImage" style="left:165px;top:1px;" src="trayImages/Map.png"			onclick="captainImages(this);" />
+			<img class="trayImage" style="left:211px;top:1px;" src="trayImages/Binoculars.png" 	onclick="captainImages(this);" />
+			<img class="trayImage" style="left:258px;top:1px;" src="trayImages/Octopus.png"		onclick="captainImages(this);" />
+			<img class="trayImage" style="left:304px;top:1px;" src="trayImages/Compass.png"		onclick="captainImages(this);" />
+			<img class="trayImage" style="left:352px;top:1px;" src="trayImages/Shells.png"		onclick="captainImages(this);" />
+			<img class="trayImage" style="left:397px;top:1px;" src="trayImages/Fish.png"		onclick="captainImages(this);" />
+			<img class="trayImage" style="left:443px;top:1px;" src="trayImages/Pennant.png"		onclick="captainImages(this);" />
+			<img class="trayImage" style="left:489px;top:1px;" src="trayImages/Wheel.png"		onclick="captainImages(this);" />
+			<img class="trayImage" style="left:534px;top:1px;" src="trayImages/Shark.png"		onclick="captainImages(this);" />
+			<img class="trayImage" style="left:580px;top:1px;" src="trayImages/Buoy.png"		onclick="captainImages(this);" />
+			<img class="trayImage" style="left:627px;top:1px;" src="trayImages/GlueBrush.png"	onclick="captainImages(this);" />
+			<img class="trayImage" style="left:673px;top:1px;" src="trayImages/Rowboat.png"		onclick="captainImages(this);" />
+			<img class="trayImage" style="left:718px;top:1px;" src="trayImages/Contraction.png"	onclick="captainImages(this);" />
+			<img class="trayImage" style="left:765px;top:1px;" src="trayImages/Contraction2.png"	onclick="captainImages(this);" />
+			<img class="trayImage" style="left:811px;top:1px;" src="trayImages/Prefix.png"		onclick="captainImages(this);" />
+			<img class="trayImage" style="left:857px;top:1px;" src="trayImages/Prefix2.png"		onclick="captainImages(this);" />
+		</div>
+	</div>
+	<div id="popUpImages">
+		<img class="popUpImage" style="left:64px;top:-110px;" src="trayImages/PopUp_Storm.png" />
+		<img class="popUpImage" style="left:189px;top:-114px;" src="trayImages/PopUp_Anchor.png" />
+		<img class="popUpImage" style="left:100px;top:-106px;" src="trayImages/PopUp_Raft.png" />
+		<img class="popUpImage" style="left:90px;top:-87px;" src="trayImages/PopUp_Map.png" />
+		<img class="popUpImage" style="left:111px;top:-110px;" src="trayImages/PopUp_Binoculars.png" />
+		<img class="popUpImage" style="left:128px;top:-116px;" src="trayImages/PopUp_Octopus.png" />
+		<img class="popUpImage" style="left:91px;top:-115px;" src="trayImages/PopUp_Compass.png" />
+		<img class="popUpImage" style="left:99px;top:-84px;" src="trayImages/PopUp_Shells.png" />
+		<img class="popUpImage" style="left:200px;top:-145px;" src="trayImages/PopUp_Fish.png" />
+		<img class="popUpImage" style="left:273px;top:-153px;" src="trayImages/PopUp_Pennant.png" />
+		<img class="popUpImage" style="left:200px;top:-146px;" src="trayImages/PopUp_Wheel.png" />
+		<img class="popUpImage" style="left:240px;top:-145px;" src="trayImages/PopUp_Shark.png" />
+		<img class="popUpImage" style="left:150px;top:-116px;" src="trayImages/PopUp_Buoy.png" />
+		<img class="popUpImage" style="left:270px;top:-120px;" src="trayImages/PopUp_Glue.png" />
+		<img class="popUpImage" style="left:60px;top:-150px;" src="trayImages/PopUp_Chunk.png" />
+		<img class="popUpImage" style="left:60px;top:-143px;" src="trayImages/PopUp_Contraction.png" />
+		<img class="popUpImage" style="left:60px;top:-150px;" src="trayImages/PopUp_Compound.png" />
+		<img class="popUpImage" style="left:60px;top:-150px;" src="trayImages/PopUp_Prefix.png" />
+		<img class="popUpImage" style="left:60px;top:-150px;" src="trayImages/PopUp_BaseEnding.png" />
+	</div>
+	<!--end Comment-->
+	<div id="greyModal" style="z-index:7;"></div>
+	<img src="../../../../../../Shared/Images/Math/PageGraphics/page8_LN.png" class="modalWindow" id="page8LnWindow" />
+</div>
+<!--begin Comment__this script is needed for the captain to slide out-->
+<script>
+	$("#tray").draggable({axis: "x"});
+</script>
+<!--end Comment-->
+<div id="goToLessonMenu" onClick="goToLessonMenu('left',5);" alt="Lesson Menu" title="Lesson Menu"></div>
+</body>
+</html>

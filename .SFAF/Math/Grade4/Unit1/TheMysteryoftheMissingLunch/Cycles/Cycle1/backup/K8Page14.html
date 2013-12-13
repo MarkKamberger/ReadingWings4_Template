@@ -1,0 +1,464 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title></title>
+	<link href="../../../../../../Shared/Styles/SS1.css" rel="stylesheet" type="text/css" />
+	<link href="../../../../../../Shared/Styles/Site.css" rel="stylesheet" type="text/css" />
+	<link href="../../../../../../Shared/Styles/Presentation.css" rel="stylesheet" type="text/css" />
+	<link href="../../../../../../Shared/Fonts/stylesheet.css" rel="stylesheet" type="text/css" charset="utf-8">
+	<script src="../../../../../../Shared/Scripts/contentPage.js" type="text/javascript"></script>
+	<script src="../../../../../../Shared/Scripts/canvas.js" type='text/javascript'></script>
+	<script src="../../../../../../Shared/Scripts/randomReporter.js" type='text/javascript'></script>
+	<link href="../../../../../../Shared/Styles/randomReporter.css" rel="stylesheet" type="text/css" />
+	<style>
+		body{color:#000000;}
+		.topTitle{position:fixed;top:0px;right:22px;left:4px;height:37px;background:#006600;font-weight:bold;z-index:10;}
+		.titleText{position:absolute;left:163px;top:9px;color:#000000;font-family:Tahoma;}
+		
+		#PartnerReadingTeamDiscussion{position:absolute;left:175px;top:100px;width:650px;font-family:Tahoma;color:#000000;line-height:300%;}
+
+		#greyModal{
+			z-index:7;
+			position:absolute;
+			top:0px;
+			bottom:0px;
+			min-height:600px;
+			left:4px;
+			right:4px;
+			opacity:.8;
+			visibility:hidden;
+			background:#C0C0C0;
+		}
+		#randomReporterWindow{
+			z-index:9;
+			position:absolute;
+			height:474px;
+			width:525px;
+			left:225px;
+			top:80px;
+			visibility:hidden;
+			background:#fffded;
+			border:2px solid #000000;
+		}
+		#tpWindow{
+			z-index:7;
+			position:absolute;
+			height:627px;
+			width:750px;
+			left:100px;
+			top:41px;
+			visibility:hidden;
+			background:#fffded;
+			border:2px solid #000000;
+		}
+		#srWindow{
+			z-index:7;
+			position:absolute;
+			height:627px;
+			width:750px;
+			left:100px;
+			top:75px;
+			visibility:hidden;
+		}
+		.inModal{
+			position:absolute;
+			width:100%;
+			color:#ffffff;
+			font-size:22px; 
+			text-indent:10px;
+			border-bottom:2px solid #000000;
+			margin-right:20px;
+		}
+		.inModal2{
+			position:relative;
+			float:left;
+			width:100%;
+			color:#ffffff;
+			font-size:22px; 
+			text-indent:10px;
+			border-bottom:2px solid #000000;
+			line-height:44px;
+		}
+		.list{
+			position:relative;
+			float:left;
+			width:100%;
+			color:#ffffff;
+			padding-top:14px;
+			font-size:18px;
+			width:92%;
+			left:33px;
+			list-style-type:square;color:#000000;list-style-position:inside;text-indent:-1em}
+		.list li{margin-bottom:11px;}
+		.blueSpan{color:blue;}
+		
+		#roleCardsWindow{
+			z-index:7;
+			position:absolute;
+			height:650px;
+			width:850px;
+			left:50px;
+			top:42px;
+			visibility:hidden;
+		}
+		.roleCards{
+			position:relative;
+			float:left;
+			margin-right:20px;
+			margin-bottom:20px;
+			border:3px solid #41beb2;
+			width:397px;
+			height:291px;
+		}
+		.roleCardsList{
+			position:relative;
+			margin-left:35px;
+			width:85%;
+			color:#000000;
+			font-size:14px;
+			list-style-type:decimal;color:#000000;list-style-position:inside;text-indent:-1em;
+		}
+		.roleCardsList li{position:relative;margin-bottom:8px;line-height:200%;}
+		.roleCardsTitle{
+			position:relative;margin-top:80px;margin-bottom:8px;width:100%;text-align:center;font-size:24px;color:#41beb2;
+		}
+		
+		#clarifyingWindow{
+			z-index:7;
+			position:absolute;
+			height:550px;
+			width:850px;
+			left:50px;
+			top:82px;
+			visibility:hidden;
+			background:#dcddde;
+			line-height:150%;
+		}
+		.clarifyingList{position:absolute;top:15px;left:35px;list-style-type:decimal;color:#000000;list-style-position:inside;text-indent:-1em;}
+		.clarifyingContent{position:relative;margin-top:15px;}
+		
+		#questioningWindow{
+			z-index:7;
+			position:absolute;
+			height:600px;
+			width:850px;
+			left:50px;
+			top:62px;
+			visibility:hidden;
+			background:#dcddde;
+			line-height:130%;
+		}
+		.questioningList{position:absolute;top:15px;left:25px;list-style-type:decimal;color:#000000;list-style-position:inside;text-indent:-1em;}
+		.questioningContent{position:relative;margin-top:5px;}
+		
+	</style>
+</head>
+<body style="background-color:transparent;background:transparent;">
+	
+	<input type="hidden" id="pageType" value="1" />
+	<input type="hidden" id="pageSize" value="690" />   
+	<iframe id="toc" src="TOC.html" style="display:none;"></iframe>
+	
+	<div class="topTitle" style="background:#ADD692;">
+		<div class="titleText">Partner Reading and Team Discussion</div>
+	</div>
+	
+<div style="position:fixed;top:0px;bottom:40px;overflow:auto;width:100%;overflow-y:scroll;">
+	
+	<canvas id="canvas1" name="drawableCanvas" height="680" width="960" style="z-index:8;background:transparent;position:absolute;top:1px;left:1px;">
+	</canvas>
+	
+	<div id="PartnerReadingTeamDiscussion">
+		<div style="position:relative;font-size:42px;margin-bottom:18px;font-weight:bold;">Partner Reading:</div>
+		<div style="position:relative;font-size:30px;margin-bottom:28px;">
+			<div style="position:relative;"><span class="blueSpan">Read</span> pages 22 and 23 aloud with partners and page 24 silently.</div>
+		</div>
+		<div style="position:relative;font-size:42px;margin-bottom:18px;font-weight:bold;">Team Discussion:</div>
+		<div style="position:relative;font-size:30px;margin-bottom:18px;">
+			<div style="position:relative;"><span class="blueSpan">Review</span> the strategies used while reading.</div>
+			<div style="position:relative;"><span class="blueSpan">Discuss</span> Team Talk questions.</div>
+			<div style="position:relative;"><span class="blueSpan">Write</span> the answer to the Write-On question.</div>
+		</div>
+	</div>
+	
+	
+	
+	<div id="greyModal" class="hid"></div>
+	
+	
+	
+	<div id="questioningWindow" class="modalWindow">
+		<div style="position:relative;float:left;margin-top:20px;margin-left:15px;border:3px solid #ffffff;border-right:0px;height:93%;width:300px;">
+			<img src="../../../../../../Shared/Images/Math/PageGraphics/questioningWord.gif" style="position:absolute;" />
+			<img src="../../../../../../Shared/Images/Math/PageGraphics/questioningArt.gif" style="position:absolute;top:125px;left:5px;" />
+		</div>
+		<div style="position:relative;float:left;margin-top:20px;border:3px solid #ffffff;height:93%;width:500px;background:#8dc63f;">
+			<div class="questioningList">
+				<li class="questioningContent" style="margin-top:0px;">Ask <span style="font-weight:bold;">Right There</span> questions about what you read.</li>
+				<div style="position:relative;margin-left:20px;">Use <span style="font-weight:bold;">Right There</span> question words:</div>
+				<div style="margin-bottom:10px;margin-left:35px;position:relative;list-style-type:disc;list-style-position:inside;text-indent:-1em;">
+					<li>Who?</li>
+					<li>What?</li>
+					<li>When?</li>
+					<li>Where?</li>
+					<li>Why?</li>
+					<li>How?</li>
+				</div>	
+				<li class="questioningContent">Challenge yourself with <span style="font-weight:bold;">Think</span> questions.</li>
+				<div style="position:relative;margin-left:20px;">Use <span style="font-weight:bold;">Think</span> question starters:</div>
+				<div style="margin-bottom:10px;margin-left:35px;position:relative;list-style-type:disc;list-style-position:inside;text-indent:-1em;">
+					<li>What do you think about...?</li>
+					<li>How do you know that...?</li>
+					<li>Why or why not?</li>
+					<li>What do you predict...?</li>
+					<li>What conclusion can you draw...?</li>
+					<li>How does this compare to...?</li>
+				</div>
+				<li class="questioningContent" style="margin-bottom:10px;"><span style="font-weight:bold;">Answer</span> questions with complete information or explanations.</li>
+				<div style="position:relative;margin-left:0px;"><span style="font-weight:bold;">Right There</span> questions:</div>
+				<div style="margin-bottom:10px;margin-left:15px;position:relative;list-style-type:disc;list-style-position:inside;text-indent:-1em;">
+					<li>can be answered with only the story or text.</li>
+					<li>can be answered from one passage or page.</li>
+				</div>
+				<div style="position:relative;margin-left:0px;"><span style="font-weight:bold;">Think</span> questions</div>
+				<div style="margin-left:15px;position:relative;list-style-type:disc;list-style-position:inside;text-indent:-1em;">
+					<li>can be answered with the text AND background knowledge.</li>
+					<li>ask you to use the information you read to answer.</li>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	
+	
+	
+	<div id="clarifyingWindow" class="modalWindow">
+		<div style="position:relative;float:left;margin-top:40px;margin-left:15px;border:3px solid #ffffff;border-right:0px;height:85%;width:300px;">
+			<img src="../../../../../../Shared/Images/Math/PageGraphics/clarifyingWord.gif" style="position:absolute;" />
+			<img src="../../../../../../Shared/Images/Math/PageGraphics/clarifyingArt.gif" style="position:absolute;top:175px;left:5px;" />
+		</div>
+		<div style="position:relative;float:left;margin-top:40px;border:3px solid #ffffff;height:85%;width:500px;background:#ffcb05;">
+			<div class="clarifyingList">
+				<li class="clarifyingContent" style="margin-top:0px;"><span style="font-weight:bold;">Stop</span> when you don't know or understand something.</li>
+				<li class="clarifyingContent">Try <span style="font-weight:bold;">strategies</span> to figure it out.</li>
+				<div style="position:relative;margin-left:20px;">If you can't say a word:</div>
+				<div style="margin-left:35px;position:relative;list-style-type:disc;list-style-position:inside;text-indent:-1em;">
+					<li>Blend it.</li>
+					<li>Chunk it.</li>
+					<li>Look for a base word.</li>
+					<li>Reread it.</li>
+				</div>
+				<div style="position:relative;margin-left:20px;">If you don't know what a word or part means:</div>
+				<div style="margin-left:35px;position:relative;list-style-type:disc;list-style-position:inside;text-indent:-1em;">
+					<li>Use content clues.</li>
+					<li>Reread.</li>
+					<li>Read on.</li>
+					<li>Use your background knowledge.</li>
+					<li>Make a mind movie.</li>
+				</div>	
+				<li class="clarifyingContent">Use a <span style="font-weight:bold;">sticky note</span> to mark words or ideas you can't figure out.</li>
+				<li class="clarifyingContent"><span style="font-weight:bold;">Ask</span> your team for help.</li>
+			</div>
+		</div>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div id="roleCardsWindow" class="modalWindow">
+		<div class="roleCards">
+			<img src="../../../../../../Shared/Images/Math/PageGraphics/rc1.png" style="position:absolute;" />
+			<div class="roleCardsTitle">Read the question.</div>
+			<div class="roleCardsList">
+				<li>Read the question to your teammates.</li>
+				<li>Make sure everyone practices active listening.</li>
+				<li>Ask if everyone heard and understood the question.</li>
+			</div>	
+		</div>
+		<div class="roleCards">
+			<img src="../../../../../../Shared/Images/Math/PageGraphics/rc2.png" style="position:absolute;" />
+			<div class="roleCardsTitle">Answer the question.</div>
+			<div class="roleCardsList">
+				<li>Restate the question in your own words.</li>
+				<li>Restate part of the question in your answer.</li>
+				<li>Tell and explain your answer.</li>
+				<li>Ask if everyone heard your answer.</li>
+			</div>	
+		</div>
+		<div class="roleCards">
+			<img src="../../../../../../Shared/Images/Math/PageGraphics/rc3.png" style="position:absolute;" />
+			<div class="roleCardsTitle">Agree OR disagree.</div>
+			<div class="roleCardsList">
+				<li>Restate your teammate's answer.</li>
+				<li>Agree and add additional information OR disagree and explain why.</li>
+				<li>Ask if everyone heard your answer.</li>
+			</div>	
+		</div>
+		<div class="roleCards">
+			<img src="../../../../../../Shared/Images/Math/PageGraphics/rc4.png" style="position:absolute;" />
+			<div class="roleCardsTitle">Summarize.</div>
+			<div class="roleCardsList">
+				<li>Restate the group's agreed-upon answer.</li>
+				<li>Check to make sure each teammate understands the answer.</li>
+				<li>Make sure each teammate is ready for Random Reporter.</li>
+			</div>	
+		</div>
+	</div>
+	
+	
+	
+	<div id="tpWindow" class="modalWindow">
+		<div id="" class="inModal2" style="background:#000000;">Teacher Procedure</div>
+		<div id="" class="inModal2" style="background:#41beb2; font-size:28px;">Partner Reading and Team Discussion</div>
+		<div id="" class="list">
+			<li>Pass out sticky notes to each student, and have students begin Partner Reading.</li>
+			<li>Reinforce discussions as students read, reread, restate, and use strategies.</li>
+			<li>Teach or model this student routine as necessary.</li>
+			<li>Direct partners who finish reading ahead of their teammates to look over their Team Talk questions, or have them take turns rereading the pages designated for Fluency in Five.</li>
+			<li>Explain, or have team leaders review, if necessary, the student routine for Team Discussion.</li>
+			<li>Prompt and reinforce students during their discussions.</li>
+			<li>Monitor Think-and-Connect discussions, and guide students' thinking with additional questions or comments.</li>
+			<li>Prompt students to share answers to the Write-On question and to revise them for Class Discussion.</li>
+			<li>Ask teams to work on their graphic organizers if they finish ahead of others.</li>
+			<li>Award team celebration points for use of the team cooperation goal and behavior.</li>
+		</div>
+	</div>
+	
+	
+	<div id="srWindow" class="modalWindow">
+		<div id="" class="inModal" style="top:0px;left:0px;width:325px;border:1px solid #000000;background:#fffded;font-size:14px;">
+			<div style="position:relative;background:#000000;font-size:14px;line-height:30px;">Narrative</div>
+			<div style="position:relative;background:#41beb2;font-size:20px;line-height:30px;">Read aloud.</div>
+			<div style="position:relative;width:100%;border-top:1px solid #000000;line-height:140%;">
+				<div style="position:relative;top:0px;padding:8px;text-indent:0px;left:40px;color:#000000;width:80%;">
+					<div style="position:relative;">Take turns reading paragraphs aloud with your partner.</div>
+					<div style="position:absolute;left:-40px;top:0px;padding-top:4%;bottom:0px;background:#41beb2;color:#ffffff;text-align:center;width:30px;border-right:1px solid #000000;font-size:18px;">1.</div>
+				</div>
+			</div>
+			<div style="position:relative;width:100%;border-top:1px solid #000000;line-height:140%;">
+				<div style="position:relative;top:0px;padding:8px;text-indent:0px;left:40px;color:#000000;width:80%;">
+					<div style="position:relative;">Use strategies, as necessary, as you read.</div>
+					<div style="position:absolute;left:-40px;top:0px;padding-top:4%;bottom:0px;background:#41beb2;color:#ffffff;text-align:center;width:30px;border-right:1px solid #000000;font-size:18px;">2.</div>
+				</div>
+			</div>
+			<div style="position:relative;width:100%;border-top:1px solid #000000;line-height:140%;">
+				<div style="position:relative;top:0px;padding:8px;text-indent:0px;left:40px;color:#000000;width:80%;">
+					<div style="position:relative;">Retell the main events from your partner's reading before beginning your turn.</div>
+					<div style="position:absolute;left:-40px;top:0px;padding-top:4%;bottom:0px;background:#41beb2;color:#ffffff;text-align:center;width:30px;border-right:1px solid #000000;font-size:18px;">3.</div>
+				</div>
+			</div>
+		</div>
+		
+		<div id="" class="inModal" style="top:0px;left:400px;width:325px;border:1px solid #000000;background:#fffded;font-size:14px;">
+			<div style="position:relative;background:#000000;font-size:14px;height:30px;"></div>
+			<div style="position:relative;background:#41beb2;font-size:20px;line-height:30px;">Read Silently.</div>
+			<div style="position:relative;width:100%;border-top:1px solid #000000;line-height:140%;">
+				<div style="position:relative;top:0px;padding:8px;text-indent:0px;left:40px;color:#000000;width:80%;">
+					<div style="position:relative;">Retell the main events from each page silently to yourself</div>
+					<div style="position:absolute;left:-40px;top:0px;padding-top:4%;bottom:0px;background:#41beb2;color:#ffffff;text-align:center;width:30px;border-right:1px solid #000000;font-size:18px;">1.</div>
+				</div>
+			</div>
+			<div style="position:relative;width:100%;border-top:1px solid #000000;line-height:140%;">
+				<div style="position:relative;top:0px;padding:8px;text-indent:0px;left:40px;color:#000000;width:80%;">
+					<div style="position:relative;">Restate the main events with your partner after you both finish reading.</div>
+					<div style="position:absolute;left:-40px;top:0px;padding-top:4%;bottom:0px;background:#41beb2;color:#ffffff;text-align:center;width:30px;border-right:1px solid #000000;font-size:18px;">2.</div>
+				</div>
+			</div>
+		</div>
+		
+	
+		<div id="" class="inModal" style="top:300px;left:0px;width:325px;border:1px solid #000000;border-right:0px solid #000000;background:#fffded;font-size:14px;">
+			<div style="position:relative;background:#41beb2;font-size:20px;line-height:30px;">Team Discussion.</div>
+			<div style="position:relative;width:100%;border-top:1px solid #000000;line-height:140%;">
+				<div style="position:relative;top:0px;padding:8px;text-indent:0px;left:40px;color:#000000;width:80%;">
+					<div style="position:relative;">Take turns reading paragraphs aloud with your partner.</div>
+					<div style="position:absolute;left:-40px;top:0px;padding-top:4%;bottom:0px;background:#41beb2;color:#ffffff;text-align:center;width:30px;border-right:1px solid #000000;font-size:18px;">1.</div>
+				</div>
+			</div>
+			<div style="position:relative;width:100%;border-top:1px solid #000000;line-height:140%;">
+				<div style="position:relative;top:0px;padding:8px;text-indent:0px;left:40px;color:#000000;width:80%;">
+					<div style="position:relative;">Use strategies, as necessary, as you read.</div>
+					<div style="position:absolute;left:-40px;top:0px;padding-top:4%;bottom:0px;background:#41beb2;color:#ffffff;text-align:center;width:30px;border-right:1px solid #000000;font-size:18px;">2.</div>
+				</div>
+			</div>
+			<div style="position:relative;width:100%;border-top:1px solid #000000;line-height:140%;">
+				<div style="position:relative;top:0px;padding:8px;text-indent:0px;left:40px;color:#000000;width:80%;">
+					<div style="position:relative;">Retell the main events from your partner's reading before beginning your turn.</div>
+					<div style="position:absolute;left:-40px;top:0px;padding-top:4%;bottom:0px;background:#41beb2;color:#ffffff;text-align:center;width:30px;border-right:1px solid #000000;font-size:18px;">3.</div>
+				</div>
+			</div>
+			<div style="position:relative;width:100%;border-top:1px solid #000000;line-height:140%;">
+				<div style="position:relative;top:0px;padding:8px;text-indent:0px;left:40px;color:#000000;width:80%;">
+					<div style="position:relative;">Have a Write-On discussion.</div>
+					<div style="position:absolute;left:-40px;top:0px;padding-top:4%;bottom:0px;background:#41beb2;color:#ffffff;text-align:center;width:30px;border-right:1px solid #000000;font-size:18px;">4.</div>
+				</div>
+			</div>
+		</div>
+		
+		<div id="" class="inModal" style="top:300px;left:325px;width:325px;border:1px solid #000000;border-left:0px;background:#fffded;font-size:14px;">
+			<div style="position:relative;background:#41beb2;font-size:20px;height:30px;line-height:30px;"></div>
+			<div style="position:relative;width:100%;border-top:1px solid #000000;line-height:140%;border-left:1px solid #000000;">
+				<div style="position:relative;top:0px;padding:8px;text-indent:0px;left:40px;color:#000000;width:80%;">
+					<div style="position:relative;">Prepare for Class Discussion.</div>
+					<div style="position:absolute;left:-40px;top:0px;padding-top:4%;bottom:0px;background:#41beb2;color:#ffffff;text-align:center;width:30px;border-right:1px solid #000000;font-size:18px;">5.</div>
+				</div>
+			</div>
+			<div style="position:relative;width:100%;border-top:1px solid #000000;line-height:140%;border-left:1px solid #000000;">
+				<div style="position:relative;top:0px;padding:6px;text-indent:0px;left:40px;color:#000000;width:80%;">
+					<div style="position:relative;list-style-type:square;">
+						<br>
+						<li>Review the Class discussion student routine.</li>
+						<li>Review the rubrics for challenge scores on your team folder.</li>
+						<br>
+						<br>
+						<br>
+						<br>
+					</div>
+					<div style="position:absolute;left:-40px;top:0px;padding-top:4%;bottom:0px;background:#41beb2;color:#ffffff;text-align:center;width:30px;border-right:1px solid #000000;font-size:18px;"></div>
+				</div>
+			</div>
+		</div>
+			
+	
+	</div>
+	
+
+</div>
+
+<img class="clickForModalWindow" onclick="teacherInstructions(this,'tpWindow');" src="tPbutton.png" style="z-index:29;position:fixed;top:0px;left:5px;cursor:pointer;z-index: 9999999;" />
+<img class="clickForModalWindow" onclick="teacherInstructions(this,'srWindow');" src="../../../../../../Shared/Images/Math/MenuBar/sr_button.png" style="z-index:29;position:fixed;top:0px;left:45px;cursor:pointer;z-index: 9999999;" />
+<img class="clickForModalWindow" onclick="teacherInstructions(this,'roleCardsWindow');" src="../../../../../../Shared/Images/Math/MenuBar/rc_button.png" style="position:fixed;bottom:1px;right:340px;cursor:pointer;z-index:999999999999;" />
+<img class="clickForModalWindow" onclick="teacherInstructions(this,'clarifyingWindow');"src="../../../../../../Shared/Images/Math/MenuBar/clarifying_button.png" style="position:fixed;bottom:1px;right:300px;cursor:pointer;z-index:999999999999;" />		
+<img class="clickForModalWindow" onclick="teacherInstructions(this,'questioningWindow');"src="../../../../../../Shared/Images/Math/MenuBar/questioning_button.png" style="position:fixed;bottom:1px;right:260px;cursor:pointer;z-index:999999999999;" />		
+			
+	<script>
+		function teacherInstructions(clickedElement,modalWindow){
+			modalIndex=[].indexOf.call(document.querySelectorAll("."+clickedElement.className),clickedElement);
+			
+			[].forEach.call(document.querySelectorAll(".modalWindow"),function(element,index){
+				if(element!=document.getElementById(modalWindow) && element.style.visibility=="visible"){
+					element.style.visibility='hidden';
+				}
+			});
+			if(document.getElementById(modalWindow).style.visibility=="visible"){
+				document.getElementById('greyModal').style.visibility='hidden';
+				document.getElementById(modalWindow).style.visibility='hidden';
+			}else{
+				document.getElementById('greyModal').style.visibility="visible";
+				document.getElementById(modalWindow).style.visibility="visible";
+			}
+		}
+	</script>
+	
+	</body>
+</html>
